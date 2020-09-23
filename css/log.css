@@ -1,0 +1,12 @@
+#register{
+    text-decoration: none;
+    color: black;
+    margin: 18px;
+    padding: 8px;
+    border-top: 3px solid black;
+    border-bottom: 3px solid black;
+    text-align: justify;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
