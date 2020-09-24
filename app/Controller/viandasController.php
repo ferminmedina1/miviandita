@@ -13,8 +13,8 @@ require_once "./Model/viandasModel.php";
         }
         
         function Home(){//////////////MEJORAR PARA VIANDAS
-            $tasks = $this->model->GetViandas();
-            $this->view->ShowHome($tasks);
+            $viandas = $this->model->GetViandas();
+            $this->view->ShowHome($viandas);
         }
         function AutoCompletar(){
             $tasks = $this->model->GetViandas();

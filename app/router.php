@@ -8,7 +8,7 @@
     $r = new Router();
 
     // rutas
-    $r->addRoute("home", "GET", "viandasController", "Home");
+    $r->addRoute("home", "GET", "viandasController", "Home"); // ($url, $verb(GET/POST), $controller, $method(Funcion))
 
     //Esto lo veo en TasksView
     $r->addRoute("insert", "POST", "viandasController", "InsertTask");
