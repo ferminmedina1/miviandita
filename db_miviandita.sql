@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 24-09-2020 a las 00:22:07
+-- Tiempo de generación: 25-09-2020 a las 00:08:55
 -- Versión del servidor: 10.4.14-MariaDB
 -- Versión de PHP: 7.4.10
 
@@ -40,6 +40,7 @@ CREATE TABLE `dirigido_table` (
 
 CREATE TABLE `viandas` (
   `nombre` varchar(285) NOT NULL,
+  `precio` int(11) NOT NULL,
   `id_dirigidoA` int(11) NOT NULL,
   `celiacos` tinyint(1) NOT NULL,
   `id_vianda` int(11) NOT NULL
@@ -76,7 +77,7 @@ ALTER TABLE `dirigido_table`
 -- AUTO_INCREMENT de la tabla `viandas`
 --
 ALTER TABLE `viandas`
-  MODIFY `id_vianda` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_vianda` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- Restricciones para tablas volcadas
