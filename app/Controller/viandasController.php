@@ -8,23 +8,23 @@ require_once "./Model/viandasModel.php";
         private $model;
     
         function __construct(){
-            $this->view = new TasksView();
+            $this->view = new viandasView();
             $this->model = new viandasModel();
         }
         
         function Home(){//////////////MEJORAR PARA VIANDAS
-            $tasks = $this->model->GetTasks();
+            $tasks = $this->model->GetViandas();
             $this->view->ShowHome($tasks);
         }
         function AutoCompletar(){
-            $tasks = $this->model->GetTasks();
+            $tasks = $this->model->GetViandas();
     
             foreach($tasks as $task){
                 $title = $task->title;
                 $word = "Completada";
     
                 if(strpos($title, $word) !== false){
-                    $this->model->MarkAsCompletedTask($task->id);
+                    $this->model->marcarCeliaca($task->id);
                 }
             }
     

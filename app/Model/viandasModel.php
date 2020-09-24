@@ -11,8 +11,8 @@ class viandasModel{
     function getViandasByDirigidoA($dirigidoA) {
         $query = $this->db->prepare('SELECT * FROM viandas WHERE dirigidoA = ?');
         $query->execute([$dirigidoA]); // array($dirigidoA) PREGUNTAR SORBRE EL EXECUTE.
-        $movies = $query->fetchAll(PDO::FETCH_OBJ);
-        return $movies;
+        $viandaDirigidas = $query->fetchAll(PDO::FETCH_OBJ);
+        return $viandaDirigidas;
     }
 
     function getDirigidoA(){ 
@@ -30,9 +30,9 @@ class viandasModel{
         return $viandas;
     }
     
-    function insertVianda($nombre,$dirigidoA,$celiacos){
-        $query = $this->db->prepare('INSERT INTO viandas(nombre,dirigidoA,celiacos) VALUES (?,?,?)');
-        $query->execute([$nombre,$dirigidoA,$dietetico]);
+    function insertVianda($nombre,$precio,$dirigidoA,$celiacos){
+        $query = $this->db->prepare('INSERT INTO viandas(nombre,precio,dirigidoA,celiacos) VALUES (?,?,?)');
+        $query->execute([$nombre,$precio,$dirigidoA,$dietetico]);
     }
 
     function deleteVianda($id){
