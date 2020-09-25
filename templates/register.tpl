@@ -24,7 +24,7 @@
 
             <div class="tituloYlogo">
                 
-                <a href="index"><img src="./images/LOGO2.png" alt="MiViandita!" class="logoEncabezado"></a>
+                <a href="home"><img src="./images/LOGO2.png" alt="MiViandita!" class="logoEncabezado"></a>
             
                 <h1 class="titulo"> Mi Viandita!</h1>
 
@@ -43,11 +43,11 @@
 
         <div class="menu">
 
-            <a href="index" class="item">Home</a>
-            <a href="Viandas" class="item">Viandas</a>
-            <a href="Promo" class="item">Promociones </a>
-            <a href="Contacto" class="item">Contacto</a>
-            <a href="Sobre" class="item">Sobre Mi Viandita</a>
+            <a href="home" class="item">Home</a>
+            <a href="viandas" class="item">Viandas</a>
+            <a href="promociones" class="item">Promociones </a>
+            <a href="contacto" class="item">Contacto</a>
+            <a href="sobremiviandita" class="item">Sobre Mi Viandita</a>
 
         </div>
 
@@ -67,7 +67,7 @@
                 <label class="itemformulario"> Correo: </label> <input type="email" id="correo">
                 <label class="itemformulario"> Contraseña: </label> <input type="password" id="contra">
                 <label class="itemformulario"> Repite la contraseña: </label> <input type="password" id="contra">
-                <a href="log" id="register">Ya tienes una cuenta? Logueate aca!</a>
+                <a href="login" id="register">Ya tienes una cuenta? Logueate aca!</a>
                 <div class="contenedorCaptcha">
                     <label id="textocaptcha"></label> <input id="respuestaCaptcha" type="text" name="captcha" value="">
                 </div>

@@ -22,7 +22,7 @@
 
             <div class="tituloYlogo">
                 
-                <a href="index"><img src="./images/LOGO2.png" alt="MiViandita!" class="logoEncabezado"></a>
+                <a href="home"><img src="./images/LOGO2.png" alt="MiViandita!" class="logoEncabezado"></a>
             
                 <h1 class="titulo"> Mi Viandita!</h1>
 
@@ -41,11 +41,11 @@
 
         <div= class="menu">
 
-            <a href="index" class="item">Home</a>
+            <a href="home" class="item">Home</a>
             <a href="viandas" class="item">Viandas</a>
             <a href="#" class="itemPrincipal">Promociones </a>
             <a href="contacto" class="item">Contacto</a>
-            <a href="sobre" class="item">Sobre Mi Viandita</a>
+            <a href="sobremiviandita" class="item">Sobre Mi Viandita</a>
 
         </div>
         
@@ -150,7 +150,7 @@
  <!-- BOTON CONSULTAS -->
 
         <section class="section-consultas">
-            <a class="botonLogueo" href="log"> Logueate <img src="./images/user.png" alt="user.img" class="imagenConsultas"></a>
+            <a class="botonLogueo" href="login"> Logueate <img src="./images/user.png" alt="user.img" class="imagenConsultas"></a>
             <a class="botonConsultas" href="consultas"> Consultas</a>
         </section>
 

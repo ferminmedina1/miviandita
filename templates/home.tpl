@@ -42,9 +42,9 @@
         <div class="menu">
             <a href="#" class="itemPrincipal">Home</a>
             <a href="viandas" class="item">Viandas</a>
-            <a href="promo" class="item">Promociones </a>
+            <a href="promociones" class="item">Promociones </a>
             <a href="contacto" class="item">Contacto</a>
-            <a href="sobre" class="item">Sobre Mi Viandita</a>
+            <a href="sobremiviandita" class="item">Sobre Mi Viandita</a>
         </div>
 
     </nav>
@@ -80,7 +80,7 @@
  <!-- BOTON CONSULTAS -->
 
     <section class="section-consultas">
-        <a class="botonLogueo" href="log"> Logueate <img src="./images/user.png" alt="user.img" class="imagenConsultas"></a>
+        <a class="botonLogueo" href="login"> Logueate <img src="./images/user.png" alt="user.img" class="imagenConsultas"></a>
         <a class="botonConsultas" href="consultas"> Consultas</a>
     </section>
 
