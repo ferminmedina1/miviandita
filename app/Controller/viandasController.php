@@ -13,25 +13,41 @@ require_once "./Model/viandasModel.php";
         }
         
         function Home(){//////////////MEJORAR PARA VIANDAS
-            $viandas = $this->model->GetViandas();
-            $this->view->ShowHome($viandas);
+            $this->view->ShowHome();
         }
-        function AutoCompletar(){
-            $tasks = $this->model->GetViandas();
-    
-            foreach($tasks as $task){
-                $title = $task->title;
-                $word = "Completada";
-    
-                if(strpos($title, $word) !== false){
-                    $this->model->marcarCeliaca($task->id);
-                }
-            }
-    
-           $tasks = $this->model->GetTasks();
-           
-           $this->view->ShowHome($tasks);
+
+        function Viandas(){//////////////MEJORAR PARA VIANDAS
+            $this->view->ShowViandas();
         }
+
+        function Promo(){//////////////MEJORAR PARA VIANDAS
+            $this->view->ShowPromo();
+        }
+
+        function Contacto(){//////////////MEJORAR PARA VIANDAS
+            $this->view->ShowContacto();
+        }
+
+        function Sobre(){//////////////MEJORAR PARA VIANDAS
+            $this->view->ShowSobre();
+        }
+
+        function Ilvero(){//////////////MEJORAR PARA VIANDAS
+            $this->view->ShowIlvero();
+        }
+
+        function Consultas(){//////////////MEJORAR PARA VIANDAS
+            $this->view->ShowConsultas();
+        }
+
+        function Log(){//////////////MEJORAR PARA VIANDAS
+            $this->view->ShowLog();
+        }
+
+        function Register(){//////////////MEJORAR PARA VIANDAS
+            $this->view->ShowRegister();
+        }
+
     
     }
 

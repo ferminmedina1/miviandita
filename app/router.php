@@ -10,10 +10,20 @@
     // rutas
     $r->addRoute("home", "GET", "viandasController", "Home"); // ($url, $verb(GET/POST), $controller, $method(Funcion))
 
-    //Esto lo veo en TasksView
-    $r->addRoute("insert", "POST", "viandasController", "InsertTask");
-    $r->addRoute("delete/:ID", "GET", "viandasController", "BorrarLaTaskQueVienePorParametro");
-    $r->addRoute("completar/:ID", "GET", "viandasController", "MarkAsCompletedTask");
+    $r->addRoute("viandas", "GET", "viandasController", "Viandas"); // ($url, $verb(GET/POST), $controller, $method(Funcion))
+
+    $r->addRoute("promo", "GET", "viandasController", "Promo"); // ($url, $verb(GET/POST), $controller, $method(Funcion))
+
+    $r->addRoute("contacto", "GET", "viandasController", "Contacto"); // ($url, $verb(GET/POST), $controller, $method(Funcion))
+
+    $r->addRoute("sobre", "GET", "viandasController", "Sobre"); // ($url, $verb(GET/POST), $controller, $method(Funcion))
+    
+    $r->addRoute("consultas", "GET", "viandasController", "Consultas"); // ($url, $verb(GET/POST), $controller, $method(Funcion))
+
+    $r->addRoute("log", "GET", "viandasController", "Log"); // ($url, $verb(GET/POST), $controller, $method(Funcion))
+
+    $r->addRoute("register", "GET", "viandasController", "Register"); // ($url, $verb(GET/POST), $controller, $method(Funcion))
+
 
     //Ruta por defecto.
     $r->setDefaultRoute("viandasController", "Home");

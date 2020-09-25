@@ -32,7 +32,7 @@ class viandasModel{
     
     function insertVianda($nombre,$precio,$dirigidoA,$celiacos){
         $query = $this->db->prepare('INSERT INTO viandas(nombre,precio,dirigidoA,celiacos) VALUES (?,?,?)');
-        $query->execute([$nombre,$precio,$dirigidoA,$dietetico]);
+        $query->execute([$nombre,$precio,$dirigidoA,$celiacos]);
     }
 
     function deleteVianda($id){
