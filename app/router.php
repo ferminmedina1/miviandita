@@ -24,6 +24,7 @@
 
     $r->addRoute("register", "GET", "viandasController", "Register"); // ($url, $verb(GET/POST), $controller, $method(Funcion))
 
+    $r->addRoute("verTodos", "GET", "viandasController", "mostrarTodas");
 
     //Ruta por defecto.
     $r->setDefaultRoute("viandasController", "Home");
