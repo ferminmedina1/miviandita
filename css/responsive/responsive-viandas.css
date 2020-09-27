@@ -12,7 +12,35 @@
 
     }
 
+    .tituloAllCategorias{
+        
+        color: white;
+        text-align: center;
+        width: max-content;
+        font-size: 3vw;
+        border-bottom: 9px solid indianred;
+        text-align: center;
+        margin: 64px 493px;
+        border-radius: 8px;
+        font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    }
 
+    .categoria, .verTodas {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        width: 40%;
+        background-color: yellowgreen;
+        border: 5px solid rgb(112, 150, 35);
+        border-bottom: 5px solid rgb(70, 94, 24);
+        border-right: 5px solid rgb(70, 94, 24);
+        font-size: 3vw;
+        border-radius: 10px;
+        color: black;
+        padding: 13px;
+        font-family: 'Bree Serif', serif;
+    }
 
     .subtitulo {
         
@@ -37,6 +65,7 @@
         color: white;
         margin-left: 20px;
         font-size: 30px;
+        width: 52%;
         text-align: justify;
 
     }
