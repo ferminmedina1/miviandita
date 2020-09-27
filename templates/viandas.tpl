@@ -51,11 +51,39 @@
 
     </nav>
 
+    <h2 class="tituloAllCategorias">TIPOS DE VIANDAS </h2>
+    <div class="categoriasAll">
+        {foreach from=$tipo item=categoria}
+        
+            <a href="#" class="categoria">{$categoria->tipo_vianda}</a>
+        
+        {/foreach}
+             <a  href="verTodos" class="verTodas">Ver Todas</a>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
  <!-- CUERPO DE PAGINA -->
-    
+  <!--
     <article>
      
-        <!-- VIANDA 1 -->
+       
 
         <section class="contenedorVianda">
 
@@ -75,7 +103,7 @@
 
         </section>
 
-        <!-- VIANDA 2 -->
+        
 
         <section class="contenedorVianda">
 
@@ -95,8 +123,7 @@
 
         </section>
 
-        <!-- VIANDA 3 -->
-
+        
         <section class="contenedorVianda">
             
             <img src="./images/vianda pasta.jpg" alt="vianda fideos" class="fotoComida">
@@ -117,7 +144,7 @@
 
     </article>
 
-<!--- AGREGAR VIANDAS -->
+
 
     <section class="tabla">
 
@@ -139,7 +166,6 @@
                         <div class="botones">
                         <button type="button" id="agregar" >Agregar vianda</button>
                         <button type="button" id="agregar3" >x3</button>
-            <!--       <button type="button" id="borrar1" >Eliminar ultimo producto</button> --> 
                         <button type="button" id="vaciarTabla">Vaciar tabla</button>
                         </div>
 
@@ -168,7 +194,7 @@
             </tbody>
         </table>
 
-    </section>
+    </section>-->
 
  <!-- BOTON CONSULTAS -->
 
