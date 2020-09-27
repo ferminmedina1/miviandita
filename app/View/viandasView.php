@@ -1,6 +1,7 @@
 <?php
 
-    require_once"../libs/smarty/Smarty.class.php";
+require_once"../libs/smarty/Smarty.class.php";
+
 class viandasView{
 
     private $title;
@@ -15,9 +16,17 @@ class viandasView{
         $smarty->display('../templates/home.tpl');
     }
 
-    function ShowViandas(){
+    function ShowViandas($categorias){
         $smarty = new Smarty();
+        $smarty -> assign('tipo', $categorias);
         $smarty->display('../templates/viandas.tpl');
+    }
+
+    function showAllViandas($viandas) {
+
+        $smarty = new Smarty();
+        $smarty -> assign('allViandas', $viandas);
+        $smarty->display('../templates/AllViandas.tpl');
     }
 
     function ShowPromo(){
