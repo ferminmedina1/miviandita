@@ -17,7 +17,15 @@ require_once "./Model/viandasModel.php";
         }
 
         function Viandas(){//////////////MEJORAR PARA VIANDAS
-            $this->view->ShowViandas();
+            $categorias = $this->model->getCategoria();
+            $this->view->ShowViandas($categorias);
+        }
+
+        function mostrarTodas() {
+
+            $viandas = $this->model->getViandas();
+            $this->view->showAllViandas($viandas);
+
         }
 
         function Promo(){//////////////MEJORAR PARA VIANDAS
