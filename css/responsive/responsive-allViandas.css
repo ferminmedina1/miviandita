@@ -1,0 +1,133 @@
+@import url('https://fonts.googleapis.com/css2?family=Bree+Serif&display=swap');
+.oculto {
+    display: none;
+}
+.mostrar {
+    display: block;
+}
+
+@media only screen and (min-width: 580px){
+    
+    body {
+
+        background-image: url(../../images/fondo_viandas.jpg);
+        background-color: black;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+
+    }
+    
+    .allViandas {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+
+    }
+
+    .tituloAllViandas {
+        color: rgb(250, 249, 248);
+        font-size: 3vw;
+        border-bottom: 9px solid indianred;
+        text-align: center;
+        margin: 35px 493px;
+        margin-top: 64px;
+        border-radius: 8px;
+        font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    }
+    }
+
+    .plato {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        width: 100%;
+        background-color: yellowgreen;
+        border: 5px solid rgb(112, 150, 35);
+        border-bottom: 5px solid rgb(70, 94, 24);
+        border-right: 5px solid rgb(70, 94, 24);
+        font-size: 3vw;
+        border-radius: 10px;
+        color: black;
+        padding: 11px;
+        font-family: 'Times New Roman', Times, serif;
+        font-weight: bold;
+        cursor: pointer;
+        
+    }
+
+    .plato:hover {
+        background-color:green;
+        transition: all ease 0.3s;
+    }
+
+    .contenedorVianda {
+
+        justify-content: center;
+        width: 26%;
+        flex-direction: column;
+        margin-bottom: 5%;
+        margin: 3%;
+        border: none;
+    }
+
+
+    /* NOMBRE DEL PLATO */
+
+    .descripcionViandas {
+
+       color: white;
+       display: flex;
+       flex-direction: column;
+       margin-left: 20px;
+       text-align: center;
+       align-items: center;
+       font-size: 30px;
+       font-family: 'Bree Serif', serif;
+
+    }
+
+    .precio{
+        font-family: 'Times New Roman', Times, serif;
+        display: flex;
+        justify-content: center;
+        align-items: flex-end;
+        padding: 12px;
+        margin: 20px;
+        margin-top: 0;
+        color: rgb(255, 248, 240);
+        font-size: 4.5vw;
+        border-radius: 100px;
+        background-color: #d1852e;
+        transition: all 500ms ease;
+        width: 43%;
+    }
+
+
+}
+
+
+
+
+@media only screen and (min-width: 1200px){
+
+ 
+    .contenedorViandas {
+
+        justify-content: center;
+        width: 26%;
+        flex-direction: column;
+        margin-bottom: 5%;
+        margin: 3%;
+        border: none;
+    }
+
+
+        
+
+
+
+
+
+}
