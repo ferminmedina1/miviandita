@@ -15,13 +15,14 @@ class viandasModel{
         return $viandaDirigidas;
     }
 
-    function getDirigidoA(){ 
+    function getCategoria(){ 
         // DISTINCT no trae elementos repetidos. En este caso traera todos los generos existentes.
-        $query = $this->db->prepare('SELECT DISTINCT dirigidoA FROM viandas'); 
+        $query = $this->db->prepare('SELECT * FROM dirigido_table');
         $query->execute(); 
         $dirigidoA = $query->fetchAll(PDO::FETCH_OBJ);
         return $dirigidoA;
-    } 
+    }
+
     
     function getViandas() {
         $query = $this->db->prepare('SELECT * FROM viandas');
