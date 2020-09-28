@@ -7,6 +7,7 @@
     <title>Mi Viandita! - Viandas</title>
     <link rel="stylesheet" href="./css/style.css">
     <link rel="stylesheet" href="./css/viandas.css">
+    <link rel="stylesheet" href="./css/adminViandas.css">
     <link rel="stylesheet" href="./css/responsive/responsive.css">
     <link rel="stylesheet" href="./css/responsive/responsive-viandas.css">
     <script type="text/javascript" src="./js/nav.js"></script>
@@ -51,17 +52,34 @@
 
     </nav>
 
-    <h2 class="tituloAllCategorias">TIPOS DE VIANDAS </h2>
-    <div class="categoriasAll">
-        {foreach from=$tipo item=categoria}
+    <h2 class="tituloAllCategorias">ADMINISTRAR VIANDAS</h2>
+
+    <div class="agregarAtabla">
+
+        <div class="inputsPrincipales">
+        <a class="textoInput"> Vianda: <input type="text" id="producto"> </a>
+        <a class="textoInput"> Descripción:  <input type="text" id="precio"> </a>
+        <a class="textoInput"> Precio:  <input type="number" id="precio"> </a>
+        </div>
+
         
-            <a href="#" class="categoria">{$categoria->tipo_vianda}</a>
-        
-        {/foreach}
-             <a  href="verTodos" class="verTodas">Ver Todas</a>
+            <div class="filtro">
+                <select name="dirigidoA" id="select">
+                    <option value="normal">Normal</option>
+                    <option value="celiacos">Celiacos</option>
+                    <option value="veganos">Veganos</option>
+                </select>
+            </div>
+        <div class="botonera">
+            <div class="botones">
+                <button type="button" id="agregar_db" >Agregar vianda</button>
+                <button type="button" id="eliminar_db">Eliminar todas las viandas</button>
+                <button type="button" id="addCategoria_db">Agregar categoria</button>
+                <button type="button" id="vaciarTabl">Vaciar tabla</button>
+            </div>
+        </div>
+
     </div>
-
-
 
 
  <!-- CUERPO DE PAGINA -->
@@ -186,7 +204,7 @@
     <section class="section-consultas">
         <a class="botonLogueo" href="login"> Logueate <img src="./images/user.png" alt="user.img" class="imagenConsultas"></a>
         <a class="botonConsultas" href="consultas"> Consultas</a>
-        <a class="botonAdministrar" href="adminViandas"> Administrar Viandas</a>
+        <a class="botonAdministrar" href="viandas"> Volver a "viandas"</a>
     </section>
 
  <!-- PIE DE PAGINA -->

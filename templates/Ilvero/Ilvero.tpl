@@ -5,7 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ilvero - Proximamente </title>
-    <link rel="stylesheet" href="ilvero.css">
+    <link rel="stylesheet" href="Ilvero.css">
+    <link rel="stylesheet" href="./css/Ilvero.css">
 </head>
 
 <body>
@@ -19,7 +20,7 @@
 
             <img src="./Images/ilvero.jpg" alt="ilvero" class="ilvero">
         
-            <h2 class="volver"> Volver a <a class="miViandita" href=./templates/index> mi viandita!</a> </h2> 
+            <h2 class="volver"> Volver a <a class="miViandita" href="home"> mi viandita!</a> </h2> 
     
         </section>
 

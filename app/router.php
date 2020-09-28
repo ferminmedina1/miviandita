@@ -20,11 +20,16 @@
     
     $r->addRoute("consultas", "GET", "viandasController", "Consultas"); // ($url, $verb(GET/POST), $controller, $method(Funcion))
 
+    $r->addRoute("ilvero", "GET", "viandasController", "Ilvero");
+    
     $r->addRoute("login", "GET", "viandasController", "Log"); // ($url, $verb(GET/POST), $controller, $method(Funcion))
 
     $r->addRoute("register", "GET", "viandasController", "Register"); // ($url, $verb(GET/POST), $controller, $method(Funcion))
 
     $r->addRoute("verTodos", "GET", "viandasController", "mostrarTodas");
+
+    $r->addRoute("adminViandas", "GET", "viandasController", "AdminViandas");
+
 
     //Ruta por defecto.
     $r->setDefaultRoute("viandasController", "Home");

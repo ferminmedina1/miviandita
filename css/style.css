@@ -221,6 +221,27 @@ nav {
 
 }
 
+.botonAdministrar {
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    height: 45px;
+    width: 140px;
+    left: 85%;
+    top: 120px;
+    border-radius: 26px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-weight: bolder;
+    background-color: #d1c12e;
+    text-decoration: none;
+    color: black;
+    border: 1px solid rgb(155, 155, 155);
+    font-size: 14px;
+    margin: 10px;
+}
+
 
 .imagenConsultas {
 

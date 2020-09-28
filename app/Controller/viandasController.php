@@ -56,6 +56,10 @@ require_once "./Model/viandasModel.php";
             $this->view->ShowRegister();
         }
 
+        function AdminViandas(){//////////////MEJORAR PARA VIANDAS
+            $this->view->ShowAdminViandas();
+        }
+
     
     }
 

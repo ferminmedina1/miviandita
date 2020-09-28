@@ -46,7 +46,7 @@ class viandasView{
 
     function ShowIlvero(){
         $smarty = new Smarty();
-        $smarty->display('../templates/ilvero.tpl');
+        $smarty->display('../templates/Ilvero/Ilvero.tpl');
     }
 
     function ShowConsultas(){
@@ -64,6 +64,11 @@ class viandasView{
         $smarty->display('../templates/register.tpl');
     }
 
+    function ShowAdminViandas(){
+        $smarty = new Smarty();
+        $smarty->display('../templates/adminViandas.tpl');
+    }
+    
     function ShowHomeLocation(){
         header("Location: ".BASE_URL."home");
     }
