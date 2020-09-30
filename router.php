@@ -1,6 +1,6 @@
 <?php
-    require_once 'Controller/viandasController.php';
-    require_once 'routerClass.php';
+    require_once('app/viandasController.php');
+    require_once('routerClass.php');
     
     // CONSTANTES PARA RUTEO
     define("BASE_URL", 'http://'.$_SERVER["SERVER_NAME"].':'.$_SERVER["SERVER_PORT"].dirname($_SERVER["PHP_SELF"]).'/');
@@ -28,7 +28,20 @@
 
     $r->addRoute("verTodos", "GET", "viandasController", "mostrarTodas");
 
+
+    // $r->addRoute("Celiaca", "GET", "viandasController", "mostrarPorCategoria");
+    // $r->addRoute("Normal", "GET", "viandasController", "mostrarPorCategoria");
+    // $r->addRoute("Vegana", "GET", "viandasController", "mostrarPorCategoria");
+    
+    $r->addRoute("categoria/:TIPO_VIANDA","GET", "viandasController", "mostrarPorCategoria");
+
     $r->addRoute("adminViandas", "GET", "viandasController", "AdminViandas");
+
+    $r->addRoute("agregarVianda", "POST", "viandasController", "ingresarVianda");
+
+    $r->addRoute("agregarCategoria", "POST", "viandasController", "nuevaCategoria");
+
+    
 
 
     //Ruta por defecto.

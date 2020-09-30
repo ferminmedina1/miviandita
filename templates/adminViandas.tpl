@@ -4,14 +4,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mi Viandita! - Viandas</title>
+    <title>Mi Viandita! - Administracion</title>
     <link rel="stylesheet" href="./css/style.css">
     <link rel="stylesheet" href="./css/viandas.css">
     <link rel="stylesheet" href="./css/adminViandas.css">
     <link rel="stylesheet" href="./css/responsive/responsive.css">
     <link rel="stylesheet" href="./css/responsive/responsive-viandas.css">
     <script type="text/javascript" src="./js/nav.js"></script>
-    <script type="text/javascript" src="./js/tabla.js"></script>
+ <!--   <script type="text/javascript" src="./js/tabla.js"></script> -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 
@@ -44,7 +44,7 @@
 
         <div class="menu">
             <a href="home" class="item">Home</a>
-            <a href="#" class="itemPrincipal">Viandas</a>
+            <a href="viandas" class="itemPrincipal">Viandas</a>
             <a href="promociones" class="item">Promociones </a>
             <a href="contacto" class="item">Contacto</a>
             <a href="sobremiviandita" class="item">Sobre Mi Viandita</a>
@@ -56,29 +56,55 @@
 
     <div class="agregarAtabla">
 
-        <div class="inputsPrincipales">
-        <a class="textoInput"> Vianda: <input type="text" id="producto"> </a>
-        <a class="textoInput"> Descripción:  <input type="text" id="precio"> </a>
-        <a class="textoInput"> Precio:  <input type="number" id="precio"> </a>
-        </div>
+        <form action="agregarVianda" method="post">
 
-        
-            <div class="filtro">
-                <select name="dirigidoA" id="select">
-                    <option value="normal">Normal</option>
-                    <option value="celiacos">Celiacos</option>
-                    <option value="veganos">Veganos</option>
-                </select>
+            <div class="inputsPrincipales">
+                <label class="textoInput"> Vianda: <input type="text" name="nombre" id="producto"> </label>
+                <label class="textoInput"> Descripción:  <input type="text" name="descripcion" id="precio"> </label>
+                <label class="textoInput"> Precio:  <input type="number" name="precio" id="precio"> </label>
             </div>
-        <div class="botonera">
-            <div class="botones">
-                <button type="button" id="agregar_db" >Agregar vianda</button>
-                <button type="button" id="eliminar_db">Eliminar todas las viandas</button>
-                <button type="button" id="addCategoria_db">Agregar categoria</button>
-                <button type="button" id="vaciarTabl">Vaciar tabla</button>
-            </div>
-        </div>
 
+            
+                <div class="tipoDeCategoria">
+
+                    <select name="dirigidoA" id="select">
+                        {foreach from=$tipo item=categoria}
+                            <option value="{$categoria->id_dirigidoA}">{$categoria->tipo_vianda}</option>
+                        {/foreach}
+                    </select>
+                    <button id="agregar_db" type="submit">Agregar Vianda</button>
+                </div>
+
+            
+
+        </form>
+
+        <div class="categorias">
+
+            <form action="agregarCategoria" method="post">
+
+                    <div class="categoriaNueva">
+                    <h5>Administrar categorias</h5>
+                        <input type="text" name="tipo_vianda" id="nuevaCategoria" placeholder="Nueva categoria">
+                        <button type="submit" id="addCategoria_db">Agregar categoria</button>
+                    </div>
+ 
+
+            </form>
+
+        </div> 
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Viandas</th><th>Descripcion</th><th>Precio</th><th>Dirigido a</th><th>Borrar/Editar</th>
+            </thead>
+            <tbody>
+                {foreach from=$allViandas item=vianda}
+                    <tr><td>{$vianda->nombre}</td><td>{$vianda->descripcion}</td><td>{$vianda->precio}</td><td>{$categoria->tipo_vianda}</td><td class="botonBorrar"> <button class="botonBorrarTD" id="' + nuevoID+ '"> <i class="fa fa-trash-o"></i></button> <button class="botonEditarTD" id="' + nuevoID+ '"><i class="fa fa-edit"></i></button></td></tr>
+                {/foreach}
+            </tbody>
+        </table>
     </div>
 
 

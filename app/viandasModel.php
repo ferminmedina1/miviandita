@@ -9,7 +9,7 @@ class viandasModel{
     }
 
     function getViandasByDirigidoA($dirigidoA) {
-        $query = $this->db->prepare('SELECT * FROM viandas WHERE dirigidoA = ?');
+        $query = $this->db->prepare('SELECT * FROM viandas INNER JOIN dirigido_table ON viandas.id_dirigidoA=dirigido_table.id_dirigidoA WHERE tipo_vianda = ?');
         $query->execute([$dirigidoA]); // array($dirigidoA) PREGUNTAR SORBRE EL EXECUTE.
         $viandaDirigidas = $query->fetchAll(PDO::FETCH_OBJ);
         return $viandaDirigidas;
@@ -23,17 +23,23 @@ class viandasModel{
         return $dirigidoA;
     }
 
-    
+
     function getViandas() {
         $query = $this->db->prepare('SELECT * FROM viandas');
         $query->execute();
         $viandas = $query->fetchAll(PDO::FETCH_OBJ);
         return $viandas;
     }
+
+    function insertCategoria($tipo_vianda){
+        $query = $this->db->prepare('INSERT INTO dirigido_table(tipo_vianda) VALUES (?)');
+        $query->execute([$tipo_vianda]);
+    }
     
-    function insertVianda($nombre,$precio,$dirigidoA,$celiacos){
-        $query = $this->db->prepare('INSERT INTO viandas(nombre,precio,dirigidoA,celiacos) VALUES (?,?,?)');
-        $query->execute([$nombre,$precio,$dirigidoA,$celiacos]);
+    function insertVianda($nombre,$descripcion,$precio,$dirigidoA){
+        
+        $query = $this->db->prepare('INSERT INTO viandas(nombre,descripcion,precio,id_dirigidoA) VALUES (?,?,?,?)');
+        $query->execute([$nombre,$descripcion,$precio,$dirigidoA]);
     }
 
     function deleteVianda($id){

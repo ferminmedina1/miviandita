@@ -1,4 +1,27 @@
-<!DOCTYPE html>
+<?php
+/* Smarty version 3.1.34-dev-7, created on 2020-09-30 19:41:04
+  from 'D:\Program Files\XAMPP\htdocs\miviandita\templates\AllViandas.tpl' */
+
+/* @var Smarty_Internal_Template $_smarty_tpl */
+if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
+  'version' => '3.1.34-dev-7',
+  'unifunc' => 'content_5f74c33037d2e4_94079996',
+  'has_nocache_code' => false,
+  'file_dependency' => 
+  array (
+    '23ab715ab76157743f5b30440d0bcfa0300fea81' => 
+    array (
+      0 => 'D:\\Program Files\\XAMPP\\htdocs\\miviandita\\templates\\AllViandas.tpl',
+      1 => 1601487643,
+      2 => 'file',
+    ),
+  ),
+  'includes' => 
+  array (
+  ),
+),false)) {
+function content_5f74c33037d2e4_94079996 (Smarty_Internal_Template $_smarty_tpl) {
+?><!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -10,7 +33,9 @@
     <link rel="stylesheet" href="./css/responsive/responsive.css">
 
     <link rel="stylesheet" href="./css/responsive/responsive-allViandas.css">
-    <script type="text/javascript" src="./js/detalleVianda.js"></script>
+    <?php echo '<script'; ?>
+ type="text/javascript" src="./js/detalleVianda.js"><?php echo '</script'; ?>
+>
 </head>
 <body>
     <header>
@@ -51,20 +76,30 @@
     
     <div class="allViandas">
         
-        {foreach from=$allViandas item=vianda}
+        <?php
+$_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['allViandas']->value, 'vianda');
+$_smarty_tpl->tpl_vars['vianda']->do_else = true;
+if ($_from !== null) foreach ($_from as $_smarty_tpl->tpl_vars['vianda']->value) {
+$_smarty_tpl->tpl_vars['vianda']->do_else = false;
+?>
             <div class="contenedorVianda">
 
                 
-                    <button class="plato">{$vianda->nombre}</button>
+                    <button class="plato"><?php echo $_smarty_tpl->tpl_vars['vianda']->value->nombre;?>
+</button>
 
                     <div class="oculto">
                         <div class="descripcionViandas">
-                            <p>{$vianda->descripcion}</p>
-                            <h3 class="precio">${$vianda->precio}</h3>
+                            <p><?php echo $_smarty_tpl->tpl_vars['vianda']->value->descripcion;?>
+</p>
+                            <h3 class="precio">$<?php echo $_smarty_tpl->tpl_vars['vianda']->value->precio;?>
+</h3>
                         </div>
                     </div>
                 </div>
-        {/foreach}
+        <?php
+}
+$_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
 
     </div>
     <div class="contenedorVolver">
@@ -85,4 +120,5 @@
     </footer>
 
 </body>
-</html>
+</html><?php }
+}

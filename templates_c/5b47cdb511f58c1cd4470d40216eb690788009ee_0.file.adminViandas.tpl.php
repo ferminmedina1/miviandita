@@ -1,16 +1,44 @@
-<!DOCTYPE html>
+<?php
+/* Smarty version 3.1.34-dev-7, created on 2020-09-30 21:07:40
+  from 'D:\Program Files\XAMPP\htdocs\miviandita\templates\adminViandas.tpl' */
+
+/* @var Smarty_Internal_Template $_smarty_tpl */
+if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
+  'version' => '3.1.34-dev-7',
+  'unifunc' => 'content_5f74d77c47f700_48017556',
+  'has_nocache_code' => false,
+  'file_dependency' => 
+  array (
+    '5b47cdb511f58c1cd4470d40216eb690788009ee' => 
+    array (
+      0 => 'D:\\Program Files\\XAMPP\\htdocs\\miviandita\\templates\\adminViandas.tpl',
+      1 => 1601492858,
+      2 => 'file',
+    ),
+  ),
+  'includes' => 
+  array (
+  ),
+),false)) {
+function content_5f74d77c47f700_48017556 (Smarty_Internal_Template $_smarty_tpl) {
+?><!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mi Viandita! - Viandas</title>
+    <title>Mi Viandita! - Administracion</title>
     <link rel="stylesheet" href="./css/style.css">
     <link rel="stylesheet" href="./css/viandas.css">
+    <link rel="stylesheet" href="./css/adminViandas.css">
     <link rel="stylesheet" href="./css/responsive/responsive.css">
     <link rel="stylesheet" href="./css/responsive/responsive-viandas.css">
-    <script type="text/javascript" src="./js/nav.js"></script>
-    <script type="text/javascript" src="./js/tabla.js"></script>
+    <?php echo '<script'; ?>
+ type="text/javascript" src="./js/nav.js"><?php echo '</script'; ?>
+>
+ <!--   <?php echo '<script'; ?>
+ type="text/javascript" src="./js/tabla.js"><?php echo '</script'; ?>
+> -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 
@@ -43,7 +71,7 @@
 
         <div class="menu">
             <a href="home" class="item">Home</a>
-            <a href="#" class="itemPrincipal">Viandas</a>
+            <a href="viandas" class="itemPrincipal">Viandas</a>
             <a href="promociones" class="item">Promociones </a>
             <a href="contacto" class="item">Contacto</a>
             <a href="sobremiviandita" class="item">Sobre Mi Viandita</a>
@@ -51,16 +79,80 @@
 
     </nav>
 
-    <h2 class="tituloAllCategorias">TIPOS DE VIANDAS </h2>
-    <div class="categoriasAll">
-        {foreach from=$tipo item=categoria}
-            <!--<a href= '{$categoria->tipo_vianda}' class="categoria">{$categoria->tipo_vianda}</a>-->
-            <a href= 'categoria/{$categoria->tipo_vianda}' class="categoria">{$categoria->tipo_vianda}</a>
-        {/foreach}
-             <a  href="verTodos" class="verTodas">Ver Todas</a>
+    <h2 class="tituloAllCategorias">ADMINISTRAR VIANDAS</h2>
+
+    <div class="agregarAtabla">
+
+        <form action="agregarVianda" method="post">
+
+            <div class="inputsPrincipales">
+                <label class="textoInput"> Vianda: <input type="text" name="nombre" id="producto"> </label>
+                <label class="textoInput"> Descripción:  <input type="text" name="descripcion" id="precio"> </label>
+                <label class="textoInput"> Precio:  <input type="number" name="precio" id="precio"> </label>
+            </div>
+
+            
+                <div class="tipoDeCategoria">
+
+                    <select name="dirigidoA" id="select">
+                        <?php
+$_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['tipo']->value, 'categoria');
+$_smarty_tpl->tpl_vars['categoria']->do_else = true;
+if ($_from !== null) foreach ($_from as $_smarty_tpl->tpl_vars['categoria']->value) {
+$_smarty_tpl->tpl_vars['categoria']->do_else = false;
+?>
+                            <option value="<?php echo $_smarty_tpl->tpl_vars['categoria']->value->id_dirigidoA;?>
+"><?php echo $_smarty_tpl->tpl_vars['categoria']->value->tipo_vianda;?>
+</option>
+                        <?php
+}
+$_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
+                    </select>
+                    <button id="agregar_db" type="submit">Agregar Vianda</button>
+                </div>
+
+            
+
+        </form>
+
+        <div class="categorias">
+
+            <form action="agregarCategoria" method="post">
+
+                    <div class="categoriaNueva">
+                    <h5>Administrar categorias</h5>
+                        <input type="text" name="tipo_vianda" id="nuevaCategoria" placeholder="Nueva categoria">
+                        <button type="submit" id="addCategoria_db">Agregar categoria</button>
+                    </div>
+ 
+
+            </form>
+
+        </div> 
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Viandas</th><th>Descripcion</th><th>Precio</th><th>Dirigido a</th><th>Borrar/Editar</th>
+            </thead>
+            <tbody>
+                <?php
+$_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['allViandas']->value, 'vianda');
+$_smarty_tpl->tpl_vars['vianda']->do_else = true;
+if ($_from !== null) foreach ($_from as $_smarty_tpl->tpl_vars['vianda']->value) {
+$_smarty_tpl->tpl_vars['vianda']->do_else = false;
+?>
+                    <tr><td><?php echo $_smarty_tpl->tpl_vars['vianda']->value->nombre;?>
+</td><td><?php echo $_smarty_tpl->tpl_vars['vianda']->value->descripcion;?>
+</td><td><?php echo $_smarty_tpl->tpl_vars['vianda']->value->precio;?>
+</td><td><?php echo $_smarty_tpl->tpl_vars['categoria']->value->tipo_vianda;?>
+</td><td class="botonBorrar"> <button class="botonBorrarTD" id="' + nuevoID+ '"> <i class="fa fa-trash-o"></i></button> <button class="botonEditarTD" id="' + nuevoID+ '"><i class="fa fa-edit"></i></button></td></tr>
+                <?php
+}
+$_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
+            </tbody>
+        </table>
     </div>
-
-
 
 
  <!-- CUERPO DE PAGINA -->
@@ -185,7 +277,7 @@
     <section class="section-consultas">
         <a class="botonLogueo" href="login"> Logueate <img src="./images/user.png" alt="user.img" class="imagenConsultas"></a>
         <a class="botonConsultas" href="consultas"> Consultas</a>
-        <a class="botonAdministrar" href="adminViandas"> Administrar Viandas</a>
+        <a class="botonAdministrar" href="viandas"> Volver a "viandas"</a>
     </section>
 
  <!-- PIE DE PAGINA -->
@@ -197,4 +289,5 @@
     </footer>
 
 </body>
-</html>
+</html><?php }
+}

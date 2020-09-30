@@ -1,4 +1,27 @@
-<!DOCTYPE html>
+<?php
+/* Smarty version 3.1.34-dev-7, created on 2020-09-30 22:09:44
+  from 'D:\Program Files\XAMPP\htdocs\miviandita\templates\viandas.tpl' */
+
+/* @var Smarty_Internal_Template $_smarty_tpl */
+if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
+  'version' => '3.1.34-dev-7',
+  'unifunc' => 'content_5f74e608ce21f5_38203426',
+  'has_nocache_code' => false,
+  'file_dependency' => 
+  array (
+    '541fb327c3857aa651d157cb1d99386178c66a85' => 
+    array (
+      0 => 'D:\\Program Files\\XAMPP\\htdocs\\miviandita\\templates\\viandas.tpl',
+      1 => 1601496564,
+      2 => 'file',
+    ),
+  ),
+  'includes' => 
+  array (
+  ),
+),false)) {
+function content_5f74e608ce21f5_38203426 (Smarty_Internal_Template $_smarty_tpl) {
+?><!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -9,8 +32,12 @@
     <link rel="stylesheet" href="./css/viandas.css">
     <link rel="stylesheet" href="./css/responsive/responsive.css">
     <link rel="stylesheet" href="./css/responsive/responsive-viandas.css">
-    <script type="text/javascript" src="./js/nav.js"></script>
-    <script type="text/javascript" src="./js/tabla.js"></script>
+    <?php echo '<script'; ?>
+ type="text/javascript" src="./js/nav.js"><?php echo '</script'; ?>
+>
+    <?php echo '<script'; ?>
+ type="text/javascript" src="./js/tabla.js"><?php echo '</script'; ?>
+>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 
@@ -53,10 +80,21 @@
 
     <h2 class="tituloAllCategorias">TIPOS DE VIANDAS </h2>
     <div class="categoriasAll">
-        {foreach from=$tipo item=categoria}
-            <!--<a href= '{$categoria->tipo_vianda}' class="categoria">{$categoria->tipo_vianda}</a>-->
-            <a href= 'categoria/{$categoria->tipo_vianda}' class="categoria">{$categoria->tipo_vianda}</a>
-        {/foreach}
+        <?php
+$_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['tipo']->value, 'categoria');
+$_smarty_tpl->tpl_vars['categoria']->do_else = true;
+if ($_from !== null) foreach ($_from as $_smarty_tpl->tpl_vars['categoria']->value) {
+$_smarty_tpl->tpl_vars['categoria']->do_else = false;
+?>
+            <!--<a href= '<?php echo $_smarty_tpl->tpl_vars['categoria']->value->tipo_vianda;?>
+' class="categoria"><?php echo $_smarty_tpl->tpl_vars['categoria']->value->tipo_vianda;?>
+</a>-->
+            <a href= 'categoria/<?php echo $_smarty_tpl->tpl_vars['categoria']->value->tipo_vianda;?>
+' class="categoria"><?php echo $_smarty_tpl->tpl_vars['categoria']->value->tipo_vianda;?>
+</a>
+        <?php
+}
+$_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
              <a  href="verTodos" class="verTodas">Ver Todas</a>
     </div>
 
@@ -197,4 +235,5 @@
     </footer>
 
 </body>
-</html>
+</html><?php }
+}
