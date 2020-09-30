@@ -27,12 +27,7 @@
     $r->addRoute("register", "GET", "viandasController", "Register"); // ($url, $verb(GET/POST), $controller, $method(Funcion))
 
     $r->addRoute("verTodos", "GET", "viandasController", "mostrarTodas");
-
-
-    // $r->addRoute("Celiaca", "GET", "viandasController", "mostrarPorCategoria");
-    // $r->addRoute("Normal", "GET", "viandasController", "mostrarPorCategoria");
-    // $r->addRoute("Vegana", "GET", "viandasController", "mostrarPorCategoria");
-    
+   
     $r->addRoute("categoria/:TIPO_VIANDA","GET", "viandasController", "mostrarPorCategoria");
 
     $r->addRoute("adminViandas", "GET", "viandasController", "AdminViandas");
