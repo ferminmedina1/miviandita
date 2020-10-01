@@ -37,7 +37,6 @@ class viandasModel{
     }
     
     function insertVianda($nombre,$descripcion,$precio,$dirigidoA){
-        
         $query = $this->db->prepare('INSERT INTO viandas(nombre,descripcion,precio,id_dirigidoA) VALUES (?,?,?,?)');
         $query->execute([$nombre,$descripcion,$precio,$dirigidoA]);
     }

@@ -64,18 +64,15 @@
                 <label class="textoInput"> Precio:  <input type="number" name="precio" id="precio"> </label>
             </div>
 
-            
-                <div class="tipoDeCategoria">
+            <div class="tipoDeCategoria">
 
-                    <select name="dirigidoA" id="select">
-                        {foreach from=$tipo item=categoria}
-                            <option value="{$categoria->id_dirigidoA}">{$categoria->tipo_vianda}</option>
-                        {/foreach}
-                    </select>
-                    <button id="agregar_db" type="submit">Agregar Vianda</button>
-                </div>
-
-            
+                <select name="dirigidoA" id="select">
+                    {foreach from=$tipo item=categoria}
+                        <option value="{$categoria->id_dirigidoA}">{$categoria->tipo_vianda}</option>
+                    {/foreach}
+                </select>
+                <button id="agregar_db" type="submit">Agregar Vianda</button>
+            </div>
 
         </form>
 
@@ -93,6 +90,18 @@
             </form>
 
         </div> 
+                
+        <table>
+            <thead>
+                <tr>
+                    <th>Categoria</th><th>Borrar/Editar</th>
+            </thead>
+            <tbody>
+                {foreach from=$tipo item=categoria}
+                    <tr><td>{$categoria->tipo_vianda}</td><td class="botonBorrar"> <button class="botonBorrarTD" id="' + nuevoID+ '"> <i class="fa fa-trash-o"></i></button> <button class="botonEditarTD" id="' + nuevoID+ '"><i class="fa fa-edit"></i></button></td></tr>
+                {/foreach}
+            </tbody>
+        </table>
 
         <table>
             <thead>
