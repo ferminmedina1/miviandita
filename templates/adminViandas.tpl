@@ -101,7 +101,7 @@
             </thead>
             <tbody>
                 {foreach from=$allViandas item=vianda}
-                    <tr><td>{$vianda->nombre}</td><td>{$vianda->descripcion}</td><td>{$vianda->precio}</td><td>{$categoria->tipo_vianda}</td><td class="botonBorrar"> <button class="botonBorrarTD" id="' + nuevoID+ '"> <i class="fa fa-trash-o"></i></button> <button class="botonEditarTD" id="' + nuevoID+ '"><i class="fa fa-edit"></i></button></td></tr>
+                    <tr><td>{$vianda->nombre}</td><td>{$vianda->descripcion}</td><td>{$vianda->precio}</td><td>{$vianda->id_dirigidoA}</td><td class="botonBorrar"> <button class="botonBorrarTD" id="' + nuevoID+ '"> <i class="fa fa-trash-o"></i></button> <button class="botonEditarTD" id="' + nuevoID+ '"><i class="fa fa-edit"></i></button></td></tr>
                 {/foreach}
             </tbody>
         </table>

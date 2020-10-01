@@ -28,14 +28,13 @@
 
     $r->addRoute("verTodos", "GET", "viandasController", "mostrarTodas");
    
-    $r->addRoute("categoria/:TIPO_VIANDA","GET", "viandasController", "mostrarPorCategoria");
-
     $r->addRoute("adminViandas", "GET", "viandasController", "AdminViandas");
-
+    
     $r->addRoute("agregarVianda", "POST", "viandasController", "ingresarVianda");
-
+    
     $r->addRoute("agregarCategoria", "POST", "viandasController", "nuevaCategoria");
-
+    
+    $r->addRoute("categoria/:TIPO_VIANDA","GET", "viandasController", "mostrarPorCategoria");
     
 
 

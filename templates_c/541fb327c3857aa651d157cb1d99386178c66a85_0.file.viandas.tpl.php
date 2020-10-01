@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.34-dev-7, created on 2020-09-30 22:09:44
+/* Smarty version 3.1.34-dev-7, created on 2020-10-01 19:18:25
   from 'D:\Program Files\XAMPP\htdocs\miviandita\templates\viandas.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.34-dev-7',
-  'unifunc' => 'content_5f74e608ce21f5_38203426',
+  'unifunc' => 'content_5f760f61648921_01831392',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '541fb327c3857aa651d157cb1d99386178c66a85' => 
     array (
       0 => 'D:\\Program Files\\XAMPP\\htdocs\\miviandita\\templates\\viandas.tpl',
-      1 => 1601496564,
+      1 => 1601572702,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5f74e608ce21f5_38203426 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5f760f61648921_01831392 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html lang="en">
 
@@ -89,7 +89,7 @@ $_smarty_tpl->tpl_vars['categoria']->do_else = false;
             <!--<a href= '<?php echo $_smarty_tpl->tpl_vars['categoria']->value->tipo_vianda;?>
 ' class="categoria"><?php echo $_smarty_tpl->tpl_vars['categoria']->value->tipo_vianda;?>
 </a>-->
-            <a href= 'categoria/<?php echo $_smarty_tpl->tpl_vars['categoria']->value->tipo_vianda;?>
+            <a href= 'categoria/<?php echo mb_strtolower($_smarty_tpl->tpl_vars['categoria']->value->tipo_vianda, 'UTF-8');?>
 ' class="categoria"><?php echo $_smarty_tpl->tpl_vars['categoria']->value->tipo_vianda;?>
 </a>
         <?php

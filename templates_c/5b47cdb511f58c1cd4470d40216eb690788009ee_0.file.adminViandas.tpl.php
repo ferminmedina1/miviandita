@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.34-dev-7, created on 2020-09-30 21:07:40
+/* Smarty version 3.1.34-dev-7, created on 2020-10-01 19:16:02
   from 'D:\Program Files\XAMPP\htdocs\miviandita\templates\adminViandas.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.34-dev-7',
-  'unifunc' => 'content_5f74d77c47f700_48017556',
+  'unifunc' => 'content_5f760ed2b5c844_86748961',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '5b47cdb511f58c1cd4470d40216eb690788009ee' => 
     array (
       0 => 'D:\\Program Files\\XAMPP\\htdocs\\miviandita\\templates\\adminViandas.tpl',
-      1 => 1601492858,
+      1 => 1601525874,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5f74d77c47f700_48017556 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5f760ed2b5c844_86748961 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html lang="en">
 
@@ -145,7 +145,7 @@ $_smarty_tpl->tpl_vars['vianda']->do_else = false;
                     <tr><td><?php echo $_smarty_tpl->tpl_vars['vianda']->value->nombre;?>
 </td><td><?php echo $_smarty_tpl->tpl_vars['vianda']->value->descripcion;?>
 </td><td><?php echo $_smarty_tpl->tpl_vars['vianda']->value->precio;?>
-</td><td><?php echo $_smarty_tpl->tpl_vars['categoria']->value->tipo_vianda;?>
+</td><td><?php echo $_smarty_tpl->tpl_vars['vianda']->value->id_dirigidoA;?>
 </td><td class="botonBorrar"> <button class="botonBorrarTD" id="' + nuevoID+ '"> <i class="fa fa-trash-o"></i></button> <button class="botonEditarTD" id="' + nuevoID+ '"><i class="fa fa-edit"></i></button></td></tr>
                 <?php
 }

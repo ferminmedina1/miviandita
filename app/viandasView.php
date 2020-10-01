@@ -24,7 +24,6 @@ class viandasView{
     }
 
     function showViandaByCategoria ($categoria, $viandas) {
-        
         $this->smarty -> assign('titulo_tipo', $categoria);
         $this->smarty -> assign('viand', $viandas);
         $this->smarty->display('../templates/viandasByCategoria.tpl');

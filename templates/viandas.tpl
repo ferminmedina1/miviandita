@@ -55,7 +55,7 @@
     <div class="categoriasAll">
         {foreach from=$tipo item=categoria}
             <!--<a href= '{$categoria->tipo_vianda}' class="categoria">{$categoria->tipo_vianda}</a>-->
-            <a href= 'categoria/{$categoria->tipo_vianda}' class="categoria">{$categoria->tipo_vianda}</a>
+            <a href= 'categoria/{$categoria->tipo_vianda|lower}' class="categoria">{$categoria->tipo_vianda}</a>
         {/foreach}
              <a  href="verTodos" class="verTodas">Ver Todas</a>
     </div>
