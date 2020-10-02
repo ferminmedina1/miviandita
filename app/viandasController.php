@@ -43,7 +43,7 @@ require_once "viandasModel.php";
                 $this->model->insertVianda($_POST['nombre'], $_POST['descripcion'], $_POST['precio'], $_POST['dirigidoA']);
                 
             }
-            $this->view->showHomeLocation();
+            $this->view->showAdminLocation();
             //falta hacer un else que muestre q falto ingrear un dato
         }
 
@@ -52,7 +52,7 @@ require_once "viandasModel.php";
             if (!empty($_POST['tipo_vianda'])){
                 $this->model->insertCategoria($_POST['tipo_vianda']);
             }
-                $this->view->showHomeLocation();
+                $this->view->showAdminLocation();
             //falta hacer un else que muestre q falto ingrear un dato
         }
 
@@ -90,10 +90,39 @@ require_once "viandasModel.php";
             $this->view->ShowAdminViandas($categorias,$viandas);
         }
 
-        function Categorias(){
-            $categorias = $this->model->getCategoria();
-            return $categorias;
+        function eliminarVianda($params = null){
+            $vianda_ID = $params[':ID'];
+            $this->model->deleteVianda($vianda_ID);
+            $this->view->showAdminLocation();
+
         }
+
+        function eliminarCategoria($params = null){
+            $categoria_ID = $params[':ID'];
+            $this->model->deleteCategoria($categoria_ID);
+            $this->view->showAdminLocation();
+        }
+//FALTA TERMINAR
+        function showFormEditar($params = null){
+            $idVianda = $params[":ID"];
+            $vianda = $this->model->getViandaByID($idVianda);
+            print_r($vianda);
+            $this->view->showFormularioEditar($vianda);
+        }
+        
+        function editarVianda($params = null){
+
+            $vianda_ID = $params[':ID'];
+            if((!empty($_POST['nombre'])) && (!empty($_POST['descripcion'])) && (!empty($_POST['precio'])) && (!empty($_POST['dirigidoA']))) {
+                $this->model->updateVianda($_POST['nombre'], $_POST['descripcion'], $_POST['precio'], $_POST['dirigidoA'], $vianda_ID);
+            }
+            $this->view->showAdminLocation();        
+        }
+
+        function editarCategoria($params = null){
+
+        }
+
     }
 
 ?>

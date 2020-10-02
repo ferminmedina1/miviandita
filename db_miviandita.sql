@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 29-09-2020 a las 01:56:38
+-- Tiempo de generación: 02-10-2020 a las 09:06:58
 -- Versión del servidor: 10.4.14-MariaDB
 -- Versión de PHP: 7.4.9
 
@@ -63,7 +63,6 @@ INSERT INTO `viandas` (`nombre`, `precio`, `id_dirigidoA`, `descripcion`, `id_vi
 ('Milanesa', 250, 8, 'Te presentamos la \"gran milanesa\", hecha con ingredientes de primera calidad. Este combo\r\nviene con una porcion de papas y una milanesa de carne para una persona, ideal para un buen almuerzo.', 4),
 ('Ensalada vegana', 130, 7, 'La ensalada vegana es lo nuevo de la casa, tenemos opciones para todos los gustos. Incluye zanahoria, tomate, lechuga y rucula, no te quedes sin la tuya!!!', 5),
 ('Fideos con salsa', 185, 8, 'Lo ideal para matar este frio es comer unos ricos fideos con salsa y como siempre en Mi viandita! tenemos para ofrecerte lo mejor. Para hacer tu pedido podes encontrarnos en la seccion \"contactos\".', 6),
-('Pizza', 290, 8, 'Es un plato de elaboración artesanal en la mayoría de los casos, aunque la industria alimentaria fabrica desde la década de 1950, pizzas preparadas total o parcialmente (prepizza) que se venden en diferentes comercios.', 7),
 ('Tarta', 230, 8, 'Tarta de jamon y queso', 8),
 ('Queso', 220, 6, 'Queso para acompañar la comida', 9),
 ('Empanadas', 380, 8, 'Empanadas de carne', 28),
@@ -94,13 +93,13 @@ ALTER TABLE `viandas`
 -- AUTO_INCREMENT de la tabla `dirigido_table`
 --
 ALTER TABLE `dirigido_table`
-  MODIFY `id_dirigidoA` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id_dirigidoA` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT de la tabla `viandas`
 --
 ALTER TABLE `viandas`
-  MODIFY `id_vianda` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
+  MODIFY `id_vianda` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
 
 --
 -- Restricciones para tablas volcadas

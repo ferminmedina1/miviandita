@@ -28,13 +28,26 @@
 
     $r->addRoute("verTodos", "GET", "viandasController", "mostrarTodas");
    
-    $r->addRoute("adminViandas", "GET", "viandasController", "AdminViandas");
-    
-    $r->addRoute("agregarVianda", "POST", "viandasController", "ingresarVianda");
-    
-    $r->addRoute("agregarCategoria", "POST", "viandasController", "nuevaCategoria");
-    
     $r->addRoute("categoria/:TIPO_VIANDA","GET", "viandasController", "mostrarPorCategoria");
+
+    $r->addRoute("adminViandas", "GET", "viandasController", "AdminViandas");
+
+    $r->addRoute("agregarVianda", "POST", "viandasController", "ingresarVianda");
+
+    $r->addRoute("agregarCategoria", "POST", "viandasController", "nuevaCategoria");
+
+    //ELIMINAR
+    $r->addRoute("elimiarVianda/:ID", "GET", "viandasController", "eliminarVianda");
+
+    $r->addRoute("elimiarCategoria/:ID", "GET", "viandasController", "eliminarCategoria");
+
+    //EDITAR
+
+//FALTA TERMINAR
+    $r->addRoute("editarVianda/:ID", "GET", "viandasController", "showFormEditar");
+//FALTA TERMINAR
+    $r->addRoute("editarCategoria/:ID", "GET", "viandasController", "editarCategoria");
+
     
 
 

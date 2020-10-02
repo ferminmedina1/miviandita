@@ -11,7 +11,6 @@
     <link rel="stylesheet" href="./css/responsive/responsive.css">
     <link rel="stylesheet" href="./css/responsive/responsive-viandas.css">
     <script type="text/javascript" src="./js/nav.js"></script>
- <!--   <script type="text/javascript" src="./js/tabla.js"></script> -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 
@@ -64,57 +63,65 @@
                 <label class="textoInput"> Precio:  <input type="number" name="precio" id="precio"> </label>
             </div>
 
-            <div class="tipoDeCategoria">
+            
+                <div class="tipoDeCategoria">
 
-                <select name="dirigidoA" id="select">
-                    {foreach from=$tipo item=categoria}
-                        <option value="{$categoria->id_dirigidoA}">{$categoria->tipo_vianda}</option>
-                    {/foreach}
-                </select>
-                <button id="agregar_db" type="submit">Agregar Vianda</button>
-            </div>
+                    <select name="dirigidoA" id="select">
+                        {foreach from=$tipo item=categoria}
+                            <option value="{$categoria->id_dirigidoA}">{$categoria->tipo_vianda}</option>
+                        {/foreach}
+                    </select>
+                    <button id="agregar_db" type="submit">Agregar Vianda</button>
+                </div>
+
+            
 
         </form>
 
-        <div class="categorias">
+    </div>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Viandas</th><th>Descripcion</th><th>Precio</th><th>Tipo</th><th>Borrar/Editar</th>
+            </thead>
+            <tbody>
+                {foreach from=$allViandas item=vianda}
+                    <tr><td>{$vianda->nombre}</td><td>{$vianda->descripcion}</td><td>{$vianda->precio}</td><td>{$vianda->tipo_vianda}</td><td class="botonBorrar"> <a href='elimiarVianda/{$vianda->id_vianda}'><button class="botonBorrarTD" id="{$vianda->id_vianda}"> <i class="fa fa-trash-o"></i></button></a><a href='editarVianda/{$vianda->id_vianda}'><button class="botonEditarTD" id="{$vianda->id_vianda}"><i class="fa fa-edit"></i></button><a></td></tr>
+                {/foreach}
+            </tbody>
+        </table>
+
+
+    <div class="categorias">
 
             <form action="agregarCategoria" method="post">
 
                     <div class="categoriaNueva">
-                    <h5>Administrar categorias</h5>
-                        <input type="text" name="tipo_vianda" id="nuevaCategoria" placeholder="Nueva categoria">
-                        <button type="submit" id="addCategoria_db">Agregar categoria</button>
+                    <h4>Administrar categorias</h4>
+                        <div class="agregarCategoria">
+                            <input type="text" name="tipo_vianda" id="nuevaCategoria" placeholder="Nueva categoria">
+                            <button type="submit" id="addCategoria_db">Agregar categoria</button>
+                        </div>
                     </div>
  
 
             </form>
+    </div> 
 
-        </div> 
-                
-        <table>
+            <table>
             <thead>
                 <tr>
-                    <th>Categoria</th><th>Borrar/Editar</th>
+                    <th>Tipo de categoria</th><th>Borrar/Editar</th>
             </thead>
             <tbody>
                 {foreach from=$tipo item=categoria}
-                    <tr><td>{$categoria->tipo_vianda}</td><td class="botonBorrar"> <button class="botonBorrarTD" id="' + nuevoID+ '"> <i class="fa fa-trash-o"></i></button> <button class="botonEditarTD" id="' + nuevoID+ '"><i class="fa fa-edit"></i></button></td></tr>
+                    <tr><td>{$categoria->tipo_vianda}</td><td class="botonBorrar"> <a href='elimiarCategoria/{$categoria->id_dirigidoA}'><button class="botonBorrarTD" id="{$categoria->id_dirigidoA}"><i class="fa fa-trash-o"></i></button></a><a href='editarCategoria/{$categoria->id_dirigidoA}'><button class="botonEditarTD" id="{$categoria->id_dirigidoA}"><i class="fa fa-edit"></i></button></a></td></tr>
                 {/foreach}
             </tbody>
         </table>
 
-        <table>
-            <thead>
-                <tr>
-                    <th>Viandas</th><th>Descripcion</th><th>Precio</th><th>Dirigido a</th><th>Borrar/Editar</th>
-            </thead>
-            <tbody>
-                {foreach from=$allViandas item=vianda}
-                    <tr><td>{$vianda->nombre}</td><td>{$vianda->descripcion}</td><td>{$vianda->precio}</td><td>{$vianda->id_dirigidoA}</td><td class="botonBorrar"> <button class="botonBorrarTD" id="' + nuevoID+ '"> <i class="fa fa-trash-o"></i></button> <button class="botonEditarTD" id="' + nuevoID+ '"><i class="fa fa-edit"></i></button></td></tr>
-                {/foreach}
-            </tbody>
-        </table>
-    </div>
+        
 
 
  <!-- CUERPO DE PAGINA -->

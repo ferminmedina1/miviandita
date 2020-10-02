@@ -24,6 +24,7 @@ class viandasView{
     }
 
     function showViandaByCategoria ($categoria, $viandas) {
+        
         $this->smarty -> assign('titulo_tipo', $categoria);
         $this->smarty -> assign('viand', $viandas);
         $this->smarty->display('../templates/viandasByCategoria.tpl');
@@ -77,11 +78,21 @@ class viandasView{
         $this->smarty -> assign('allViandas', $viandas);
         $this->smarty->display('../templates/adminViandas.tpl');
     }
+
+//FALTA TERMINAR
+
+    function showFormularioEditar($vianda){
+        $this->smarty -> assign('vianda', $vianda);
+        $this->smarty->display('../templates/formEditar.tpl');
+    }
     
     function showHomeLocation(){
-        header("Location: ".BASE_URL."adminViandas");
+        header("Location: ".BASE_URL."Home");
     }
 
+    function showAdminLocation(){
+        header("Location: ".BASE_URL."adminViandas");
+    }
 }
 
 

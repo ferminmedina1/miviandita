@@ -15,6 +15,13 @@ class viandasModel{
         return $viandaDirigidas;
     }
 
+    function getViandaByID($id){
+        $query = $this->db->prepare('SELECT * FROM viandas INNER JOIN dirigido_table ON viandas.id_dirigidoA=dirigido_table.id_dirigidoA WHERE id_vianda = ?');
+        $query->execute([$id]);
+        $vianda = $query->fetchAll(PDO::FETCH_OBJ);
+        return $vianda;
+    }
+
     function getCategoria(){ 
         // DISTINCT no trae elementos repetidos. En este caso traera todos los generos existentes.
         $query = $this->db->prepare('SELECT * FROM dirigido_table');
@@ -25,7 +32,7 @@ class viandasModel{
 
 
     function getViandas() {
-        $query = $this->db->prepare('SELECT * FROM viandas');
+        $query = $this->db->prepare('SELECT * FROM viandas INNER JOIN dirigido_table ON viandas.id_dirigidoA=dirigido_table.id_dirigidoA');
         $query->execute();
         $viandas = $query->fetchAll(PDO::FETCH_OBJ);
         return $viandas;
@@ -37,13 +44,25 @@ class viandasModel{
     }
     
     function insertVianda($nombre,$descripcion,$precio,$dirigidoA){
+        
         $query = $this->db->prepare('INSERT INTO viandas(nombre,descripcion,precio,id_dirigidoA) VALUES (?,?,?,?)');
         $query->execute([$nombre,$descripcion,$precio,$dirigidoA]);
     }
 
     function deleteVianda($id){
-        $sentencia = $this->db->prepare("DELETE FROM viandas WHERE id=?");
+        $sentencia = $this->db->prepare("DELETE FROM viandas WHERE id_vianda=?");
         $sentencia->execute(array($id));
+    }
+
+    function deleteCategoria($id) {
+        $sentencia = $this->db->prepare("DELETE dirigido_table,viandas
+        FROM dirigido_table JOIN viandas ON dirigido_table.id_dirigidoA=viandas.id_dirigidoA WHERE viandas.id_dirigidoA= ?");
+        $sentencia->execute(array($id));
+    }
+
+    function updateVianda($nombre,$descripcion,$precio,$dirigidoA,$id_vianda){
+        $query = $this->db->prepare("UPDATE viandas SET nombre= $nombre, precio= $precio, id_dirigidoA= $dirigidoA, descripcion= $descripcion WHERE id_vianda= ?????");
+        $query->execute([$nombre,$precio,$dirigidoA,$descripcion]);
     }
 
     function marcarCeliaca($id){
