@@ -1,4 +1,27 @@
-<!DOCTYPE html>
+<?php
+/* Smarty version 3.1.34-dev-7, created on 2020-10-04 21:44:24
+  from 'D:\Program Files\XAMPP\htdocs\TPE-WEB-II\templates\register.tpl' */
+
+/* @var Smarty_Internal_Template $_smarty_tpl */
+if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
+  'version' => '3.1.34-dev-7',
+  'unifunc' => 'content_5f7a2618367071_08508509',
+  'has_nocache_code' => false,
+  'file_dependency' => 
+  array (
+    '4a3d2dc98a0440b4d83687c69460812d3728b1cb' => 
+    array (
+      0 => 'D:\\Program Files\\XAMPP\\htdocs\\TPE-WEB-II\\templates\\register.tpl',
+      1 => 1601840595,
+      2 => 'file',
+    ),
+  ),
+  'includes' => 
+  array (
+  ),
+),false)) {
+function content_5f7a2618367071_08508509 (Smarty_Internal_Template $_smarty_tpl) {
+?><!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -10,9 +33,14 @@
     <link rel="stylesheet" href="./css/responsive/responsive.css">
     <link rel="stylesheet" href="./css/responsive/responsive-consultas.css">
     <link rel="stylesheet" href="./css/log.css">
-    <script type="text/javascript" src="./js/nav.js"></script>
-    <script type="text/javascript" src="./js/captcha.js"></script>
-    <base href="{$base_url}">
+    <?php echo '<script'; ?>
+ type="text/javascript" src="./js/nav.js"><?php echo '</script'; ?>
+>
+    <?php echo '<script'; ?>
+ type="text/javascript" src="./js/captcha.js"><?php echo '</script'; ?>
+>
+    <base href="<?php echo $_smarty_tpl->tpl_vars['base_url']->value;?>
+">
 </head>
 
 <body>
@@ -68,7 +96,8 @@
                 <label class="itemformulario"> Contraseña: </label> <input type="password" id="contra" name="pass">
             <!--    <label class="itemformulario"> Repite la contraseña: </label> <input type="password" id="contra" name="email">-->
                 <a href="login" id="register">Ya tienes una cuenta? Logueate aca!</a>
-                <p id="avisoCaptcha" class="mensajeIncorrecto">{$mensaje}</p>
+                <p id="avisoCaptcha" class="mensajeIncorrecto"><?php echo $_smarty_tpl->tpl_vars['mensaje']->value;?>
+</p>
                 <button type="submit" id="botonEnviar" >Enviar!</button>
 
             </form>
@@ -86,4 +115,5 @@
     </footer>
 
 </body>
-</html>
+</html><?php }
+}

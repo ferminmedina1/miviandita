@@ -1,4 +1,27 @@
-<!DOCTYPE html>
+<?php
+/* Smarty version 3.1.34-dev-7, created on 2020-10-05 00:27:34
+  from 'D:\Program Files\XAMPP\htdocs\TPE-WEB-II\templates\sobre.tpl' */
+
+/* @var Smarty_Internal_Template $_smarty_tpl */
+if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
+  'version' => '3.1.34-dev-7',
+  'unifunc' => 'content_5f7a4c56d7b999_21042977',
+  'has_nocache_code' => false,
+  'file_dependency' => 
+  array (
+    '49c9accba4714a870af6c0404145311b1ef58298' => 
+    array (
+      0 => 'D:\\Program Files\\XAMPP\\htdocs\\TPE-WEB-II\\templates\\sobre.tpl',
+      1 => 1601850090,
+      2 => 'file',
+    ),
+  ),
+  'includes' => 
+  array (
+  ),
+),false)) {
+function content_5f7a4c56d7b999_21042977 (Smarty_Internal_Template $_smarty_tpl) {
+?><!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -9,8 +32,11 @@
     <link rel="stylesheet" href="./css/sobre.css">
     <link rel="stylesheet" href="./css/responsive/responsive.css">
     <link rel="stylesheet" href="./css/responsive/responsive-sobre.css">
-    <script type="text/javascript" src="./js/nav.js"></script>
-    <base href="{$base_url}">
+    <?php echo '<script'; ?>
+ type="text/javascript" src="./js/nav.js"><?php echo '</script'; ?>
+>
+    <base href="<?php echo $_smarty_tpl->tpl_vars['base_url']->value;?>
+">
 </head>
 
 <body class="contacto">
@@ -88,4 +114,5 @@
     </footer>
     
 </body>
-</html>
+</html><?php }
+}

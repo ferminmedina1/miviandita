@@ -1,4 +1,27 @@
-<!DOCTYPE html>
+<?php
+/* Smarty version 3.1.34-dev-7, created on 2020-10-04 02:12:28
+  from 'D:\Program Files\XAMPP\htdocs\TPE-WEB-II\templates\adminViandas.tpl' */
+
+/* @var Smarty_Internal_Template $_smarty_tpl */
+if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
+  'version' => '3.1.34-dev-7',
+  'unifunc' => 'content_5f79136c250f50_26970117',
+  'has_nocache_code' => false,
+  'file_dependency' => 
+  array (
+    '5667990438ab273204694a9844c299e6d3009bec' => 
+    array (
+      0 => 'D:\\Program Files\\XAMPP\\htdocs\\TPE-WEB-II\\templates\\adminViandas.tpl',
+      1 => 1601770346,
+      2 => 'file',
+    ),
+  ),
+  'includes' => 
+  array (
+  ),
+),false)) {
+function content_5f79136c250f50_26970117 (Smarty_Internal_Template $_smarty_tpl) {
+?><!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -10,9 +33,12 @@
     <link rel="stylesheet" href="./css/adminViandas.css">
     <link rel="stylesheet" href="./css/responsive/responsive.css">
     <link rel="stylesheet" href="./css/responsive/responsive-viandas.css">
-    <script type="text/javascript" src="./js/nav.js"></script>
+    <?php echo '<script'; ?>
+ type="text/javascript" src="./js/nav.js"><?php echo '</script'; ?>
+>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <base href="{$base_url}">
+    <base href="<?php echo $_smarty_tpl->tpl_vars['base_url']->value;?>
+">
 </head>
 
 <body>
@@ -68,9 +94,18 @@
                 <div class="tipoDeCategoria">
 
                     <select name="dirigidoA" id="select">
-                        {foreach from=$tipo item=categoria}
-                            <option value="{$categoria->id_dirigidoA}">{$categoria->tipo_vianda}</option>
-                        {/foreach}
+                        <?php
+$_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['tipo']->value, 'categoria');
+$_smarty_tpl->tpl_vars['categoria']->do_else = true;
+if ($_from !== null) foreach ($_from as $_smarty_tpl->tpl_vars['categoria']->value) {
+$_smarty_tpl->tpl_vars['categoria']->do_else = false;
+?>
+                            <option value="<?php echo $_smarty_tpl->tpl_vars['categoria']->value->id_dirigidoA;?>
+"><?php echo $_smarty_tpl->tpl_vars['categoria']->value->tipo_vianda;?>
+</option>
+                        <?php
+}
+$_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
                     </select>
                     <button id="agregar_db" type="submit">Agregar Vianda</button>
                 </div>
@@ -88,11 +123,26 @@
                 </tr>
             </thead>
             <tbody id="viandasTable">
-                {foreach from=$allViandas item=vianda}
-                    <tr><td>{$vianda->nombre}</td><td>{$vianda->descripcion}</td><td>{$vianda->precio}</td><td>{$vianda->tipo_vianda}</td>
-                    <td class="botonBorrar"> <a href='elimiarVianda/{$vianda->id_vianda}'><button class="botonBorrarTD" id="{$vianda->id_vianda}"><i class="fa fa-trash-o"></i></button></a>
-                    <a href='editarVianda/{$vianda->id_vianda}' ><button class="botonEditarTD" id="{$vianda->id_vianda}"><i class="fa fa-edit"></i></button></a></td></tr>
-                {/foreach}
+                <?php
+$_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['allViandas']->value, 'vianda');
+$_smarty_tpl->tpl_vars['vianda']->do_else = true;
+if ($_from !== null) foreach ($_from as $_smarty_tpl->tpl_vars['vianda']->value) {
+$_smarty_tpl->tpl_vars['vianda']->do_else = false;
+?>
+                    <tr><td><?php echo $_smarty_tpl->tpl_vars['vianda']->value->nombre;?>
+</td><td><?php echo $_smarty_tpl->tpl_vars['vianda']->value->descripcion;?>
+</td><td><?php echo $_smarty_tpl->tpl_vars['vianda']->value->precio;?>
+</td><td><?php echo $_smarty_tpl->tpl_vars['vianda']->value->tipo_vianda;?>
+</td>
+                    <td class="botonBorrar"> <a href='elimiarVianda/<?php echo $_smarty_tpl->tpl_vars['vianda']->value->id_vianda;?>
+'><button class="botonBorrarTD" id="<?php echo $_smarty_tpl->tpl_vars['vianda']->value->id_vianda;?>
+"><i class="fa fa-trash-o"></i></button></a>
+                    <a href='editarVianda/<?php echo $_smarty_tpl->tpl_vars['vianda']->value->id_vianda;?>
+' ><button class="botonEditarTD" id="<?php echo $_smarty_tpl->tpl_vars['vianda']->value->id_vianda;?>
+"><i class="fa fa-edit"></i></button></a></td></tr>
+                <?php
+}
+$_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
             </tbody>
         </table>
 
@@ -120,11 +170,23 @@
                 </tr>
             </thead>
             <tbody>
-                {foreach from=$tipo item=categoria}
-                    <tr><td>{$categoria->tipo_vianda}</td>
-                    <td class="botonBorrar"> <a href='elimiarCategoria/{$categoria->id_dirigidoA}'><button class="botonBorrarTD" id="{$categoria->id_dirigidoA}"><i class="fa fa-trash-o"></i></button></a>
-                    <a href='editarCategoria/{$categoria->id_dirigidoA}'><button class="botonEditarTD" id="{$categoria->id_dirigidoA}"><i class="fa fa-edit"></i></button></a></td></tr>
-                {/foreach}
+                <?php
+$_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['tipo']->value, 'categoria');
+$_smarty_tpl->tpl_vars['categoria']->do_else = true;
+if ($_from !== null) foreach ($_from as $_smarty_tpl->tpl_vars['categoria']->value) {
+$_smarty_tpl->tpl_vars['categoria']->do_else = false;
+?>
+                    <tr><td><?php echo $_smarty_tpl->tpl_vars['categoria']->value->tipo_vianda;?>
+</td>
+                    <td class="botonBorrar"> <a href='elimiarCategoria/<?php echo $_smarty_tpl->tpl_vars['categoria']->value->id_dirigidoA;?>
+'><button class="botonBorrarTD" id="<?php echo $_smarty_tpl->tpl_vars['categoria']->value->id_dirigidoA;?>
+"><i class="fa fa-trash-o"></i></button></a>
+                    <a href='editarCategoria/<?php echo $_smarty_tpl->tpl_vars['categoria']->value->id_dirigidoA;?>
+'><button class="botonEditarTD" id="<?php echo $_smarty_tpl->tpl_vars['categoria']->value->id_dirigidoA;?>
+"><i class="fa fa-edit"></i></button></a></td></tr>
+                <?php
+}
+$_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
             </tbody>
         </table>
 
@@ -144,4 +206,5 @@
         <a href="ilvero" class="ilvero"> Il Vero</a>
     </footer>
 </body>
-</html>
+</html><?php }
+}

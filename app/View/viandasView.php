@@ -62,16 +62,6 @@ class viandasView{
         $this->smarty->display('../templates/consultas.tpl');
     }
 
-    function ShowLog(){
-        
-        $this->smarty->display('../templates/log.tpl');
-    }
-
-    function ShowRegister(){
-        
-        $this->smarty->display('../templates/register.tpl');
-    }
-
     function ShowAdminViandas($categorias,$viandas){
         
         $this->smarty -> assign('tipo', $categorias);
@@ -81,9 +71,15 @@ class viandasView{
 
 //FALTA TERMINAR
 
-    function showFormularioEditar($vianda){
+    function showFormularioEditar($vianda,$categorias){
+        $this->smarty -> assign('tipo', $categorias);
         $this->smarty -> assign('vianda', $vianda);
         $this->smarty->display('../templates/formEditar.tpl');
+    }
+
+    function showFormularioEditarCategoria($categoria){
+        $this->smarty -> assign('tipo', $categoria);
+        $this->smarty->display('../templates/formEditarCategoria.tpl');
     }
     
     function showHomeLocation(){

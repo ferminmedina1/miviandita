@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="./css/log.css">
     <script type="text/javascript" src="./js/nav.js"></script>
     <script type="text/javascript" src="./js/captcha.js"></script>
+    <base href="{$base_url}">
 </head>
 
 <body>
@@ -59,20 +60,15 @@
 
         <section class="contenedorform">
 
-            <form class="formulario">
+            <form class="formulario" action="verifyUser" method="post">
 
                 <h1 class="subtitulo"> Logueate! <img src="./images/user.png" alt="user" id="userFormulario"></h1>
                 
-                <label class="itemformulario"> Correo: </label> <input type="email" id="correo">
-                <label class="itemformulario"> Contraseña: </label> <input type="password" id="contra">
+                <label class="itemformulario"> Email: </label> <input type="text" name="input_user">
+                <label class="itemformulario"> Contraseña: </label> <input type="password" id="contra" name="input_pass">
                 <a href="register" id="register">No tienes una cuenta? Crea una haciendo click aca!</a>
-                <div class="contenedorCaptcha">
-                    <label id="textocaptcha"></label> <input id="respuestaCaptcha" type="text" name="captcha" value="">
-                </div>
-
-                <p id="avisoCaptcha"></p>
-
-                <button type="button" id="botonEnviar" >Enviar!</button>
+                <p id="avisoCaptcha">{$mensaje}</p>
+                <button type="submit" id="botonEnviar" >Enviar!</button>
 
             </form>
 

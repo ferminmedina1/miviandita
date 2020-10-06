@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="./css/responsive/responsive-consultas.css">
     <script type="text/javascript" src="./js/nav.js"></script>
     <script type="text/javascript" src="./js/captcha.js"></script>
+    <base href="{$base_url}">
 </head>
 
 <body>

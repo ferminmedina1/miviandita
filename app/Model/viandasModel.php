@@ -30,6 +30,12 @@ class viandasModel{
         return $dirigidoA;
     }
 
+    function getCategoriaByID($id){
+        $query = $this->db->prepare('SELECT * FROM dirigido_table WHERE id_dirigidoA = ?');
+        $query->execute([$id]);
+        $categoria = $query->fetchAll(PDO::FETCH_OBJ);
+        return $categoria;
+    }
 
     function getViandas() {
         $query = $this->db->prepare('SELECT * FROM viandas INNER JOIN dirigido_table ON viandas.id_dirigidoA=dirigido_table.id_dirigidoA');
@@ -60,14 +66,14 @@ class viandasModel{
         $sentencia->execute(array($id));
     }
 
-    function updateVianda($nombre,$descripcion,$precio,$dirigidoA,$id_vianda){
-        $query = $this->db->prepare("UPDATE viandas SET nombre= $nombre, precio= $precio, id_dirigidoA= $dirigidoA, descripcion= $descripcion WHERE id_vianda= ?????");
-        $query->execute([$nombre,$precio,$dirigidoA,$descripcion]);
+    function updateVianda($nombre,$descripcion,$precio,$dirigidoA,$id){
+        $query = $this->db->prepare("UPDATE viandas SET nombre='$nombre', precio='$precio', id_dirigidoA='$dirigidoA', descripcion='$descripcion' WHERE id_vianda = ?");
+        $query->execute(array($id));
     }
 
-    function marcarCeliaca($id){
-        $sentencia = $this->db->prepare("UPDATE viandas SET celiacos=1 WHERE id=?");
-        $sentencia->execute(array($id));
+    function updateCategoria($nombre,$id){
+        $query = $this->db->prepare("UPDATE dirigido_table SET tipo_vianda='$nombre' WHERE id_dirigidoA = ?");
+        $query->execute(array($id));
     }
 }
 

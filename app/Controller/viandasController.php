@@ -1,8 +1,7 @@
 <?php 
 
-require_once "viandasView.php";
-require_once "viandasModel.php";
-
+require_once "./app/View/viandasView.php";
+require_once "./app/Model/viandasModel.php";
     class viandasController{
         private $view;
         private $model;
@@ -14,6 +13,7 @@ require_once "viandasModel.php";
         
         function Home(){//////////////MEJORAR PARA VIANDAS
             $this->view->ShowHome();
+            $this->checkLoggedIn();
         }
 
         function Viandas(){//////////////MEJORAR PARA VIANDAS
@@ -76,14 +76,6 @@ require_once "viandasModel.php";
             $this->view->ShowConsultas();
         }
 
-        function Log(){//////////////MEJORAR PARA VIANDAS
-            $this->view->ShowLog();
-        }
-
-        function Register(){//////////////MEJORAR PARA VIANDAS
-            $this->view->ShowRegister();
-        }
-
         function AdminViandas(){//////////////MEJORAR PARA VIANDAS
             $categorias = $this->model->getCategoria();
             $viandas = $this->model->getViandas();
@@ -102,27 +94,47 @@ require_once "viandasModel.php";
             $this->model->deleteCategoria($categoria_ID);
             $this->view->showAdminLocation();
         }
-//FALTA TERMINAR
+
         function showFormEditar($params = null){
             $idVianda = $params[":ID"];
             $vianda = $this->model->getViandaByID($idVianda);
-            print_r($vianda);
-            $this->view->showFormularioEditar($vianda);
+            $categorias = $this->model->getCategoria();
+            $this->view->showFormularioEditar($vianda,$categorias);
         }
         
-        function editarVianda($params = null){
+        function showFormEditarCategoria($params = null){
+            $idCategoria = $params[":ID"];
+            $categoria = $this->model->getCategoriaByID($idCategoria);
+            $this->view->showFormularioEditarCategoria($categoria);
+        }
 
+        function editarVianda($params = null){
             $vianda_ID = $params[':ID'];
+            
             if((!empty($_POST['nombre'])) && (!empty($_POST['descripcion'])) && (!empty($_POST['precio'])) && (!empty($_POST['dirigidoA']))) {
-                $this->model->updateVianda($_POST['nombre'], $_POST['descripcion'], $_POST['precio'], $_POST['dirigidoA'], $vianda_ID);
+                    $this->model->updateVianda($_POST['nombre'], $_POST['descripcion'], $_POST['precio'], $_POST['dirigidoA'], $vianda_ID);
             }
             $this->view->showAdminLocation();        
         }
 
         function editarCategoria($params = null){
-
+            $categoria_ID = $params[':ID'];
+            
+            if((!empty($_POST['nombre']))) {
+                    $this->model->updateCategoria($_POST['nombre'], $categoria_ID);
+            }
+            $this->view->showAdminLocation();   
         }
 
+        private function checkLoggedIn(){
+            session_start();
+            if(!isset($_SESSION["EMAIL"])){
+                header("Location:". LOGIN);
+                die();
+            }
+        }
+
+        
     }
 
 ?>
