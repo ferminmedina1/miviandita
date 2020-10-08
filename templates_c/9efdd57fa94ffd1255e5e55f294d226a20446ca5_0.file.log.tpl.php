@@ -1,26 +1,29 @@
 <?php
-/* Smarty version 3.1.34-dev-7, created on 2020-10-05 00:20:29
-  from 'D:\Program Files\XAMPP\htdocs\TPE-WEB-II\templates\log.tpl' */
+/* Smarty version 3.1.34-dev-7, created on 2020-10-08 03:16:29
+  from 'C:\xampp\htdocs\TPE-WEB-II\templates\log.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.34-dev-7',
-  'unifunc' => 'content_5f7a4aad5a16f2_44623901',
+  'unifunc' => 'content_5f7e686d97bfa5_49873358',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
-    '1c72604a29f92d4bbf09de30d06fb373d7daa865' => 
+    '9efdd57fa94ffd1255e5e55f294d226a20446ca5' => 
     array (
-      0 => 'D:\\Program Files\\XAMPP\\htdocs\\TPE-WEB-II\\templates\\log.tpl',
-      1 => 1601850022,
+      0 => 'C:\\xampp\\htdocs\\TPE-WEB-II\\templates\\log.tpl',
+      1 => 1602119788,
       2 => 'file',
     ),
   ),
   'includes' => 
   array (
+    'file:encabezado.tpl' => 1,
+    'file:nav.tpl' => 1,
+    'file:footer.tpl' => 1,
   ),
 ),false)) {
-function content_5f7a4aad5a16f2_44623901 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5f7e686d97bfa5_49873358 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html lang="en">
 
@@ -47,40 +50,13 @@ function content_5f7a4aad5a16f2_44623901 (Smarty_Internal_Template $_smarty_tpl)
 
  <!-- ENCABEZADO -->
     
-    <header>
-
-        <div class="encabezado">
-
-            <div class="tituloYlogo">
-                
-                <a href="home"><img src="./images/LOGO2.png" alt="MiViandita!" class="logoEncabezado"></a>
-            
-                <h1 class="titulo"> Mi Viandita!</h1>
-
-            </div>
-
-            <input type="checkbox" id="btn-menu">
-            <label for="btn-menu" class="icon-menu"><img src="./images/menu.png" class="imagenMenu"></label>
-        
-        </div>
-
-    </header>
+    <?php $_smarty_tpl->_subTemplateRender("file:encabezado.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
+?>
 
  <!-- MENU DE NAVEGACION -->
 
-    <nav>
-
-        <div class="menu">
-
-            <a href="home" class="item">Home</a>
-            <a href="viandas" class="item">Viandas</a>
-            <a href="promociones" class="item">Promociones </a>
-            <a href="contacto" class="item">Contacto</a>
-            <a href="sobremiviandita" class="item">Sobre Mi Viandita</a>
-
-        </div>
-
-    </nav>
+    <?php $_smarty_tpl->_subTemplateRender("file:nav.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
+?>
     
  <!-- FORMULARIO -->
 
@@ -97,7 +73,7 @@ function content_5f7a4aad5a16f2_44623901 (Smarty_Internal_Template $_smarty_tpl)
                 <a href="register" id="register">No tienes una cuenta? Crea una haciendo click aca!</a>
                 <p id="avisoCaptcha"><?php echo $_smarty_tpl->tpl_vars['mensaje']->value;?>
 </p>
-                <button type="submit" id="botonEnviar" >Enviar!</button>
+                <button type="submit" id="botonEnviar" >ENTRAR</button>
 
             </form>
 
@@ -105,13 +81,10 @@ function content_5f7a4aad5a16f2_44623901 (Smarty_Internal_Template $_smarty_tpl)
 
     </article>
 
- <!-- PIE DE PAGINA -->
+ <!-- FOOTER -->
 
-    <footer>
-        <a> Diseño Web || Fermín Medina || Agustín Arleo </a>
-        <a> © Mi Viandita 2020. Todos los derechos reservados.</a>
-        <a href="ilvero" class="ilvero"> Il Vero</a>
-    </footer>
+    <?php $_smarty_tpl->_subTemplateRender("file:footer.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
+?>
 
 </body>
 </html><?php }

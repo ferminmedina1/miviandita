@@ -17,38 +17,11 @@
 
  <!-- ENCABEZADO -->
     
-    <header>
-
-        <div class="encabezado">
-
-            <div class="tituloYlogo">
-                
-                <a href="home"><img src="../Images/LOGO2.png" alt="MiViandita!" class="logoEncabezado"></a>
-            
-                <h1 class="titulo"> Mi Viandita!</h1>
-
-            </div>
-
-            <input type="checkbox" id="btn-menu">
-            <label for="btn-menu" class="icon-menu"><img src="../Images/menu.png" class="imagenMenu"></label>
-       
-        </div>
-        
-    </header>
+    {include file="encabezado.tpl"}
 
  <!-- MENU DE NAVEGACION -->
 
-    <nav>
-
-        <div class="menu">
-            <a href="home" class="item">Home</a>
-            <a href="viandas" class="itemPrincipal">Viandas</a>
-            <a href="promociones" class="item">Promociones </a>
-            <a href="contacto" class="item">Contacto</a>
-            <a href="sobremiviandita" class="item">Sobre Mi Viandita</a>
-        </div>
-
-    </nav>
+    {include file="nav.tpl"}
 
 
  <!-- FORMULARIO -->
@@ -72,13 +45,9 @@
     </article>
 
 
- <!-- PIE DE PAGINA -->
+ <!-- FOOTER -->
 
-    <footer>
-        <a> Diseño Web || Fermín Medina || Agustín Arleo </a>
-        <a> © Mi Viandita 2020. Todos los derechos reservados.</a>
-        <a href="ilvero" class="ilvero"> Il Vero</a>
-    </footer>
+    {include file="footer.tpl"}
 
 </body>
 </html>

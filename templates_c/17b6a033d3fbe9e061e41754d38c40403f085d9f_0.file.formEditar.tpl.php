@@ -1,26 +1,29 @@
 <?php
-/* Smarty version 3.1.34-dev-7, created on 2020-10-04 21:12:38
-  from 'D:\Program Files\XAMPP\htdocs\TPE-WEB-II\templates\formEditar.tpl' */
+/* Smarty version 3.1.34-dev-7, created on 2020-10-08 03:26:55
+  from 'C:\xampp\htdocs\TPE-WEB-II\templates\formEditar.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.34-dev-7',
-  'unifunc' => 'content_5f7a1ea6b27883_25534780',
+  'unifunc' => 'content_5f7e6adfc54bd4_66682739',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
-    'd5c0b491632ed85ac1a319885c08dfffc9725766' => 
+    '17b6a033d3fbe9e061e41754d38c40403f085d9f' => 
     array (
-      0 => 'D:\\Program Files\\XAMPP\\htdocs\\TPE-WEB-II\\templates\\formEditar.tpl',
-      1 => 1601774559,
+      0 => 'C:\\xampp\\htdocs\\TPE-WEB-II\\templates\\formEditar.tpl',
+      1 => 1602120413,
       2 => 'file',
     ),
   ),
   'includes' => 
   array (
+    'file:encabezado.tpl' => 1,
+    'file:nav.tpl' => 1,
+    'file:footer.tpl' => 1,
   ),
 ),false)) {
-function content_5f7a1ea6b27883_25534780 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5f7e6adfc54bd4_66682739 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html lang="en">
 
@@ -43,38 +46,13 @@ function content_5f7a1ea6b27883_25534780 (Smarty_Internal_Template $_smarty_tpl)
 
  <!-- ENCABEZADO -->
     
-    <header>
-
-        <div class="encabezado">
-
-            <div class="tituloYlogo">
-                
-                <a href="home"><img src="../Images/LOGO2.png" alt="MiViandita!" class="logoEncabezado"></a>
-            
-                <h1 class="titulo"> Mi Viandita!</h1>
-
-            </div>
-
-            <input type="checkbox" id="btn-menu">
-            <label for="btn-menu" class="icon-menu"><img src="../Images/menu.png" class="imagenMenu"></label>
-       
-        </div>
-        
-    </header>
+    <?php $_smarty_tpl->_subTemplateRender("file:encabezado.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
+?>
 
  <!-- MENU DE NAVEGACION -->
 
-    <nav>
-
-        <div class="menu">
-            <a href="home" class="item">Home</a>
-            <a href="viandas" class="itemPrincipal">Viandas</a>
-            <a href="promociones" class="item">Promociones </a>
-            <a href="contacto" class="item">Contacto</a>
-            <a href="sobremiviandita" class="item">Sobre Mi Viandita</a>
-        </div>
-
-    </nav>
+    <?php $_smarty_tpl->_subTemplateRender("file:nav.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
+?>
 
 
  <!-- FORMULARIO -->
@@ -113,8 +91,7 @@ $_smarty_tpl->tpl_vars['categoria']->do_else = false;
 }
 $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
                     </select>
-                <label class="itemformulario"> Nueva descripcion: </label> <textarea type="text" name="descripcion" placeholder="Anteriormente era: <?php echo $_smarty_tpl->tpl_vars['viandaAnterior']->value->descripcion;?>
-"></textarea>
+                <label class="itemformulario"> Nueva descripcion: </label> <textarea type="text" name="descripcion" ></textarea>
                 <?php
 }
 $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
@@ -128,13 +105,10 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
     </article>
 
 
- <!-- PIE DE PAGINA -->
+ <!-- FOOTER -->
 
-    <footer>
-        <a> Diseño Web || Fermín Medina || Agustín Arleo </a>
-        <a> © Mi Viandita 2020. Todos los derechos reservados.</a>
-        <a href="ilvero" class="ilvero"> Il Vero</a>
-    </footer>
+    <?php $_smarty_tpl->_subTemplateRender("file:footer.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
+?>
 
 </body>
 </html><?php }

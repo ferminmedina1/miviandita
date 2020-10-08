@@ -2,6 +2,7 @@
 
 require_once "./app/View/viandasView.php";
 require_once "./app/Model/viandasModel.php";
+
     class viandasController{
         private $view;
         private $model;
@@ -9,20 +10,23 @@ require_once "./app/Model/viandasModel.php";
         function __construct(){
             $this->view = new viandasView();
             $this->model = new viandasModel();
+            $this->checkLoggedIn();     //SE INICIA EN EL CONSTRUCTOR PARA QUE EN TODAS LAS PAGINAS HAYA UNA SESION
         }
         
-        function Home(){//////////////MEJORAR PARA VIANDAS
+        function Home(){
             $this->view->ShowHome();
-            $this->checkLoggedIn();
         }
 
-        function Viandas(){//////////////MEJORAR PARA VIANDAS
+        function Viandas(){
+            
+            
             $categorias = $this->model->getCategoria();
             $this->view->ShowViandas($categorias);
         }
 
         function mostrarPorCategoria($params = null) {
             //$dirigidoA = $_GET['action'];
+            
             $categoria = $params[":TIPO_VIANDA"];
 
             $viandas = $this->model->getViandasByDirigidoA($categoria);
@@ -30,7 +34,7 @@ require_once "./app/Model/viandasModel.php";
         }
 
         function mostrarTodas() {
-
+            
             $viandas = $this->model->getViandas();
             $this->view->showAllViandas($viandas);
 
@@ -56,27 +60,29 @@ require_once "./app/Model/viandasModel.php";
             //falta hacer un else que muestre q falto ingrear un dato
         }
 
-        function Promo(){//////////////MEJORAR PARA VIANDAS
+        function Promo(){
+           
             $this->view->ShowPromo();
         }
 
-        function Contacto(){//////////////MEJORAR PARA VIANDAS
+        function Contacto(){
             $this->view->ShowContacto();
         }
 
-        function Sobre(){//////////////MEJORAR PARA VIANDAS
+        function Sobre(){
+
             $this->view->ShowSobre();
         }
 
-        function Ilvero(){//////////////MEJORAR PARA VIANDAS
+        function Ilvero(){
             $this->view->ShowIlvero();
         }
 
-        function Consultas(){//////////////MEJORAR PARA VIANDAS
+        function Consultas(){
             $this->view->ShowConsultas();
         }
 
-        function AdminViandas(){//////////////MEJORAR PARA VIANDAS
+        function AdminViandas(){
             $categorias = $this->model->getCategoria();
             $viandas = $this->model->getViandas();
             $this->view->ShowAdminViandas($categorias,$viandas);
@@ -127,14 +133,19 @@ require_once "./app/Model/viandasModel.php";
         }
 
         private function checkLoggedIn(){
-            session_start();
-            if(!isset($_SESSION["EMAIL"])){
-                header("Location:". LOGIN);
-                die();
+            session_start();                    //SE INICIA UNA SESION
+            if(!isset($_SESSION["EMAIL"])){     //SI NO ESTA SETEADO EL EMAIL (NO HAY USUARIO LOGUEADO)
+                $_SESSION["ROL"] = "visitante"; //SE LE ASIGNA UN ROL A CUALQUIERA QUE ACCEDA A LA PAGINA
             }
+            else{
+                if (isset($_SESSION['LAST_ACTIVITY']) && (time() - $_SESSION['LAST_ACTIVITY'] > 1800)) {    //SE VERIFICA LA ULTIMA ACCION EN LA PAGINA, SI ES MAYOR A 30m SE CIERRA LA SESION
+                    header("Location: ".LOGOUT);    //CIERRA LA SESION
+                    die();
+                } 
+                $_SESSION['LAST_ACTIVITY'] = time();    //SE ACTUALIZA EL TIEMPO
+            }  
         }
-
-        
+ 
     }
 
 ?>

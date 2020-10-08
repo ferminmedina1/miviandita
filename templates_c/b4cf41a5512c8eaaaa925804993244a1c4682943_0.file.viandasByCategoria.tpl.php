@@ -1,26 +1,30 @@
 <?php
-/* Smarty version 3.1.34-dev-7, created on 2020-10-04 03:15:32
-  from 'D:\Program Files\XAMPP\htdocs\TPE-WEB-II\templates\viandasByCategoria.tpl' */
+/* Smarty version 3.1.34-dev-7, created on 2020-10-08 02:23:15
+  from 'C:\xampp\htdocs\TPE-WEB-II\templates\viandasByCategoria.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.34-dev-7',
-  'unifunc' => 'content_5f79223473ec27_95960025',
+  'unifunc' => 'content_5f7e5bf3456a96_41286307',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
-    '45624e01260ec43927010b0c6b48fe82623eda6d' => 
+    'b4cf41a5512c8eaaaa925804993244a1c4682943' => 
     array (
-      0 => 'D:\\Program Files\\XAMPP\\htdocs\\TPE-WEB-II\\templates\\viandasByCategoria.tpl',
-      1 => 1601661431,
+      0 => 'C:\\xampp\\htdocs\\TPE-WEB-II\\templates\\viandasByCategoria.tpl',
+      1 => 1602112188,
       2 => 'file',
     ),
   ),
   'includes' => 
   array (
+    'file:encabezado.tpl' => 1,
+    'file:nav.tpl' => 1,
+    'file:botonLogin.tpl' => 1,
+    'file:footer.tpl' => 1,
   ),
 ),false)) {
-function content_5f79223473ec27_95960025 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5f7e5bf3456a96_41286307 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html lang="en">
 <head>
@@ -43,40 +47,15 @@ function content_5f79223473ec27_95960025 (Smarty_Internal_Template $_smarty_tpl)
 </head>
 
 <body>
-     <!-- ENCABEZADO -->
+    <!-- ENCABEZADO -->
     
-    <header>
-
-        <div class="encabezado">
-
-            <div class="tituloYlogo">
-                
-                <a href="home"><img src="./images/LOGO2.png" alt="MiViandita!" class="logoEncabezado"></a>
-            
-                <h1 class="titulo"> Mi Viandita!</h1>
-
-            </div>
-
-            <input type="checkbox" id="btn-menu">
-            <label for="btn-menu" class="icon-menu"><img src="./images/menu.png" class="imagenMenu"></label>
-       
-        </div>
-        
-    </header>
+    <?php $_smarty_tpl->_subTemplateRender("file:encabezado.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
+?>
 
  <!-- MENU DE NAVEGACION -->
 
-    <nav>
-
-        <div class="menu">
-            <a href="home" class="item">Home</a>
-            <a href="viandas" class="itemPrincipal">Viandas</a>
-            <a href="promociones" class="item">Promociones </a>
-            <a href="contacto" class="item">Contacto</a>
-            <a href="sobremiviandita" class="item">Sobre Mi Viandita</a>
-        </div>
-
-    </nav>
+    <?php $_smarty_tpl->_subTemplateRender("file:nav.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
+?>
 
         <h2 class="tituloAllViandas">TIPO DE VIANDA: <?php echo mb_strtoupper($_smarty_tpl->tpl_vars['titulo_tipo']->value, 'UTF-8');?>
 </h2>
@@ -112,12 +91,16 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
     <div class="contenedorVolver">
             <a href="viandas" class="volver" hr>Volver</a>
     </div>
+   
+<!--BOTON LOGIN Y CONSULTAS-->
 
-<footer>
-        <a> Diseño Web || Fermín Medina || Agustín Arleo </a>
-        <a> © Mi Viandita 2020. Todos los derechos reservados.</a>
-        <a href="./Ilvero/Ilvero" class="ilvero"> Il Vero</a>
-    </footer>
+    <?php $_smarty_tpl->_subTemplateRender("file:botonLogin.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
+?>
+
+<!--FOOTER-->
+
+    <?php $_smarty_tpl->_subTemplateRender("file:footer.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
+?>
 
 </body>
 </html><?php }

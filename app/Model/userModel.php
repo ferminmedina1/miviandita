@@ -14,10 +14,10 @@ class userModel{
         return $sentencia->fetch(PDO::FETCH_OBJ);
     }
     
-    function addUserDB($email,$hash){
+    function addUserDB($email,$hash,$rol){
         
-        $query = $this->db->prepare('INSERT INTO users(email,password) VALUES (?,?)');
-        $query->execute([$email,$hash]);
+        $query = $this->db->prepare('INSERT INTO users(email,password,rol) VALUES (?,?,?)');
+        $query->execute([$email,$hash,$rol]);
     }
 }
 ?>

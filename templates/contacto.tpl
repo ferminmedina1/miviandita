@@ -17,38 +17,11 @@
 
  <!-- ENCABEZADO -->
  
-    <header>
-
-        <div class="encabezado">
-
-            <div class="tituloYlogo">
-                
-                <a href="home"><img src="./images/LOGO2.png" alt="MiViandita!" class="logoEncabezado"></a>
-            
-                <h1 class="titulo"> Mi Viandita!</h1>
-
-            </div>
-
-            <input type="checkbox" id="btn-menu">
-            <label for="btn-menu" class="icon-menu"><img src="./images/menu.png" class="imagenMenu"></label>
-        
-        </div>
-
-    </header>
+    {include file="encabezado.tpl"}
 
  <!-- MENU DE NAVEGACION -->
 
-    <nav>
-
-        <div class="menu">
-            <a href="home" class="item">Home</a>
-            <a href="viandas" class="item">Viandas</a>
-            <a href="promociones" class="item">Promociones</a>
-            <a href="contacto" class="itemPrincipal">Contacto</a>
-            <a href="sobremiviandita" class="item">Sobre Mi Viandita</a>
-        </div>
-
-    </nav>
+    {include file="nav.tpl"}
 
  <!-- CUERPO DE LA PAGINA -->
 
@@ -69,18 +42,11 @@
 
  <!-- BOTON CONSULTAS & BOTON LOGIN-->
 
-    <section class="section-consultas">
-        <a class="botonLogueo" href="login"> Logueate <img src="./images/user.png" alt="user.img" class="imagenConsultas"></a>
-        <a class="botonConsultas" href="consultas"> Consultas</a>
-    </section>  
+    {include file="botonLogin.tpl"}
 
- <!-- PIE DE PAGINA -->
+ <!-- FOOTER -->
 
-    <footer>
-        <a> Diseño Web || Fermín Medina || Agustín Arleo </a>
-        <a> © Mi Viandita 2020. Todos los derechos reservados.</a>
-        <a href="ilvero" class="ilvero"> Il Vero</a>
-    </footer>
+    {include file="footer.tpl"}
     
 </body>
 </html>

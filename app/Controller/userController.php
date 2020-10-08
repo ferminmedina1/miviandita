@@ -10,11 +10,11 @@ require_once "./app/Model/userModel.php";
                 $this->view = new userView();
                 $this->model = new userModel();
             }
-            function Log(){//////////////MEJORAR PARA VIANDAS
+            function Log(){
                 $this->view->ShowLog();
             }
 
-            function Register(){//////////////MEJORAR PARA VIANDAS
+            function Register(){
                 $this->view->ShowRegister();
             }
 
@@ -25,34 +25,44 @@ require_once "./app/Model/userModel.php";
                 if(isset($user)){
                     $userFromDB = $this->model->GetUser($user);
                     if(isset($userFromDB) && $userFromDB){ //PREGUNTAR SOBRE ESTE &&
-                        if (password_verify($pass, $userFromDB->password)){
+
+                        if (password_verify($pass, $userFromDB->password)){ 
         
-                            session_start();
-                            $_SESSION["EMAIL"] = $userFromDB->email;
-                            $_SESSION['LAST_ACTIVITY'] = time();
+                            session_start();    //SE INICIA UNA SESION
+                            $_SESSION["EMAIL"] = $userFromDB->email;    //SE TRAE EL EMAIL DEL USUARIO DESDE LA DB
+                            $_SESSION["ROL"] = $userFromDB->rol;    //SE TRAE EL ROL DEL USUARIO DESDE LA DB
+                            $_SESSION['LAST_ACTIVITY'] = time();    //ULTIMA ACTIVIDAD DURANTE LA SESION
         
                             header("Location: ".BASE_URL."home");
-                        }else{
+                        }
+                        else{  //SI LA CONTRASEÑA ES INCORRECTA
                             $this->view->ShowLog("Contraseña incorrecta");
                         }
         
-                    }else{
-                        // No existe el user en la DB
-                        $this->view->ShowLog("El usuario no existe");
+                    }else{      //SI EL USUARIO NO EXISTE EN LA DB
+                        $this->view->ShowLog("El usuario no existe"); 
                     }
                 }
             }
             function addUser(){
                 $email = $_POST["email"];
                 $pass_input = $_POST["pass"];
+                $rol = $_POST["rol"];
                 $hash = password_hash($pass_input, PASSWORD_DEFAULT);
                 
                 if(isset($_POST["email"]) && isset($_POST["pass"])){
-                $this->model->addUserDB($email,$hash);
-                $this->view->showLog("Se registro el usuario correctamente");
+                    
+                    $this->model->addUserDB($email,$hash,$rol);
+                    $this->view->showLog("Se registro el usuario correctamente");
                 }else{
                     $this->view->showRegister("Ingresa los datos correspondientes.");
                 }
 
-            }        
+            }
+
+            function Logout(){
+                session_start();
+                session_destroy();
+                header("Location: ".BASE_URL."home");
+            }
     }

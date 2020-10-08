@@ -11,7 +11,6 @@
     <link rel="stylesheet" href="./css/responsive/responsive-consultas.css">
     <link rel="stylesheet" href="./css/log.css">
     <script type="text/javascript" src="./js/nav.js"></script>
-    <script type="text/javascript" src="./js/captcha.js"></script>
     <base href="{$base_url}">
 </head>
 
@@ -19,40 +18,11 @@
 
  <!-- ENCABEZADO -->
     
-    <header>
-
-        <div class="encabezado">
-
-            <div class="tituloYlogo">
-                
-                <a href="home"><img src="./images/LOGO2.png" alt="MiViandita!" class="logoEncabezado"></a>
-            
-                <h1 class="titulo"> Mi Viandita!</h1>
-
-            </div>
-
-            <input type="checkbox" id="btn-menu">
-            <label for="btn-menu" class="icon-menu"><img src="./images/menu.png" class="imagenMenu"></label>
-        
-        </div>
-
-    </header>
+    {include file="encabezado.tpl"}
 
  <!-- MENU DE NAVEGACION -->
 
-    <nav>
-
-        <div class="menu">
-
-            <a href="home" class="item">Home</a>
-            <a href="viandas" class="item">Viandas</a>
-            <a href="promociones" class="item">Promociones </a>
-            <a href="contacto" class="item">Contacto</a>
-            <a href="sobremiviandita" class="item">Sobre Mi Viandita</a>
-
-        </div>
-
-    </nav>
+    {include file="nav.tpl"}
     
  <!-- FORMULARIO -->
 
@@ -66,10 +36,14 @@
                 
                 <label class="itemformulario"> Correo: </label> <input type="email" id="correo" name="email">
                 <label class="itemformulario"> Contraseña: </label> <input type="password" id="contra" name="pass">
-            <!--    <label class="itemformulario"> Repite la contraseña: </label> <input type="password" id="contra" name="email">-->
+                <label class="itemformulario"> Seleccione el rol </label>
+                <select name="rol" id="select">
+                    <option value="administrador">Administrador</option>
+                    <option value="cliente">Cliente</option>
+                </select>
                 <a href="login" id="register">Ya tienes una cuenta? Logueate aca!</a>
                 <p id="avisoCaptcha" class="mensajeIncorrecto">{$mensaje}</p>
-                <button type="submit" id="botonEnviar" >Enviar!</button>
+                <button type="submit" id="botonEnviar" >REGISTRARSE</button>
 
             </form>
 
@@ -77,13 +51,9 @@
 
     </article>
 
- <!-- PIE DE PAGINA -->
+ <!-- FOOTER -->
 
-    <footer>
-        <a> Diseño Web || Fermín Medina || Agustín Arleo </a>
-        <a> © Mi Viandita 2020. Todos los derechos reservados.</a>
-        <a href="ilvero" class="ilvero"> Il Vero</a>
-    </footer>
+    {include file="footer.tpl"}
 
 </body>
 </html>

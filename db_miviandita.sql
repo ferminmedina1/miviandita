@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 02-10-2020 a las 09:06:58
+-- Tiempo de generación: 08-10-2020 a las 03:36:02
 -- Versión del servidor: 10.4.14-MariaDB
--- Versión de PHP: 7.4.9
+-- Versión de PHP: 7.4.10
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -40,6 +40,26 @@ INSERT INTO `dirigido_table` (`id_dirigidoA`, `tipo_vianda`) VALUES
 (6, 'Celiaca'),
 (7, 'Vegana'),
 (8, 'Normal');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `users`
+--
+
+CREATE TABLE `users` (
+  `id_user` int(11) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `password` varchar(255) NOT NULL,
+  `rol` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `users`
+--
+
+INSERT INTO `users` (`id_user`, `email`, `password`, `rol`) VALUES
+(2, 'admin@gmail.com', '$2y$10$pkMdRWaHmCukD9InkkWSGePAq6OMoXjFtpxt4E6AfYbnmiITyNQY.', 'administrador');
 
 -- --------------------------------------------------------
 
@@ -79,6 +99,12 @@ ALTER TABLE `dirigido_table`
   ADD PRIMARY KEY (`id_dirigidoA`);
 
 --
+-- Indices de la tabla `users`
+--
+ALTER TABLE `users`
+  ADD PRIMARY KEY (`id_user`);
+
+--
 -- Indices de la tabla `viandas`
 --
 ALTER TABLE `viandas`
@@ -94,6 +120,12 @@ ALTER TABLE `viandas`
 --
 ALTER TABLE `dirigido_table`
   MODIFY `id_dirigidoA` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+
+--
+-- AUTO_INCREMENT de la tabla `users`
+--
+ALTER TABLE `users`
+  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT de la tabla `viandas`

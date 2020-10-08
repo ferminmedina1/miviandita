@@ -19,38 +19,11 @@
 
  <!-- ENCABEZADO -->
     
-    <header>
-
-        <div class="encabezado">
-
-            <div class="tituloYlogo">
-                
-                <a href="home"><img src="./images/LOGO2.png" alt="MiViandita!" class="logoEncabezado"></a>
-            
-                <h1 class="titulo"> Mi Viandita!</h1>
-
-            </div>
-
-            <input type="checkbox" id="btn-menu">
-            <label for="btn-menu" class="icon-menu"><img src="./images/menu.png" class="imagenMenu"></label>
-       
-        </div>
-        
-    </header>
+    {include file="encabezado.tpl"}
 
  <!-- MENU DE NAVEGACION -->
 
-    <nav>
-
-        <div class="menu">
-            <a href="home" class="item">Home</a>
-            <a href="viandas" class="itemPrincipal">Viandas</a>
-            <a href="promociones" class="item">Promociones </a>
-            <a href="contacto" class="item">Contacto</a>
-            <a href="sobremiviandita" class="item">Sobre Mi Viandita</a>
-        </div>
-
-    </nav>
+    {include file="nav.tpl"}
 
     <h2 class="tituloAllCategorias">TIPOS DE VIANDAS </h2>
     <div class="categoriasAll">
@@ -63,139 +36,27 @@
 
 
 
-
- <!-- CUERPO DE PAGINA -->
-  <!--
-    <article>
-     
-       
-
-        <section class="contenedorVianda">
-
-            <img src="./images/milanesa.jpg" alt="Milanesa" class="fotoComida">
-
-            <div class="plato">
-                <h2 class="subtitulo"> La gran milanesa:</h2>
-            </div>
-
-            <div class="descripcionViandas">
-                <p>Te presentamos la "gran milanesa", hecha con ingredientes de primera calidad. Este combo
-                    viene con una porcion de papas y una milanesa de carne para una persona, ideal para un buen almuerzo.
-                </p>
-            </div>
-
-            <h2 class="precio">$150</h2>
-
-        </section>
-
-        
-
-        <section class="contenedorVianda">
-
-            <img src="./images/vianda vegana.jpg" alt="vianda vegana" class="fotoComida">
-
-            <div class="plato">
-                <h2 class="subtitulo"> Vianda vegetariana:</h2>
-            </div>
-
-            <div class="descripcionViandas">
-                <p>La "vianda vegetariana" es lo nuevo de la casa, tenemos opciones para todos los gustos. Incluye 
-                    zanahoria, tomate, lechuga y rucula, no te quedes sin la tuya!!!
-                </p>
-            </div>
-
-            <h2 class="precio">$100</h2>
-
-        </section>
-
-        
-        <section class="contenedorVianda">
-            
-            <img src="./images/vianda pasta.jpg" alt="vianda fideos" class="fotoComida">
-
-            <div class="plato">
-                <h2 class="subtitulo"> Fideos con salsa:</h2>
-            </div>
-
-            <div class="descripcionViandas">
-                <p> Lo ideal para matar este frio es comer unos ricos fideos con salsa y como siempre en Mi viandita!
-                    tenemos para ofrecerte lo mejor. Para hacer tu pedido podes encontrarnos en la seccion "contactos".
-                </p>
-            </div>
-
-            <h2 class="precio">$120</h2>
-
-        </section>
-
-    </article>
-
-
-
-    <section class="tabla">
-
-        <form>
-
-                <div class="agregarAtabla">
-
-                    <div class="inputsPrincipales">
-                    <a class="textoInput"> Vianda: <input type="text" id="producto"> </a>
-                    <a class="textoInput"> Precio:  <input type="number" id="precio"> </a>
-                    </div>
-
-                    
-                        <div class="filtro">
-                            <input type="checkbox" id="btn-celiacos">
-                            <label for="btn-celiacos" class="celiacos">Para celiacos</label>
-                        </div>
-                    <div class="botonera">
-                        <div class="botones">
-                        <button type="button" id="agregar" >Agregar vianda</button>
-                        <button type="button" id="agregar3" >x3</button>
-                        <button type="button" id="vaciarTabla">Vaciar tabla</button>
-                        </div>
-
-                        <div class="verFiltro">
-                            <a class="filtroText">Para todos</a>
-                        <input type="checkbox" id="btn-filtro">
-                        <label for="btn-filtro" class="icon-filtro"></label>
-                        <a class="filtroText">Para celiacos</a>
-                        </div>
-
-                    </div>
-
-                </div>
-
-        </form>
-
-        
-
-        <table>
-            <thead>
-                <tr>
-                    <th>Vianda nueva</th> <th>Precio</th><th>Total</th><th>Borrar/Editar</th>
-                </tr>
-            </thead>
-            <tbody id="carrito">
-            </tbody>
-        </table>
-
-    </section>-->
-
- <!-- BOTON CONSULTAS -->
+ <!-- BOTON LOGIN, CONSULTA Y ADMINISTRAR -->
 
     <section class="section-consultas">
-        <a class="botonLogueo" href="login"> Logueate <img src="./images/user.png" alt="user.img" class="imagenConsultas"></a>
+
+        {if (!isset($smarty.session.EMAIL))} <!--CON ESTO SE VERIFICA QUE NO HAYA UN USUARIO LOGUEADO-->
+
+            <a class="botonLogueo" href="login"> Loguearse <img src="./images/user.png" alt="user.img" class="imagenConsultas"></a>
+        
+            {else}
+                <a class="botonLogueo" href="logout"> Desloguearse <img src="./images/user.png" alt="user.img" class="imagenConsultas"></a>
+        {/if}
         <a class="botonConsultas" href="consultas"> Consultas</a>
-        <a class="botonAdministrar" href="adminViandas"> Administrar Viandas</a>
+
+        {if (isset($smarty.session.ROL) && ($smarty.session.ROL == "administrador"))} <!--CON ESTO SE VERIFICA SI EL USUARIO ES ADMIN O NO-->
+            <a class="botonAdministrar" href="adminViandas"> Administrar Viandas</a>
+        {/if}
     </section>
 
- <!-- PIE DE PAGINA -->
+ <!-- FOOTER -->
 
-    <footer>
-        <a> Diseño Web || Fermín Medina || Agustín Arleo </a>
-        <a> © Mi Viandita 2020. Todos los derechos reservados.</a>
-        <a href="ilvero" class="ilvero"> Il Vero</a>
-    </footer>
+    {include file="footer.tpl"}
 
 </body>
 </html>

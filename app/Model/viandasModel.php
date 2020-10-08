@@ -1,6 +1,5 @@
 <?php 
 
-
 class viandasModel{
     private $db;
 
@@ -10,7 +9,7 @@ class viandasModel{
 
     function getViandasByDirigidoA($dirigidoA) {
         $query = $this->db->prepare('SELECT * FROM viandas INNER JOIN dirigido_table ON viandas.id_dirigidoA=dirigido_table.id_dirigidoA WHERE tipo_vianda = ?');
-        $query->execute([$dirigidoA]); // array($dirigidoA) PREGUNTAR SORBRE EL EXECUTE.
+        $query->execute([$dirigidoA]); 
         $viandaDirigidas = $query->fetchAll(PDO::FETCH_OBJ);
         return $viandaDirigidas;
     }
@@ -23,7 +22,6 @@ class viandasModel{
     }
 
     function getCategoria(){ 
-        // DISTINCT no trae elementos repetidos. En este caso traera todos los generos existentes.
         $query = $this->db->prepare('SELECT * FROM dirigido_table');
         $query->execute(); 
         $dirigidoA = $query->fetchAll(PDO::FETCH_OBJ);
