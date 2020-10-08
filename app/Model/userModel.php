@@ -15,7 +15,6 @@ class userModel{
     }
     
     function addUserDB($email,$hash,$rol){
-        
         $query = $this->db->prepare('INSERT INTO users(email,password,rol) VALUES (?,?,?)');
         $query->execute([$email,$hash,$rol]);
     }

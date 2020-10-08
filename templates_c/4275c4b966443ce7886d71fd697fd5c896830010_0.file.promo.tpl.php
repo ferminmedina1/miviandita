@@ -1,4 +1,32 @@
-<!DOCTYPE html>
+<?php
+/* Smarty version 3.1.34-dev-7, created on 2020-10-09 00:00:37
+  from 'D:\Program Files\XAMPP\htdocs\TPE-WEB-II\templates\promo.tpl' */
+
+/* @var Smarty_Internal_Template $_smarty_tpl */
+if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
+  'version' => '3.1.34-dev-7',
+  'unifunc' => 'content_5f7f8c051d7354_78772902',
+  'has_nocache_code' => false,
+  'file_dependency' => 
+  array (
+    '4275c4b966443ce7886d71fd697fd5c896830010' => 
+    array (
+      0 => 'D:\\Program Files\\XAMPP\\htdocs\\TPE-WEB-II\\templates\\promo.tpl',
+      1 => 1602194268,
+      2 => 'file',
+    ),
+  ),
+  'includes' => 
+  array (
+    'file:encabezado.tpl' => 1,
+    'file:nav.tpl' => 1,
+    'file:navUser.tpl' => 1,
+    'file:botonLogin.tpl' => 1,
+    'file:footer.tpl' => 1,
+  ),
+),false)) {
+function content_5f7f8c051d7354_78772902 (Smarty_Internal_Template $_smarty_tpl) {
+?><!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -9,25 +37,31 @@
     <link rel="stylesheet" href="./css/promo.css">
     <link rel="stylesheet" href="./css/responsive/responsive.css">
     <link rel="stylesheet" href="./css/responsive/responsive-promo.css">
-    <script type="text/javascript" src="./js/nav.js"></script>
-    <base href="{$base_url}">
+    <?php echo '<script'; ?>
+ type="text/javascript" src="./js/nav.js"><?php echo '</script'; ?>
+>
+    <base href="<?php echo $_smarty_tpl->tpl_vars['base_url']->value;?>
+">
 </head>
 
 <body>
 
  <!-- ENCABEZADO -->
     
-    {include file="encabezado.tpl"}
+    <?php $_smarty_tpl->_subTemplateRender("file:encabezado.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
+?>
 
  <!-- MENU DE NAVEGACION -->
 
-            {if (!isset($smarty.session.EMAIL))} <!--CON ESTO SE VERIFICA QUE NO HAYA UN USUARIO LOGUEADO-->
+            <?php if ((!(isset($_SESSION['EMAIL'])))) {?> <!--CON ESTO SE VERIFICA QUE NO HAYA UN USUARIO LOGUEADO-->
 
-             {include file="nav.tpl"}
+             <?php $_smarty_tpl->_subTemplateRender("file:nav.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
+?>
         
-            {else}
-                {include file="navUser.tpl"}
-        {/if}
+            <?php } else { ?>
+                <?php $_smarty_tpl->_subTemplateRender("file:navUser.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
+?>
+        <?php }?>
 
  <!-- CUERPO DE LA PAGINA-->
  
@@ -127,11 +161,14 @@
         
  <!-- BOTON CONSULTAS Y LOGIN -->
 
-        {include file="botonLogin.tpl"}
+        <?php $_smarty_tpl->_subTemplateRender("file:botonLogin.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
+?>
 
  <!-- FOOTER -->
 
-    {include file="footer.tpl"}
+    <?php $_smarty_tpl->_subTemplateRender("file:footer.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
+?>
 
 </body>
-</html>
+</html><?php }
+}

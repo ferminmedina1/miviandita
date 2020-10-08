@@ -23,7 +23,13 @@
 
  <!-- MENU DE NAVEGACION -->
 
-    {include file="nav.tpl"}
+            {if (!isset($smarty.session.EMAIL))} <!--CON ESTO SE VERIFICA QUE NO HAYA UN USUARIO LOGUEADO-->
+
+             {include file="nav.tpl"}
+        
+            {else}
+                {include file="navUser.tpl"}
+        {/if}
 
     <h2 class="tituloAllCategorias">TIPOS DE VIANDAS </h2>
     <div class="categoriasAll">
