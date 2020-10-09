@@ -65,4 +65,18 @@ require_once "./app/Model/userModel.php";
                 session_destroy();
                 header("Location: ".BASE_URL."home");
             }
+
+            public function checkLoggedIn(){
+                session_start();                    //SE INICIA UNA SESION
+                if(!isset($_SESSION["EMAIL"])){     //SI NO ESTA SETEADO EL EMAIL (NO HAY USUARIO LOGUEADO)
+                    $_SESSION["ROL"] = "visitante"; //SE LE ASIGNA UN ROL A CUALQUIERA QUE ACCEDA A LA PAGINA
+                }
+                else{
+                    if (isset($_SESSION['LAST_ACTIVITY']) && (time() - $_SESSION['LAST_ACTIVITY'] > 1800)) {    //SE VERIFICA LA ULTIMA ACCION EN LA PAGINA, SI ES MAYOR A 30m SE CIERRA LA SESION
+                        header("Location: ".LOGOUT);    //CIERRA LA SESION
+                        die();
+                    } 
+                    $_SESSION['LAST_ACTIVITY'] = time();    //SE ACTUALIZA EL TIEMPO
+                }  
+            }
     }

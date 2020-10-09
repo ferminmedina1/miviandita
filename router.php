@@ -1,6 +1,7 @@
 <?php
     require_once('app/Controller/viandasController.php');
     require_once('app/Controller/userController.php');
+    require_once('app/Controller/categoriasController.php');
     require_once('routerClass.php');
     
     // CONSTANTES PARA RUTEO
@@ -21,24 +22,24 @@
 
     $r->addRoute("verTodos", "GET", "viandasController", "mostrarTodas");
    
-    $r->addRoute("categoria/:TIPO_VIANDA","GET", "viandasController", "mostrarPorCategoria");
+    $r->addRoute("categoria/:TIPO_VIANDA","GET", "categoriasController", "mostrarPorCategoria");
 
     $r->addRoute("adminViandas", "GET", "viandasController", "AdminViandas");
 
     $r->addRoute("agregarVianda", "POST", "viandasController", "ingresarVianda");
 
-    $r->addRoute("agregarCategoria", "POST", "viandasController", "nuevaCategoria");
+    $r->addRoute("agregarCategoria", "POST", "categoriasController", "nuevaCategoria");
 
     //ELIMINAR
     $r->addRoute("elimiarVianda/:ID", "GET", "viandasController", "eliminarVianda");
-    $r->addRoute("elimiarCategoria/:ID", "GET", "viandasController", "eliminarCategoria");
+    $r->addRoute("elimiarCategoria/:ID", "GET", "categoriasController", "eliminarCategoria");
 
     //EDITAR 
     $r->addRoute("editarVianda/:ID", "GET", "viandasController", "showFormEditar");
     $r->addRoute("actualizarVianda/:ID", "POST", "viandasController", "editarVianda");
 
-    $r->addRoute("editarCategoria/:ID", "GET", "viandasController", "showFormEditarCategoria");
-    $r->addRoute("actualizarCategoria/:ID", "POST", "viandasController", "editarCategoria");
+    $r->addRoute("editarCategoria/:ID", "GET", "categoriasController", "showFormEditarCategoria");
+    $r->addRoute("actualizarCategoria/:ID", "POST", "categoriasController", "editarCategoria");
 
     //UserController
     $r->addRoute("login", "GET", "userController", "Log");

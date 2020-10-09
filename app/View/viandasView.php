@@ -10,7 +10,7 @@ class viandasView{
         $this->smarty = new Smarty();
         $this->smarty->assign('base_url',BASE_URL);
     }
-    
+
     function ShowHome(){
         $this->smarty->display('../templates/home.tpl');
     }
@@ -20,11 +20,6 @@ class viandasView{
         $this->smarty->display('../templates/viandas.tpl');
     }
 
-    function showViandaByCategoria ($categoria, $viandas) {
-        $this->smarty -> assign('titulo_tipo', $categoria);
-        $this->smarty -> assign('viand', $viandas);
-        $this->smarty->display('../templates/viandasByCategoria.tpl');
-    }
 
     function showAllViandas($viandas) {
         $this->smarty -> assign('allViandas', $viandas);
@@ -61,11 +56,6 @@ class viandasView{
         $this->smarty -> assign('tipo', $categorias);
         $this->smarty -> assign('vianda', $vianda);
         $this->smarty->display('../templates/formEditar.tpl');
-    }
-
-    function showFormularioEditarCategoria($categoria){
-        $this->smarty -> assign('tipo', $categoria);
-        $this->smarty->display('../templates/formEditarCategoria.tpl');
     }
     
     function showHomeLocation(){

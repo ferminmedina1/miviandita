@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.34-dev-7, created on 2020-10-08 23:45:07
+/* Smarty version 3.1.34-dev-7, created on 2020-10-09 01:47:37
   from 'D:\Program Files\XAMPP\htdocs\TPE-WEB-II\templates\viandasByCategoria.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.34-dev-7',
-  'unifunc' => 'content_5f7f8863f37d18_49275246',
+  'unifunc' => 'content_5f7fa5199ad202_23153203',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '45624e01260ec43927010b0c6b48fe82623eda6d' => 
     array (
       0 => 'D:\\Program Files\\XAMPP\\htdocs\\TPE-WEB-II\\templates\\viandasByCategoria.tpl',
-      1 => 1602193302,
+      1 => 1602194248,
       2 => 'file',
     ),
   ),
@@ -20,11 +20,12 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
     'file:encabezado.tpl' => 1,
     'file:nav.tpl' => 1,
+    'file:navUser.tpl' => 1,
     'file:botonLogin.tpl' => 1,
     'file:footer.tpl' => 1,
   ),
 ),false)) {
-function content_5f7f8863f37d18_49275246 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5f7fa5199ad202_23153203 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html lang="en">
 <head>
@@ -54,8 +55,15 @@ function content_5f7f8863f37d18_49275246 (Smarty_Internal_Template $_smarty_tpl)
 
  <!-- MENU DE NAVEGACION -->
 
-    <?php $_smarty_tpl->_subTemplateRender("file:nav.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
+            <?php if ((!(isset($_SESSION['EMAIL'])))) {?> <!--CON ESTO SE VERIFICA QUE NO HAYA UN USUARIO LOGUEADO-->
+
+             <?php $_smarty_tpl->_subTemplateRender("file:nav.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
 ?>
+        
+            <?php } else { ?>
+                <?php $_smarty_tpl->_subTemplateRender("file:navUser.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
+?>
+        <?php }?>
 
         <h2 class="tituloAllViandas">TIPO DE VIANDA: <?php echo mb_strtoupper($_smarty_tpl->tpl_vars['titulo_tipo']->value, 'UTF-8');?>
 </h2>
