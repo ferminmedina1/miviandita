@@ -23,12 +23,18 @@
 
  <!-- MENU DE NAVEGACION -->
 
-    {include file="nav.tpl"}
+            {if (!isset($smarty.session.EMAIL))} <!--CON ESTO SE VERIFICA QUE NO HAYA UN USUARIO LOGUEADO-->
 
-    <h2 class="tituloAllCategorias">ADMINISTRAR VIANDAS</h2>
+             {include file="nav.tpl"}
+        
+            {else}
+                {include file="navUser.tpl"}
+        {/if}
+
+    <h2 class="tituloAllCategorias">ADMINISTRACIÓN</h2>
 
     <div class="agregarAtabla">
-
+        <h4>Administrar viandas</h4>
         <form action="agregarVianda" method="post">
 
             <div class="inputsPrincipales">
@@ -62,7 +68,7 @@
             <tbody id="viandasTable">
                 {foreach from=$allViandas item=vianda}
                     <tr><td>{$vianda->nombre}</td><td>{$vianda->descripcion}</td><td>{$vianda->precio}</td><td>{$vianda->tipo_vianda}</td>
-                    <td class="botonBorrar"> <a href='elimiarVianda/{$vianda->id_vianda}'><button class="botonBorrarTD" id="{$vianda->id_vianda}"><i class="fa fa-trash-o"></i></button></a>
+                    <td class="botonBorrar"> <a href='eliminarVianda/{$vianda->id_vianda}'><button class="botonBorrarTD" id="{$vianda->id_vianda}"><i class="fa fa-trash-o"></i></button></a>
                     <a href='editarVianda/{$vianda->id_vianda}' ><button class="botonEditarTD" id="{$vianda->id_vianda}"><i class="fa fa-edit"></i></button></a></td></tr>
                 {/foreach}
             </tbody>
@@ -94,7 +100,7 @@
             <tbody>
                 {foreach from=$tipo item=categoria}
                     <tr><td>{$categoria->tipo_vianda}</td>
-                    <td class="botonBorrar"> <a href='elimiarCategoria/{$categoria->id_dirigidoA}'><button class="botonBorrarTD" id="{$categoria->id_dirigidoA}"><i class="fa fa-trash-o"></i></button></a>
+                    <td class="botonBorrar"> <a href='eliminarCategoria/{$categoria->id_dirigidoA}'><button class="botonBorrarTD" id="{$categoria->id_dirigidoA}"><i class="fa fa-trash-o"></i></button></a>
                     <a href='editarCategoria/{$categoria->id_dirigidoA}'><button class="botonEditarTD" id="{$categoria->id_dirigidoA}"><i class="fa fa-edit"></i></button></a></td></tr>
                 {/foreach}
             </tbody>
@@ -103,6 +109,7 @@
  <!-- BOTON CONSULTAS Y LOGIN -->
 
     <section class="section-consultas">
+        <h3 class="user">{$smarty.session.EMAIL}</h3>
         <a class="botonLogueo" href="logout"> Desloguearse <img src="./images/user.png" alt="user.img" class="imagenConsultas"></a>
         <a class="botonAdministrar" href="viandas"> Volver a "viandas"</a>
     </section>

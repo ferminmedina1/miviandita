@@ -4,6 +4,7 @@
         
             <a class="botonLogueo" href="login"> Loguearse <img src="./images/user.png" alt="user.img" class="imagenConsultas"></a>
         {else}
+            <h3 class="user">{$smarty.session.EMAIL}</h3>
             <a class="botonLogueo" href="logout"> Desloguearse <img src="./images/user.png" alt="user.img" class="imagenConsultas"></a>
 
     {/if}

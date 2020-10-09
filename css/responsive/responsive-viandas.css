@@ -173,7 +173,7 @@
     .botonBorrar{
         display: flex;
         flex-direction: row;
-        width: 100%;
+        width: 73%;
         height: 100%;
         padding: 30px 0 30px 0;
     }

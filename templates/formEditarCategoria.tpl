@@ -21,7 +21,13 @@
 
  <!-- MENU DE NAVEGACION -->
 
-    {include file="nav.tpl"}
+            {if (!isset($smarty.session.EMAIL))} <!--CON ESTO SE VERIFICA QUE NO HAYA UN USUARIO LOGUEADO-->
+
+             {include file="nav.tpl"}
+        
+            {else}
+                {include file="navUser.tpl"}
+        {/if}
 
 
  <!-- FORMULARIO -->
@@ -44,6 +50,9 @@
 
     </article>
 
+        <section class="section-consultas">
+            <a class="botonAdministrar" href="administracion"> Volver a administrar</a>
+        </section>
 
  <!-- FOOTER -->
 

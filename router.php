@@ -4,44 +4,46 @@
     require_once('app/Controller/categoriasController.php');
     require_once('routerClass.php');
     
-    // CONSTANTES PARA RUTEO
+ // CONSTANTES PARA RUTEO
     define("BASE_URL", 'http://'.$_SERVER["SERVER_NAME"].':'.$_SERVER["SERVER_PORT"].dirname($_SERVER["PHP_SELF"]).'/');
     define("LOGIN", 'http://'.$_SERVER["SERVER_NAME"].':'.$_SERVER["SERVER_PORT"].dirname($_SERVER["PHP_SELF"]).'/login');
     define("LOGOUT", 'http://'.$_SERVER["SERVER_NAME"].':'.$_SERVER["SERVER_PORT"].dirname($_SERVER["PHP_SELF"]).'/logout');
 
     $r = new Router();
 
-    // rutas viejas
-    $r->addRoute("home", "GET", "viandasController", "Home"); // ($url, $verb(GET/POST), $controller, $method(Funcion))
-    $r->addRoute("viandas", "GET", "viandasController", "Viandas"); 
+ //NAVEGACION EN LA PAGINA
+    $r->addRoute("home", "GET", "viandasController", "Home");
+    $r->addRoute("viandas", "GET", "categoriasController", "categorias"); 
     $r->addRoute("promociones", "GET", "viandasController", "Promo"); 
     $r->addRoute("contacto", "GET", "viandasController", "Contacto"); 
-    $r->addRoute("sobremiviandita", "GET", "viandasController", "Sobre"); 
+    $r->addRoute("sobremiviandita", "GET", "viandasController", "Sobre");
     $r->addRoute("consultas", "GET", "viandasController", "Consultas"); 
     $r->addRoute("ilvero", "GET", "viandasController", "Ilvero");
-
-    $r->addRoute("verTodos", "GET", "viandasController", "mostrarTodas");
-   
+ 
+ //VER TODAS LAS VIANDAS 
+    $r->addRoute("verTodas", "GET", "viandasController", "mostrarTodas");
+ 
+ //VER CADA CATEGORIA
     $r->addRoute("categoria/:TIPO_VIANDA","GET", "categoriasController", "mostrarPorCategoria");
 
-    $r->addRoute("adminViandas", "GET", "viandasController", "AdminViandas");
-
+ //ADMINISTRACION, AGREGAR VIANDA/CATEGORIA
+    $r->addRoute("administracion", "GET", "viandasController", "AdminViandas");
     $r->addRoute("agregarVianda", "POST", "viandasController", "ingresarVianda");
-
     $r->addRoute("agregarCategoria", "POST", "categoriasController", "nuevaCategoria");
 
-    //ELIMINAR
-    $r->addRoute("elimiarVianda/:ID", "GET", "viandasController", "eliminarVianda");
-    $r->addRoute("elimiarCategoria/:ID", "GET", "categoriasController", "eliminarCategoria");
+ //ELIMINAR VIANDA/CATEGORIA
+    $r->addRoute("eliminarVianda/:ID", "GET", "viandasController", "eliminarVianda");
+    $r->addRoute("eliminarCategoria/:ID", "GET", "categoriasController", "eliminarCategoria");
 
-    //EDITAR 
+ //EDITAR/ACTUALIZAR VIANDAS
     $r->addRoute("editarVianda/:ID", "GET", "viandasController", "showFormEditar");
     $r->addRoute("actualizarVianda/:ID", "POST", "viandasController", "editarVianda");
 
+ //EDITAR/ACTUALIZAR CATEGORIAS
     $r->addRoute("editarCategoria/:ID", "GET", "categoriasController", "showFormEditarCategoria");
     $r->addRoute("actualizarCategoria/:ID", "POST", "categoriasController", "editarCategoria");
 
-    //UserController
+ //LOGIN, LOGOUT Y REGISTER
     $r->addRoute("login", "GET", "userController", "Log");
     $r->addRoute("logout", "GET", "userController", "Logout");
     $r->addRoute("register", "GET", "userController", "Register");
@@ -49,8 +51,8 @@
     $r->addRoute("verifyUser", "POST", "userController", "VerifyUser");
     $r->addRoute("agregarUser", "POST", "userController", "addUser");
 
-    //Ruta por defecto.
+ //Ruta por defecto.
     $r->setDefaultRoute("viandasController", "Home");
-    //run
+ //run
     $r->route($_GET['action'], $_SERVER['REQUEST_METHOD']); 
 ?>

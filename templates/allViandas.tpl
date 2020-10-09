@@ -13,8 +13,11 @@
 </head>
 <body>
 
+ <!-- ENCABEZADO -->
     {include file="encabezado.tpl"}
 
+ <!-- MENU DE NAVEGACION -->
+ 
     {if (!isset($smarty.session.EMAIL))} <!--CON ESTO SE VERIFICA QUE NO HAYA UN USUARIO LOGUEADO-->
 
             {include file="nav.tpl"}
@@ -37,6 +40,7 @@
                     <div class="oculto">
                         <div class="descripcionViandas">
                             <p>{$vianda->descripcion}</p>
+                            <p>Categoria: {$vianda->tipo_vianda}</p>
                             <h3 class="precio">${$vianda->precio}</h3>
                         </div>
                     </div>

@@ -86,7 +86,7 @@
 
     </article>
 
-     <!-- TABLA -->
+ <!-- TABLA -->
 
     <section class="tabla">
 
