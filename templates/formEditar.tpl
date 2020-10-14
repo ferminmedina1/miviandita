@@ -39,15 +39,15 @@
             {foreach from=$vianda item=viandaAnterior}
             <form class="formulario" method="post" action="actualizarVianda/{$viandaAnterior->id_vianda}">
                 <h1 class="subtitulo"> EDITA LA VIANDA:  {$viandaAnterior->nombre}</h1>
-                <label class="itemformulario"> Nombre: </label> <input type="text" name="nombre" placeholder="Anteriormente era: {$viandaAnterior->nombre}">
-                <label class="itemformulario"> Precio: </label> <input type="number" name="precio"  placeholder="Anteriormente era: {$viandaAnterior->precio}">
+                <label class="itemformulario"> Nombre: </label> <input type="text" name="nombre" value={$viandaAnterior->nombre}>
+                <label class="itemformulario"> Precio: </label> <input type="number" name="precio"  value={$viandaAnterior->precio}>
                 <label class="itemformulario"> Tipo de vianda: (Anteriormente era: {$viandaAnterior->tipo_vianda})</label> 
                     <select name="dirigidoA" id="select">
                         {foreach from=$tipo item=categoria}
                             <option value="{$categoria->id_dirigidoA}">{$categoria->tipo_vianda}</option>
                         {/foreach}
                     </select>
-                <label class="itemformulario"> Nueva descripcion: </label> <textarea type="text" name="descripcion" ></textarea>
+                <label class="itemformulario"> Nueva descripcion: </label> <textarea type="text" name="descripcion">{$viandaAnterior->descripcion}</textarea>
                 {/foreach}
 
                 <button type="submit" id="botonEnviar">Actualizar!</button>
