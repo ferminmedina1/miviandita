@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mi Viandita! - Administracion - Editar Categoria</title>
     <link rel="stylesheet" href="../css/style.css">
-    <link rel="stylesheet" href="../css/consultas.css">
+    <link rel="stylesheet" href="../css/formEditarUsuario.css">
     <link rel="stylesheet" href="../css/responsive/responsive.css">
     <link rel="stylesheet" href="../css/responsive/responsive-consultas.css">
     <script type="text/javascript" src="../js/nav.js"></script>
@@ -35,14 +35,20 @@
     <article>
 
         <section class="contenedorform">
+            
+            <h2 class="tituloFormEditar"> EDITAR PERMISOS DE ADMINISTRACIÓN</h2>
 
-            {foreach from=$tipo item=tipoAnterior}                
-            <form class="formulario" method="post" action="actualizarCategoria/{$tipoAnterior->id_dirigidoA}">
-                <h1 class="subtitulo"> EDITA LA CATEGORIA:  {$tipoAnterior->tipo_vianda}</h1>
-                <label class="itemformulario"> Nombre: </label> <input type="text" name="nombre" placeholder="Anteriormente era: {$tipoAnterior->tipo_vianda}">
-            {/foreach}
-
-                <button type="submit" id="botonEnviar">Actualizar!</button>
+            <form class="formulario" method="post" action="actualizarPermisos/{$usuario->id_user}">
+                
+                <h4 class="usuario"> Usuario: &nbsp; <label class="email">{$usuario->user}</label> </h4> 
+                <p>Actualmente es:&nbsp; {$usuario->rol}</p>           
+                <h4 class="seleccionarRol"> Seleccione el nuevo rol del usuario</h4>
+                
+                <div class="inputs">
+                    <label><input type="radio" name="rol" value="administrador" required > Administrador</label>
+                    <label><input type="radio" name="rol" value="cliente" required> Cliente</label>
+                </div>
+                <button type="submit" id="botonEnviar">Actualizar permisos</button>
 
             </form>
 
@@ -51,7 +57,7 @@
     </article>
 
         <section class="section-consultas">
-            <a class="botonAdministrar" href="administracion/categorias"> Volver a administrar</a>
+            <a class="botonAdministrar" href="administracion/usuarios"> Volver a administrar</a>
         </section>
 
  <!-- FOOTER -->

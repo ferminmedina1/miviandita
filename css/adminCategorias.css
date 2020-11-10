@@ -1,27 +1,5 @@
-#select{
-    background-color: white;
-    border-radius: 10px;
-    border: 4px solid green;
-    font-family: Arial, Helvetica, sans-serif;
-    padding: 10px;
-    font-size: 20px;
-    text-transform: none;
-    font-weight: bold;
-}
+.categorias{
 
-.tituloAdministracion{
-    color: rgb(250, 249, 248);
-    font-size: 2.5vw;
-    border-bottom: 9px solid indianred;
-    text-align: center;
-    margin: 35px 493px;
-    margin-top: 64px;
-    border-radius: 8px;
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-}
-
-
-.agregarAtabla {
     display: flex;
     flex-wrap: wrap;
     flex-direction: column;
@@ -35,25 +13,9 @@
     padding-top: 20px;
     padding-bottom: 20px;
     border-radius: 20px;
-    margin-top: 3%;
     border-bottom: 10px solid rgb(148, 96, 0);
     border-right: 10px solid rgb(148, 96, 0);
-}
-
-
-
-button{
-    margin: 5px 27px;
-    height: auto;
-    padding: 10px;
-    font-size: 17px;
-    font-weight: bold;
-    border: 4px solid rgb(22, 29, 9);
-    border-radius: 10px;
-    cursor: pointer;
-    width: auto;
-    text-transform: uppercase;
-
+    margin-top: 2%;
 }
 
 input{
@@ -66,15 +28,6 @@ input{
     border: 4px solid rgb(22, 29, 9);
     border-radius: 10px;
     width: auto;
-}
-
-
-
-.tipoDeCategoria{
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
 }
 
 .botonAdministrar{
@@ -96,13 +49,4 @@ input{
     border: 1px solid rgb(155, 155, 155);
     font-size: 14px;
     margin: 10px;
-}
-
-textarea {
-
-    min-height: 60px;
-    max-height: 160px;
-    width: 50%;
-    max-width: 58%;
-    min-width: 58%;
 }

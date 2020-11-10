@@ -23,7 +23,7 @@
 
  <!-- MENU DE NAVEGACION -->
 
-        {if (!isset($smarty.session.EMAIL))} <!--CON ESTO SE VERIFICA QUE NO HAYA UN USUARIO LOGUEADO-->
+        {if (!isset($smarty.session.user))} <!--CON ESTO SE VERIFICA QUE NO HAYA UN USUARIO LOGUEADO-->
 
              {include file="nav.tpl"}
         
@@ -35,7 +35,7 @@
     <div class="categoriasAll">
         {foreach from=$tipo item=categoria}
             <!--<a href= '{$categoria->tipo_vianda}' class="categoria">{$categoria->tipo_vianda}</a>-->
-            <a href= 'categoria/{$categoria->tipo_vianda}' class="categoria">{$categoria->tipo_vianda}</a>
+            <a href= 'categoria/{$categoria->tipo_vianda}' class="categoria"> {$categoria->tipo_vianda} </a>
         {/foreach}
              <a  href="verTodas" class="verTodas">Ver Todas</a>
     </div>
@@ -46,12 +46,12 @@
 
     <section class="section-consultas">
 
-        {if (!isset($smarty.session.EMAIL))} <!--CON ESTO SE VERIFICA QUE NO HAYA UN USUARIO LOGUEADO-->
+        {if (!isset($smarty.session.user))} <!--CON ESTO SE VERIFICA QUE NO HAYA UN USUARIO LOGUEADO-->
 
             <a class="botonLogueo" href="login"> Loguearse <img src="./images/user.png" alt="user.img" class="imagenConsultas"></a>
         
             {else}
-                <h3 class="user">{$smarty.session.EMAIL}</h3> 
+                <h3 class="user">{$smarty.session.user}</h3> 
                 <a class="botonLogueo" href="logout"> Desloguearse <img src="./images/user.png" alt="user.img" class="imagenConsultas"></a>
         {/if}
         <a class="botonConsultas" href="consultas"> Consultas</a>

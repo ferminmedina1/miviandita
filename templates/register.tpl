@@ -22,7 +22,7 @@
 
  <!-- MENU DE NAVEGACION -->
 
-            {if (!isset($smarty.session.EMAIL))} <!--CON ESTO SE VERIFICA QUE NO HAYA UN USUARIO LOGUEADO-->
+            {if (!isset($smarty.session.user))} <!--CON ESTO SE VERIFICA QUE NO HAYA UN USUARIO LOGUEADO-->
 
              {include file="nav.tpl"}
         
@@ -40,13 +40,8 @@
 
                 <h1 class="subtitulo"> Registrate! <img src="./images/user.png" alt="user" id="userFormulario"></h1>
                 
-                <label class="itemformulario"> Correo: </label> <input type="email" id="correo" name="email">
-                <label class="itemformulario"> Contraseña: </label> <input type="password" id="contra" name="pass">
-                <label class="itemformulario"> Seleccione el rol </label>
-                <select name="rol" id="select">
-                    <option value="administrador">Administrador</option>
-                    <option value="cliente">Cliente</option>
-                </select>
+                <label class="itemformulario"> Usuario: </label> <input required type="text" id="correo" name="user">
+                <label class="itemformulario"> Contraseña: </label> <input required type="password" id="contra" name="pass">
                 <a href="login" id="register">Ya tienes una cuenta? Logueate aca!</a>
                 <p id="avisoCaptcha" class="mensajeIncorrecto">{$mensaje}</p>
                 <button type="submit" id="botonEnviar" >REGISTRARSE</button>

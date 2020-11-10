@@ -22,7 +22,7 @@
 
  <!-- MENU DE NAVEGACION -->
 
-    {if (!isset($smarty.session.EMAIL))} <!--CON ESTO SE VERIFICA QUE NO HAYA UN USUARIO LOGUEADO-->
+    {if (!isset($smarty.session.user))} <!--CON ESTO SE VERIFICA QUE NO HAYA UN USUARIO LOGUEADO-->
 
              {include file="nav.tpl"}
         
@@ -42,7 +42,7 @@
                 
                 <label class="itemformulario"> Nombre: </label> <input type="text" id="nombre">
                 <label class="itemformulario"> Apellido: </label> <input type="text" id="apellido">
-                <label class="itemformulario"> Correo: </label> <input type="email" id="correo">
+                <label class="itemformulario"> Correo: </label> <input type="user" id="correo">
                 <label class="itemformulario"> Tu consulta: </label> <textarea type="text" id="consulta"></textarea>
 
                 <div class="contenedorCaptcha">

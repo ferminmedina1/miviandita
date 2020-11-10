@@ -21,7 +21,7 @@
 
  <!-- MENU DE NAVEGACION -->
 
-            {if (!isset($smarty.session.EMAIL))} <!--CON ESTO SE VERIFICA QUE NO HAYA UN USUARIO LOGUEADO-->
+            {if (!isset($smarty.session.user))} <!--CON ESTO SE VERIFICA QUE NO HAYA UN USUARIO LOGUEADO-->
 
              {include file="nav.tpl"}
         
@@ -36,19 +36,19 @@
 
         <section class="contenedorform">
 
-            {foreach from=$vianda item=viandaAnterior}
-            <form class="formulario" method="post" action="actualizarVianda/{$viandaAnterior->id_vianda}">
-                <h1 class="subtitulo"> EDITA LA VIANDA:  {$viandaAnterior->nombre}</h1>
-                <label class="itemformulario"> Nombre: </label> <input type="text" name="nombre" value={$viandaAnterior->nombre}>
-                <label class="itemformulario"> Precio: </label> <input type="number" name="precio"  value={$viandaAnterior->precio}>
-                <label class="itemformulario"> Tipo de vianda: (Anteriormente era: {$viandaAnterior->tipo_vianda})</label> 
+            
+            <form class="formulario" method="post" action="actualizarVianda/{$vianda->id_vianda}">
+                <h1 class="subtitulo"> EDITA LA VIANDA:  {$vianda->nombre}</h1>
+                <label class="itemformulario"> Nombre: </label> <input type="text" name="nombre" value={$vianda->nombre}>
+                <label class="itemformulario"> Precio: </label> <input type="number" name="precio"  value={$vianda->precio}>
+                <label class="itemformulario"> Tipo de vianda: (Anteriormente era: {$vianda->tipo_vianda})</label> 
                     <select name="dirigidoA" id="select">
                         {foreach from=$tipo item=categoria}
                             <option value="{$categoria->id_dirigidoA}">{$categoria->tipo_vianda}</option>
                         {/foreach}
                     </select>
-                <label class="itemformulario"> Nueva descripcion: </label> <textarea type="text" name="descripcion">{$viandaAnterior->descripcion}</textarea>
-                {/foreach}
+                <label class="itemformulario"> Nueva descripcion: </label> <textarea type="text" name="descripcion">{$vianda->descripcion}</textarea>
+                
 
                 <button type="submit" id="botonEnviar">Actualizar!</button>
 
@@ -59,7 +59,7 @@
     </article>
 
         <section class="section-consultas">
-            <a class="botonAdministrar" href="administracion"> Volver a administrar</a>
+            <a class="botonAdministrar" href="administracion/viandas"> Volver a administrar</a>
         </section>
  <!-- FOOTER -->
 

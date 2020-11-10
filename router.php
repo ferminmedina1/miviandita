@@ -19,15 +19,22 @@
     $r->addRoute("sobremiviandita", "GET", "viandasController", "Sobre");
     $r->addRoute("consultas", "GET", "viandasController", "Consultas"); 
     $r->addRoute("ilvero", "GET", "viandasController", "Ilvero");
- 
+
+
  //VER TODAS LAS VIANDAS 
     $r->addRoute("verTodas", "GET", "viandasController", "mostrarTodas");
+    $r->addRoute("vianda/:ID", "GET", "viandasController", "verVianda");
  
  //VER CADA CATEGORIA
     $r->addRoute("categoria/:TIPO_VIANDA","GET", "categoriasController", "mostrarPorCategoria");
 
+
  //ADMINISTRACION, AGREGAR VIANDA/CATEGORIA
-    $r->addRoute("administracion", "GET", "viandasController", "AdminViandas");
+    $r->addRoute("administracion", "GET", "viandasController", "showAdministracion");
+    $r->addRoute("administracion/viandas", "GET", "viandasController", "adminViandas");
+    $r->addRoute("administracion/categorias","GET", "categoriasController", "adminCategorias");
+    $r->addRoute("administracion/usuarios", "GET", "userController", "adminUsuarios");
+    
     $r->addRoute("agregarVianda", "POST", "viandasController", "ingresarVianda");
     $r->addRoute("agregarCategoria", "POST", "categoriasController", "nuevaCategoria");
 
@@ -43,9 +50,16 @@
     $r->addRoute("editarCategoria/:ID", "GET", "categoriasController", "showFormEditarCategoria");
     $r->addRoute("actualizarCategoria/:ID", "POST", "categoriasController", "editarCategoria");
 
+//ELIMINAR USUARIO
+   $r->addRoute("eliminarUsuario/:ID", "GET", "userController", "eliminarUsuario");
+
+//EDITAR/ACTUALIZAR ROL DE USUARIOS
+   $r->addRoute("editarPermisos/:ID", "GET", "userController", "showFormEditarUser");
+   $r->addRoute("actualizarPermisos/:ID", "POST", "userController", "editarRol");
+
  //LOGIN, LOGOUT Y REGISTER
     $r->addRoute("login", "GET", "userController", "Log");
-    $r->addRoute("logout", "GET", "userController", "Logout");
+    $r->addRoute("logout", "GET", "userController", "logout");
     $r->addRoute("register", "GET", "userController", "Register");
 
     $r->addRoute("verifyUser", "POST", "userController", "VerifyUser");

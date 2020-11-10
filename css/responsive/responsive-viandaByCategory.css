@@ -1,9 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Bree+Serif&display=swap');
 .oculto {
     display: none;
+    transition: all 1500ms ease;
 }
 .mostrar {
-    display: block;
+    display: flex;
+    transition: all 1500ms ease;
 }
 
 @media only screen and (min-width: 580px){
@@ -54,6 +56,7 @@
         font-family: 'Times New Roman', Times, serif;
         font-weight: bold;
         cursor: pointer;
+        text-decoration: none;
         
     }
 
@@ -62,10 +65,42 @@
         transition: all ease 0.3s;
     }
 
+
+    .volver {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        width: 15%;
+        background-color: rgb(255, 173, 50);
+        border: 5px solid rgb(150, 81, 35);
+        border-bottom: 5px solid rgb(94, 56, 24);
+        border-right: 5px solid rgb(94, 52, 24);
+        font-size: 3vw;
+        border-radius: 10px;
+        color: black;
+        padding: 11px;
+        font-family: 'Times New Roman', Times, serif;
+        font-weight: bold;
+        cursor: pointer;
+        text-decoration: none;
+    }
+    
     .contenedorVianda {
 
         justify-content: center;
         width: 26%;
+        flex-direction: column;
+        margin-bottom: 5%;
+        margin: 3%;
+        border: none;
+    }
+    
+    .contenedorVolver {
+
+        justify-content: center;
+        align-items: center;
+        display: flex;
         flex-direction: column;
         margin-bottom: 5%;
         margin: 3%;
@@ -104,37 +139,6 @@
         width: 43%;
     }
 
-    .contenedorVolver {
-
-        justify-content: center;
-        align-items: center;
-        display: flex;
-        flex-direction: column;
-        margin-bottom: 5%;
-        margin: 3%;
-        border: none;
-    }
-
-    .volver {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        text-align: center;
-        width: 15%;
-        background-color: rgb(255, 173, 50);
-        border: 5px solid rgb(150, 81, 35);
-        border-bottom: 5px solid rgb(94, 56, 24);
-        border-right: 5px solid rgb(94, 52, 24);
-        font-size: 3vw;
-        border-radius: 10px;
-        color: black;
-        padding: 11px;
-        font-family: 'Times New Roman', Times, serif;
-        font-weight: bold;
-        cursor: pointer;
-        text-decoration: none;
-    }
-
 
 }
 
@@ -153,12 +157,5 @@
         margin: 3%;
         border: none;
     }
-
-
-        
-
-
-
-
 
 }

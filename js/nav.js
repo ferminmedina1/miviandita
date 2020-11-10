@@ -1,7 +1,5 @@
-
-document.addEventListener('DOMContentLoaded', cargarNav);
-
 "use strict";
+document.addEventListener('DOMContentLoaded', cargarNav);
 
 function cargarNav () {
 

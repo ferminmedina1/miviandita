@@ -22,6 +22,14 @@ class viandasView{
         $this->smarty->display('../templates/AllViandas.tpl');
     }
 
+ //DESCRIPCION DE VIANDA
+    function showVianda($vianda){
+
+        $this->smarty -> assign('vianda', $vianda);
+        $this->smarty->display('../templates/descripcionVianda.tpl');
+
+    }
+
  //MUESTRA LA SECCION PROMO
     function ShowPromo(){
         $this->smarty->display('../templates/promo.tpl');
@@ -48,9 +56,13 @@ class viandasView{
     }
 
  //MUESTRA LA SECCION ADMINISTRACION
-    function ShowAdminViandas($categorias,$viandas){
-        $this->smarty -> assign('tipo', $categorias);
-        $this->smarty -> assign('allViandas', $viandas);
+    function showAdministracion(){
+        $this->smarty->display('../templates/administracion.tpl');
+    }
+
+    function ShowAdminViandas($viandas, $categorias){
+        $this->smarty->assign('tipo', $categorias);
+        $this->smarty->assign('allViandas', $viandas);
         $this->smarty->display('../templates/adminViandas.tpl');
     }
 
@@ -66,9 +78,13 @@ class viandasView{
         header("Location: ".BASE_URL."Home");
     }
 
+    function showViandasLocation(){
+        header("Location: ".BASE_URL."viandas");
+    }
+
  //REDIRECCIONA A ADMINISTRACION
-    function showAdminLocation(){
-        header("Location: ".BASE_URL."administracion");
+    function showAdminViandasLocation(){
+        header("Location: ".BASE_URL."administracion/viandas");
     }
 }
 

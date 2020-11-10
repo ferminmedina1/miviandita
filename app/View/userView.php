@@ -22,5 +22,19 @@ class userView{
         $this->smarty->assign('mensaje', $mensaje);
         $this->smarty->display('../templates/register.tpl');
     }
+
+    function showUsers($usuarios){
+        $this->smarty->assign("usuarios", $usuarios);
+        $this->smarty->display('../templates/adminUsers.tpl');
+    }
+
+    function showFormUser($usuario){
+        $this->smarty->assign("usuario", $usuario);
+        $this->smarty->display('../templates/formEditarUser.tpl');
+    }
+
+    function showAdminUsersLocation(){
+        header("Location: ".BASE_URL."administracion/usuarios");
+    }
 }
 ?>

@@ -29,6 +29,21 @@ class categoriasView{
         $this->smarty->display('../templates/formEditarCategoria.tpl');
     }
 
+    function ShowAdminCategorias($categorias){
+          $this->smarty->assign('tipo', $categorias);
+          $this->smarty->display('../templates/adminCategorias.tpl');
+      }
+
+    function showAdminCategoriasLocation(){
+        header("Location: ".BASE_URL."administracion/categorias");
+    
+    }
+
+    function showCategoriasLocation(){
+        header("Location: ".BASE_URL."viandas");
+    
+    }
+
 }
 
 ?>

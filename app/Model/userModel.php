@@ -7,12 +7,22 @@ class userModel{
         $this->db = new PDO('mysql:host=localhost;'.'dbname=db_miviandita;charset=utf8', 'root', '');
     }
 
- //OBTIENE UN USUARIO INGRESADO PARA SABER SI ESTA EN LA DB
+ //TRAE UN USUARIO MEDIANTE EL user
     function GetUser($user){
-        $sentencia = $this->db->prepare("SELECT * FROM users WHERE email=?");
+        $sentencia = $this->db->prepare("SELECT * FROM users WHERE user=?");
         $sentencia->execute([$user]);
-        return $sentencia->fetch(PDO::FETCH_OBJ);
+        $usuario = $sentencia->fetch(PDO::FETCH_OBJ);
+        return $usuario;
     }
+
+ //TRAE UN USUARIO MEDIANTE EL ID  
+    function getUserByID($id){
+        $sentencia = $this->db->prepare("SELECT * FROM users WHERE id_user=?");
+        $sentencia->execute([$id]);
+        $usuario = $sentencia->fetch(PDO::FETCH_OBJ);
+        return $usuario;
+    }
+
 
  //OBTIENE TODOS LOS USUARIOS
     function getAllUsers(){
@@ -23,10 +33,27 @@ class userModel{
     }
 
  //AGREGA UN USUARIO A LA BD
-    function addUserDB($email,$hash,$rol){
-        $query = $this->db->prepare('INSERT INTO users(email,password,rol) VALUES (?,?,?)');
-        $query->execute([$email,$hash,$rol]);
+    function addUserDB($user,$hash,$rol){
+        $query = $this->db->prepare('INSERT INTO users(user,password,rol) VALUES (?,?,?)');
+        $query->execute([$user,$hash,$rol]);
     }
+
+ //ELIMINA UN USUARIO
+    function deleteUser($id_user) {
+        echo $id_user;
+        $query = $this->db->prepare("DELETE users,comentarios FROM users JOIN comentarios ON users.id_user = comentarios.id_user WHERE users.id_user = ?");
+        $query->execute([$id_user]);
+
+        $sentencia = $this->db->prepare('DELETE FROM users WHERE id_user= ?');
+        $sentencia->execute([$id_user]);
+
+    }
+
+    function updateRol($id_user, $nuevoRol){
+        $query = $this->db->prepare("UPDATE users SET rol='$nuevoRol' WHERE id_user = ?");
+        $query->execute([$id_user]);
+    }
+
 }
 
 ?>

@@ -20,7 +20,7 @@
 
  <!-- MENU DE NAVEGACION -->
 
-            {if (!isset($smarty.session.EMAIL))} <!--CON ESTO SE VERIFICA QUE NO HAYA UN USUARIO LOGUEADO-->
+            {if (!isset($smarty.session.user))} <!--CON ESTO SE VERIFICA QUE NO HAYA UN USUARIO LOGUEADO-->
 
              {include file="nav.tpl"}
         
@@ -34,20 +34,15 @@
     <div class="allViandas">
         
         {foreach from=$viand item=vianda}
+            
             <div class="contenedorVianda">
+                <a href="vianda/{$vianda->id_vianda}" class="plato"> {$vianda->nombre} </a>
+            </div>
 
-                    <button class="plato">{$vianda->nombre}</button>
-
-                    <div class="oculto">
-                        <div class="descripcionViandas">
-                            <p>{$vianda->descripcion}</p>
-                            <h3 class="precio">${$vianda->precio}</h3>
-                        </div>
-                    </div>
-                </div>
         {/foreach}
-             
+
     </div>
+
     <div class="contenedorVolver">
             <a href="viandas" class="volver" hr>Volver</a>
     </div>

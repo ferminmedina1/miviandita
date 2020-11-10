@@ -2,7 +2,6 @@
 
 require_once "./app/View/viandasView.php";
 require_once "./app/Model/viandasModel.php";
-/*require_once "./app/View/categoriasView.php";*/
 require_once "./app/Model/categoriasModel.php";
 require_once "./app/Controller/userController.php";
 
@@ -34,16 +33,33 @@ class viandasController{
         $this->view->showAllViandas($viandas);
         
     }
+
+//VER VIANDA
+    function verVianda($params = null){
+
+        $id_vianda = $params[":ID"];
+        $vianda = $this->model->getViandaByID($id_vianda);
+        if($vianda)
+            $this->view->showVianda($vianda);
+        else
+            $this->view->showViandasLocation();
+
+    }
     
  //MUESTRA EL FORMULARIO INGRESAR VIANDAS Y LAS AGREGA A LA DB
     function ingresarVianda(){
-        $this->verificarSiESAdmin();
-        if((!empty($_POST['nombre'])) && (!empty($_POST['descripcion'])) && (!empty($_POST['precio'])) && (!empty($_POST['dirigidoA']))) {
-            
-            $this->model->insertVianda($_POST['nombre'], $_POST['descripcion'], $_POST['precio'], $_POST['dirigidoA']);
-            
+        $admin = $this->verificarSiESAdmin();
+
+        if ($admin == True){    
+            if((!empty($_POST['nombre'])) && (!empty($_POST['descripcion'])) && (!empty($_POST['precio'])) && (!empty($_POST['dirigidoA']))) {
+                $this->model->insertVianda($_POST['nombre'], $_POST['descripcion'], $_POST['precio'], $_POST['dirigidoA']);
+            }
+            $this->view->showAdminViandasLocation(); 
         }
-        $this->view->showAdminLocation();
+        else{
+            header("Location: ".LOGIN);
+            die();
+        }
         
     }
 
@@ -75,65 +91,106 @@ class viandasController{
     }
 
  //MUESTRA ADMINISTRACION DE VIANDAS/CATEGORIAS
-    function AdminViandas(){
-        $this->verificarSiESAdmin();
-        $categorias = $this->modelCategorias->getCategoria();
-        $viandas = $this->model->getViandas();
-        $this->view->ShowAdminViandas($categorias,$viandas);
-    }
+    function showAdministracion(){
+        $admin = $this->verificarSiESAdmin();
 
- //ELIMINA LA VIANDA SELECCIONADA
-    function eliminarVianda($params = null){
-        $this->verificarSiESAdmin();
-        $vianda_ID = $params[':ID'];
-        $this->model->deleteVianda($vianda_ID);
-        $this->view->showAdminLocation();
-        
-    }
-
- //MUESTRA EL FORMULARIO EDITAR VIANDA
-    function showFormEditar($params = null){
-        $this->verificarSiESAdmin();
-        $idVianda = $params[":ID"];
-        $vianda = $this->model->getViandaByID($idVianda);
-        $categorias = $this->modelCategorias->getCategoria();
-        $this->view->showFormularioEditar($vianda,$categorias);
-    }
-
- //EDITA LA VIANDA EN LA DB
-    function editarVianda($params = null){
-        $this->verificarSiESAdmin();
-        $vianda_ID = $params[':ID'];
-        
-        if((!empty($_POST['nombre'])) && (!empty($_POST['descripcion'])) && (!empty($_POST['precio'])) && (!empty($_POST['dirigidoA']))) {
-                $this->model->updateVianda($_POST['nombre'], $_POST['descripcion'], $_POST['precio'], $_POST['dirigidoA'], $vianda_ID);
-        }
-        $this->view->showAdminLocation();        
-    }
-
- //BARRERA DE SEGURIDAD DEL CONTROLLER
-    private function checkLoggedIn(){
-        session_start();                    //SE INICIA UNA SESION
-        if(!isset($_SESSION["EMAIL"])){     //SI NO ESTA SETEADO EL EMAIL (NO HAY USUARIO LOGUEADO)
-            $_SESSION["ROL"] = "visitante"; //SE LE ASIGNA UN ROL A CUALQUIERA QUE ACCEDA A LA PAGINA
+        if ($admin == True){
+            $this->view->ShowAdministracion();
+            /*$categorias = $this->modelCategorias->getCategoria();
+            $viandas = $this->model->getViandas();
+            $this->view->ShowAdminViandas($categorias,$viandas);*/
         }
         else{
-            if (isset($_SESSION['LAST_ACTIVITY']) && (time() - $_SESSION['LAST_ACTIVITY'] > 1800)) {    //SE VERIFICA LA ULTIMA ACCION EN LA PAGINA, SI ES MAYOR A 30m SE CIERRA LA SESION
-                header("Location: ".LOGOUT);    //CIERRA LA SESION
-                die();
-            } 
-            $_SESSION['LAST_ACTIVITY'] = time();    //SE ACTUALIZA EL TIEMPO
-        }  
-    }
-
- //VERIFICA SI EL USUARIO EN LA SESION ES ADMIN
-    private function verificarSiESAdmin(){
-        if((isset($_SESSION["ROL"])) && ($_SESSION["ROL"] != "administrador")){
             header("Location: ".LOGIN);
             die();
         }
     }
 
-}
+    function adminViandas(){
+        $admin = $this->verificarSiESAdmin();
 
+        if ($admin == True){
+
+           $categorias = $this->modelCategorias->getCategoria();
+            $viandas = $this->model->getViandas();
+            $this->view->ShowAdminViandas($viandas, $categorias);
+        }
+        else{
+            header("Location: ".LOGIN);
+            die();
+        }
+
+    }
+
+ //ELIMINA LA VIANDA SELECCIONADA
+    function eliminarVianda($params = null){
+
+        $admin = $this->verificarSiESAdmin();
+        if ($admin == True){ 
+            $vianda_ID = $params[':ID'];
+            $this->model->deleteVianda($vianda_ID);
+            $this->view->showAdminViandasLocation(); 
+        }
+        else{
+            header("Location: ".LOGIN);
+            die();
+        }
+        
+    }
+
+ //MUESTRA EL FORMULARIO EDITAR VIANDA
+    function showFormEditar($params = null){
+        $admin = $this->verificarSiESAdmin();
+        
+        if ($admin == True){ 
+            $idVianda = $params[":ID"];
+            $vianda = $this->model->getViandaByID($idVianda);
+            $categorias = $this->modelCategorias->getCategoria();
+            $this->view->showFormularioEditar($vianda,$categorias);
+        }
+        else{
+            header("Location: ".LOGIN);
+            die();
+        }
+
+    }
+
+ //EDITA LA VIANDA EN LA DB
+    function editarVianda($params = null){
+        $admin = $this->verificarSiESAdmin();
+
+        if ($admin == True){ 
+            $vianda_ID = $params[':ID'];
+            if((!empty($_POST['nombre'])) && (!empty($_POST['descripcion'])) && (!empty($_POST['precio'])) && (!empty($_POST['dirigidoA']))) {
+                    $this->model->updateVianda($_POST['nombre'], $_POST['descripcion'], $_POST['precio'], $_POST['dirigidoA'], $vianda_ID);
+            }
+            $this->view->showAdminViandasLocation();   
+        }
+        else{
+            header("Location: ".LOGIN);
+            die();
+        }     
+    }
+
+ //BARRERA DE SEGURIDAD DEL CONTROLLER
+    private function checkLoggedIn(){
+        session_start();                    //SE INICIA UNA SESION
+        if(!isset($_SESSION["user"])){     //SI NO ESTA SETEADO EL EMAIL (NO HAY USUARIO LOGUEADO)
+            $_SESSION["ROL"] = "visitante"; //SE LE ASIGNA UN ROL A CUALQUIERA QUE ACCEDA A LA PAGINA
+        }  
+    }
+
+ //VERIFICA SI EL USUARIO EN LA SESION ES ADMIN
+    private function verificarSiESAdmin(){
+        
+        if((isset($_SESSION["ROL"])) && ($_SESSION["ROL"] != "administrador")){
+            $admin = False;
+        }
+        else{
+            $admin = True;
+        }
+        return $admin;
+    }
+
+}
 ?>

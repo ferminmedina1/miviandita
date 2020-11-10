@@ -183,23 +183,7 @@ form{
     justify-content: center;
 }
 
-.agregarAtabla {
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-transform: uppercase;
-    background-color: rgb(212, 152, 62);
-    font-size: 30px;
-    font-weight: bold;
-    width: 100%;
-    padding-top: 20px;
-    padding-bottom: 20px;
-    border-radius: 20px;
-    border-bottom: 10px solid rgb(148, 96, 0);
-    border-right: 10px solid rgb(148, 96, 0);
-}
+
 
 .textoInput {
     display: flex;

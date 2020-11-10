@@ -11,7 +11,6 @@
     <link rel="stylesheet" href="./css/responsive/responsive-consultas.css">
     <link rel="stylesheet" href="./css/log.css">
     <script type="text/javascript" src="./js/nav.js"></script>
-    <script type="text/javascript" src="./js/captcha.js"></script>
     <base href="{$base_url}">
 </head>
 
@@ -23,7 +22,7 @@
 
  <!-- MENU DE NAVEGACION -->
 
-            {if (!isset($smarty.session.EMAIL))} <!--CON ESTO SE VERIFICA QUE NO HAYA UN USUARIO LOGUEADO-->
+            {if (!isset($smarty.session.user))} <!--CON ESTO SE VERIFICA QUE NO HAYA UN USUARIO LOGUEADO-->
 
              {include file="nav.tpl"}
         
@@ -41,8 +40,8 @@
 
                 <h1 class="subtitulo"> Logueate! <img src="./images/user.png" alt="user" id="userFormulario"></h1>
                 
-                <label class="itemformulario"> Email: </label> <input type="text" name="input_user">
-                <label class="itemformulario"> Contraseña: </label> <input type="password" id="contra" name="input_pass">
+                <label class="itemformulario"> Usuario: </label> <input type="text" name="input_user" required>
+                <label class="itemformulario"> Contraseña: </label> <input type="password" id="contra" name="input_pass" required>
                 <a href="register" id="register">No tienes una cuenta? Crea una haciendo click aca!</a>
                 <p id="avisoCaptcha">{$mensaje}</p>
                 <button type="submit" id="botonEnviar" >ENTRAR</button>

@@ -5,12 +5,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mi Viandita! - Administracion</title>
-    <link rel="stylesheet" href="./css/style.css">
-    <link rel="stylesheet" href="./css/viandas.css">
-    <link rel="stylesheet" href="./css/adminViandas.css">
-    <link rel="stylesheet" href="./css/responsive/responsive.css">
-    <link rel="stylesheet" href="./css/responsive/responsive-viandas.css">
-    <script type="text/javascript" src="./js/nav.js"></script>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/viandas.css">
+    <link rel="stylesheet" href="../css/adminViandas.css">
+    <link rel="stylesheet" href="../css/responsive/responsive.css">
+    <link rel="stylesheet" href="../css/responsive/responsive-viandas.css">
+    <script type="text/javascript" src="../js/nav.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <base href="{$base_url}">
 </head>
@@ -23,7 +23,7 @@
 
  <!-- MENU DE NAVEGACION -->
 
-            {if (!isset($smarty.session.EMAIL))} <!--CON ESTO SE VERIFICA QUE NO HAYA UN USUARIO LOGUEADO-->
+            {if (!isset($smarty.session.user))} <!--CON ESTO SE VERIFICA QUE NO HAYA UN USUARIO LOGUEADO-->
 
              {include file="nav.tpl"}
         
@@ -31,10 +31,9 @@
                 {include file="navUser.tpl"}
         {/if}
 
-    <h2 class="tituloAllCategorias">ADMINISTRACIÓN</h2>
 
     <div class="agregarAtabla">
-        <h4>Administrar viandas</h4>
+        <h3>Administrar viandas</h3>
         <form action="agregarVianda" method="post">
 
             <div class="inputsPrincipales">
@@ -75,43 +74,12 @@
         </table>
 
 
-    <div class="categorias">
-
-            <form action="agregarCategoria" method="post">
-
-                    <div class="categoriaNueva">
-                    <h4>Administrar categorias</h4>
-                        <div class="agregarCategoria">
-                            <input type="text" name="tipo_vianda" id="nuevaCategoria" placeholder="Nueva categoria">
-                            <button type="submit" id="addCategoria_db">Agregar categoria</button>
-                        </div>
-                    </div>
- 
-
-            </form>
-    </div> 
-
-            <table>
-            <thead>
-                <tr>
-                    <th>Tipo de categoria</th><th>Borrar/Editar</th>
-                </tr>
-            </thead>
-            <tbody>
-                {foreach from=$tipo item=categoria}
-                    <tr><td>{$categoria->tipo_vianda}</td>
-                    <td class="botonBorrar"> <a href='eliminarCategoria/{$categoria->id_dirigidoA}'><button class="botonBorrarTD" id="{$categoria->id_dirigidoA}"><i class="fa fa-trash-o"></i></button></a>
-                    <a href='editarCategoria/{$categoria->id_dirigidoA}'><button class="botonEditarTD" id="{$categoria->id_dirigidoA}"><i class="fa fa-edit"></i></button></a></td></tr>
-                {/foreach}
-            </tbody>
-        </table>
-
  <!-- BOTON CONSULTAS Y LOGIN -->
 
     <section class="section-consultas">
-        <h3 class="user">{$smarty.session.EMAIL}</h3>
+        <h3 class="user">{$smarty.session.user}</h3>
         <a class="botonLogueo" href="logout"> Desloguearse <img src="./images/user.png" alt="user.img" class="imagenConsultas"></a>
-        <a class="botonAdministrar" href="viandas"> Volver a "viandas"</a>
+        <a class="botonAdministrar" href="administracion"> Volver a administración</a>
     </section>
 
  <!-- FOOTER -->

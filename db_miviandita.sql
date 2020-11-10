@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 08-10-2020 a las 03:36:02
+-- Tiempo de generación: 10-11-2020 a las 22:50:05
 -- Versión del servidor: 10.4.14-MariaDB
 -- Versión de PHP: 7.4.10
 
@@ -24,6 +24,31 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `comentarios`
+--
+
+CREATE TABLE `comentarios` (
+  `id_comentario` int(11) NOT NULL,
+  `id_user` int(11) NOT NULL,
+  `id_vianda` int(11) NOT NULL,
+  `comentario` text NOT NULL,
+  `calificacion` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `comentarios`
+--
+
+INSERT INTO `comentarios` (`id_comentario`, `id_user`, `id_vianda`, `comentario`, `calificacion`) VALUES
+(145, 2, 8, 'Le falta mas gusto', 3),
+(147, 2, 6, 'Buena atención.', 4),
+(163, 5, 55, 'Buenas empanadas', 4),
+(164, 5, 59, 'Muy buena comida!', 4),
+(173, 5, 57, 'Excelente servicio!!!', 5);
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `dirigido_table`
 --
 
@@ -38,8 +63,8 @@ CREATE TABLE `dirigido_table` (
 
 INSERT INTO `dirigido_table` (`id_dirigidoA`, `tipo_vianda`) VALUES
 (6, 'Celiaca'),
-(7, 'Vegana'),
-(8, 'Normal');
+(8, 'clasica'),
+(27, 'Vegetariana');
 
 -- --------------------------------------------------------
 
@@ -49,7 +74,7 @@ INSERT INTO `dirigido_table` (`id_dirigidoA`, `tipo_vianda`) VALUES
 
 CREATE TABLE `users` (
   `id_user` int(11) NOT NULL,
-  `email` varchar(255) NOT NULL,
+  `user` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL,
   `rol` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -58,8 +83,9 @@ CREATE TABLE `users` (
 -- Volcado de datos para la tabla `users`
 --
 
-INSERT INTO `users` (`id_user`, `email`, `password`, `rol`) VALUES
-(2, 'admin@gmail.com', '$2y$10$pkMdRWaHmCukD9InkkWSGePAq6OMoXjFtpxt4E6AfYbnmiITyNQY.', 'administrador');
+INSERT INTO `users` (`id_user`, `user`, `password`, `rol`) VALUES
+(2, 'Admin', '$2y$10$pkMdRWaHmCukD9InkkWSGePAq6OMoXjFtpxt4E6AfYbnmiITyNQY.', 'administrador'),
+(5, 'Arleo.Agustin', '$2y$10$7PWf5i0glcDGda47Sa0XC.d/g4jVHOwxnTxUQmT2iI.P1/g6ZgdFe', 'cliente');
 
 -- --------------------------------------------------------
 
@@ -81,16 +107,28 @@ CREATE TABLE `viandas` (
 
 INSERT INTO `viandas` (`nombre`, `precio`, `id_dirigidoA`, `descripcion`, `id_vianda`) VALUES
 ('Milanesa', 250, 8, 'Te presentamos la \"gran milanesa\", hecha con ingredientes de primera calidad. Este combo\r\nviene con una porcion de papas y una milanesa de carne para una persona, ideal para un buen almuerzo.', 4),
-('Ensalada vegana', 130, 7, 'La ensalada vegana es lo nuevo de la casa, tenemos opciones para todos los gustos. Incluye zanahoria, tomate, lechuga y rucula, no te quedes sin la tuya!!!', 5),
-('Fideos con salsa', 185, 8, 'Lo ideal para matar este frio es comer unos ricos fideos con salsa y como siempre en Mi viandita! tenemos para ofrecerte lo mejor. Para hacer tu pedido podes encontrarnos en la seccion \"contactos\".', 6),
+('Fideos', 185, 8, 'Lo ideal para matar este frio es comer unos ricos fideos con salsa y como siempre en Mi viandita! tenemos para ofrecerte lo mejor. Para hacer tu pedido podes encontrarnos en la seccion \"contactos\".', 6),
 ('Tarta', 230, 8, 'Tarta de jamon y queso', 8),
-('Queso', 220, 6, 'Queso para acompañar la comida', 9),
-('Empanadas', 380, 8, 'Empanadas de carne', 28),
-('Canelones', 180, 7, 'Canelones de verdura', 29);
+('Empanadas', 550, 8, 'Empanadas de carne', 55),
+('Emapandas de verdura', 400, 27, 'Empanadas de verdura', 56),
+('Ensalada de lechuga y tomate', 150, 6, 'Ensalada de verduras, apta para personas celiacas', 57),
+('Papas fritas', 170, 8, 'Porción de fritas para acompañar', 58),
+('Arroz con huevo', 120, 6, 'Bandeja de arroz con huevo triturado', 59),
+('Ensalada de zanahoria y cebolla', 100, 27, 'Bandeja mediana de zanahoria rallada y cebolla en rodajas', 60),
+('Medallones de pollo', 250, 8, 'Medallones de pollo con queso dentro', 61),
+('Tarta de verdura', 130, 27, 'Tarta de acelga, rinde para 4 personas', 62);
 
 --
 -- Índices para tablas volcadas
 --
+
+--
+-- Indices de la tabla `comentarios`
+--
+ALTER TABLE `comentarios`
+  ADD PRIMARY KEY (`id_comentario`),
+  ADD KEY `FK_id_vianda` (`id_vianda`),
+  ADD KEY `FK_id_user` (`id_user`) USING BTREE;
 
 --
 -- Indices de la tabla `dirigido_table`
@@ -116,26 +154,39 @@ ALTER TABLE `viandas`
 --
 
 --
+-- AUTO_INCREMENT de la tabla `comentarios`
+--
+ALTER TABLE `comentarios`
+  MODIFY `id_comentario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=179;
+
+--
 -- AUTO_INCREMENT de la tabla `dirigido_table`
 --
 ALTER TABLE `dirigido_table`
-  MODIFY `id_dirigidoA` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id_dirigidoA` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 
 --
 -- AUTO_INCREMENT de la tabla `users`
 --
 ALTER TABLE `users`
-  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 
 --
 -- AUTO_INCREMENT de la tabla `viandas`
 --
 ALTER TABLE `viandas`
-  MODIFY `id_vianda` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
+  MODIFY `id_vianda` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=64;
 
 --
 -- Restricciones para tablas volcadas
 --
+
+--
+-- Filtros para la tabla `comentarios`
+--
+ALTER TABLE `comentarios`
+  ADD CONSTRAINT `comentarios_ibfk_2` FOREIGN KEY (`id_vianda`) REFERENCES `viandas` (`id_vianda`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `comentarios_ibfk_3` FOREIGN KEY (`id_user`) REFERENCES `users` (`id_user`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Filtros para la tabla `viandas`

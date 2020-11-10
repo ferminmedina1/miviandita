@@ -11,7 +11,7 @@ class viandasModel{
     function getViandaByID($id){
         $query = $this->db->prepare('SELECT * FROM viandas INNER JOIN dirigido_table ON viandas.id_dirigidoA=dirigido_table.id_dirigidoA WHERE id_vianda = ?');
         $query->execute([$id]);
-        $vianda = $query->fetchAll(PDO::FETCH_OBJ);
+        $vianda = $query->fetch(PDO::FETCH_OBJ);
         return $vianda;
     }
 
