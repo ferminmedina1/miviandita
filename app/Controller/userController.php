@@ -80,6 +80,32 @@ class userController{
         }
     }
 
+ //AGREGA UN ADMIN NUEVO
+ function addAdmin(){
+
+    $user = $_POST["user"];
+    $pass_input = $_POST["pass"];
+    $rol = "administrador";
+    $hash = password_hash($pass_input, PASSWORD_DEFAULT);
+    //SE VERIFICA QUE LOS CAMPOS NO ESTEN VACIOS
+    if((isset($_POST["user"]) && !empty($_POST["user"])) && (isset($_POST["pass"]) && !empty($_POST["pass"]))){
+
+        $existe = $this->verificarUsuario($user);  
+    //SI EL USER NO EXISTE LO AGREGA A LA DB
+        if ($existe == False) {        
+            $this->model->addUserDB($user,$hash,$rol);
+            $this->view->showLog("Se registro el usuario correctamente");
+        }
+        else{
+            $this->view->showRegister("Usuario ya registrado");   
+        }      
+    }
+    else{
+        $this->view->showRegister("Ingresa los datos correspondientes");  
+    }
+}
+    
+
  //SI EL USUARIO EXISTE DEVUELVE TRUE, SINO FALSO
     function verificarUsuario($usuario){     
         $existe = False;

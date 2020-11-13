@@ -18,6 +18,10 @@
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 
+h1{
+    color: white;
+}
+
 .categorias, .viandas, .usuarios{
 
     display: flex;

@@ -75,7 +75,7 @@ function cargarPagina () {
                 estrellas += estrella   //SE VAN CONCATENANDO LAS ESTRELLAS
             }
          //SE CREA EL COMENTARIO JUNTO CON EL USUARIO Y LA CALIFICACION
-            lista.innerHTML += "<li>" + 
+            lista.innerHTML += "<li class='comentario'>" + 
                 "<div class='usuarioCalificacion'>"+
                 "<div class='imgYUser'>" + 
                 "<img src='./images/user.png' class='imgUser'>" +
@@ -98,11 +98,10 @@ function cargarPagina () {
 
  //DESDE LA COOKIE DEL NAV SE OBTIENE EL ID DEL USUARIO
     function leerCookie() {
-
        // https://aprende-web.net/javascript/js14_2.php 
-
         let lista = document.cookie.split(";");
-        for (i in lista) {
+        let micookie;
+        for (let i in lista) {
             let busca = lista[i].search("id_user");
             if (busca > -1) 
                 micookie=lista[i]

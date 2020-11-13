@@ -39,10 +39,10 @@
     </div>
 
 
-    </div>
-
-
     
+
+
+    <div class="contenedorCalificacion">
         {if (isset($smarty.session.user))}
 
                 {include file="calificacionDeVianda.tpl"}
@@ -62,11 +62,11 @@
 
         </div>
 
-
+    </div>
+    
     <div class="contenedorVolver">
             <a href="verTodas" class="volver" hr>Volver</a>
     </div>
-    
 <!-- BOTON CONSULTAS & BOTON LOGIN-->
 
     {include file="botonLogin.tpl"}

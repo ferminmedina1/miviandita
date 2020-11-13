@@ -64,6 +64,7 @@
 
     $r->addRoute("verifyUser", "POST", "userController", "VerifyUser");
     $r->addRoute("agregarUser", "POST", "userController", "addUser");
+    $r->addRoute("agregarAdmin", "POST", "userController", "addAdmin");
 
  //Ruta por defecto.
     $r->setDefaultRoute("viandasController", "Home");

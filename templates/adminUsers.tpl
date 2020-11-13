@@ -34,8 +34,18 @@
 
 
     <h2 class="tituloAdministracion">ADMINISTRAR USUARIOS</h2>
+        <div class="formulario">
+         <h1 class="addUserTitle">Agregar ADMIN</h1>
+            <form action="agregarAdmin" method="post">
+                <div class="inputsPrincipales">
+                    <label class="itemformulario"> Usuario: </label> <input required type="text" id="correo" name="user">
+                    <label class="itemformulario"> Contraseña: </label> <input required type="password" id="contra" name="pass">
+                    
+                </div>
+                <button type="submit" id="botonEnviar" >REGISTRAR</button>
 
-
+            </form>
+        </div>
         <table>
             <thead>
                 <tr>
