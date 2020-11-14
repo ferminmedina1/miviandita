@@ -122,6 +122,7 @@ function cargarPagina () {
  //DESDE LA COOKIE DEL NAV SE OBTIENE EL ID DEL USUARIO
     function leerCookie() {
        // https://aprende-web.net/javascript/js14_2.php 
+       
         let lista = document.cookie.split(";");
         let micookie;
         for (let i in lista) {
@@ -132,7 +133,7 @@ function cargarPagina () {
         let igual = micookie.indexOf("=");
         let valor = micookie.substring(igual+1);
         return valor;
-        }
+    }
     
 
     function boton_borrar_fila () { 
