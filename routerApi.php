@@ -8,6 +8,9 @@ $r = new Router();
 //TRAER COMENTARIO POR ID
 $r->addRoute("comentarios/:ID", "GET", "apiCommentsController", "commentById");
 
+//TRAER COMENTARIO POR ID de VIANDA
+$r->addRoute("comentarios/vianda/:ID", "GET", "apiCommentsController", "commentByViandaId");
+
 //TRAER TODOS LOS COMENTARIOS
 $r->addRoute("comentarios", "GET", "apiCommentsController", "allComentarios");
 

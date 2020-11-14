@@ -16,16 +16,25 @@ class apiCommentsController extends apiController{
 
     
 
+    
  //TRAE LOS COMENTARIO SEGUN EL ID DE LA VIANDA
-    function commentById($params = null){
-
+    function commentByViandaId($params = null){
         $id = $params[":ID"];
         $comentario = $this->model->getCommentsByVianda($id);
         if (!empty($comentario))
             $this->view->response($comentario, 200);
         else
             $this->view->response("No hay comentarios ya que la vianda con el id $id no existe o no tiene comentarios", 404);
+    }
 
+ //TRAE LOS COMENTARIO SEGUN EL ID DEL COMENTARIO
+    function commentById($params = null){
+        $id = $params[":ID"];
+        $comentario = $this->model->getCommentById($id);
+        if (!empty($comentario))
+            $this->view->response($comentario, 200);
+        else
+            $this->view->response("No hay comentarios con el id $id", 404);
     }
 
  //TRAE TODOS LOS COMENTARIOS EN LA DB
@@ -50,8 +59,7 @@ class apiCommentsController extends apiController{
     }
 
  //AGREGA UN NUEVO COMENTARIO A LA DB
-    function addComment($params = null){
-        
+    function addComment(){
         $body = $this->getData();
         $comentario = $this->model->insertComment($body->comentario, $body->id_vianda, $body->calificacion, $body->id_user);
      //SI RETORNA 1 ES PORQUE SE PUDO INGRESAR EL COMENTARIO, DE LO CONTRARIO NO 

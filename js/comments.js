@@ -3,8 +3,8 @@ document.addEventListener('DOMContentLoaded', cargarPagina);
 
 function cargarPagina () {
     
-    getComments()
-
+    getComments();
+    
     document.querySelector("#btnEnviar").addEventListener("click", function(e) {
         e.preventDefault();
         let id_vianda = getIdVianda()
@@ -28,15 +28,22 @@ function cargarPagina () {
         }
 
         if((comment.comentario != "") && (comment.calificacion != 0)){  //SI ESTAN VACIOS LOS CAMPOS NO SE ENVIA
-        
+            let lista = document.querySelector(".error");
+            lista.innerHTML = ""
             fetch('api/calificarVianda', {
                 method: 'POST',
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(comment)
             })
                 .then(response =>  response.json())
-                .then(comments => getComments())    //OBTIENE LOS COMENTARIOS
+                .then(get => getComments())    //OBTIENE LOS COMENTARIOS
                 .catch(error => console.log(error));
+        }else if(comment.comentario == ""){
+            let lista = document.querySelector(".error");
+            lista.innerHTML = "Ingrese un comentario."
+        }else if(comment.calificacion == 0){
+            let lista = document.querySelector(".error");
+            lista.innerHTML = "Ingrese una calificacion."
         }
 
         document.getElementById("formulario").reset();  //SE RESETEAN LOS CAMPOS DEL FORMULARIO
@@ -47,7 +54,7 @@ function cargarPagina () {
         
         let id= getIdVianda();
 
-        fetch('api/comentarios/'+ id +'')
+        fetch('api/comentarios/vianda/'+ id +'')
             .then(response =>  response.json())
             .then(comments => renderComments(comments)) //SE LLAMA A LA FUNCION QUE LOS MUESTRA
             .catch(error => sinComentarios());
@@ -57,16 +64,22 @@ function cargarPagina () {
     function sinComentarios() {
 
         let lista = document.querySelector(".listaComentarios");
+
+        if(lista == null){
+            lista = document.querySelector(".listaComentariosVIP");
+        }
+
         lista.innerHTML = "Esta vianda aún no tiene calificaciones"
     }
 
  //MUESTRA LOS COMENTARIOS EN EL DOM
     function renderComments(comments) {
-
-        let lista = document.querySelector(".listaComentarios");
+        let lista = document.querySelector(".listaComentariosVIP"); //busco si existe la lista de comentarios vip el cual aparecera si el usuario es admin
+        if(lista == null){ //si no existe le asigno la lista de comentarios
+            lista = document.querySelector(".listaComentarios");
+        }
         lista.innerHTML = ""            //SE VACIA EL DIV
         comments.forEach(comment => {
-            
          //A PARTIR DE LA CALIFICACION QUE SE OBTIENE DESDE LA API, SE CREA UNA VARIABLE STRING CON LA CANTIDAD DE ESTRELLAS (MAX 5)
             let estrella = "★"
             let estrellas = ""
@@ -75,16 +88,26 @@ function cargarPagina () {
                 estrellas += estrella   //SE VAN CONCATENANDO LAS ESTRELLAS
             }
          //SE CREA EL COMENTARIO JUNTO CON EL USUARIO Y LA CALIFICACION
+        if(lista == document.querySelector(".listaComentariosVIP")){ //si la lista de comentarios es la vip aparece el boton borrar.
             lista.innerHTML += "<li class='comentario'>" + 
                 "<div class='usuarioCalificacion'>"+
                 "<div class='imgYUser'>" + 
                 "<img src='./images/user.png' class='imgUser'>" +
                 comment.user + "</div>" + "<div class='userCalificacion'>"+  estrellas  +"</div>"+"</div>" + 
-                "<div class='textoComentario'>"+ comment.comentario  + "</div>" +  
+                "<div class='textoComentario'>"+ comment.comentario  + "<i class='botonBorrar material-icons' id='"+ comment.id_comentario+"'style='font-size:36px'>delete</i></div>" +  
              "</li>";
-             //FALTA AGREGAR EL BOTON PARA ELIMINAR COMENTARIOS
-             //Y HACER QUE SOLO EL ADMIN LOS VEA
-        })
+        
+             boton_borrar_fila () //se le da funcionalidad
+        }else{ //si no se encuentra se carga la lista de comentarios normales.
+            lista.innerHTML += "<li class='comentario'>" + 
+            "<div class='usuarioCalificacion'>"+
+            "<div class='imgYUser'>" + 
+            "<img src='./images/user.png' class='imgUser'>" +
+            comment.user + "</div>" + "<div class='userCalificacion'>"+  estrellas  +"</div>"+"</div>" + 
+            "<div class='textoComentario'>"+ comment.comentario  + "</div>" +  
+            "</li>";
+        }
+        });
     
     }
 
@@ -110,5 +133,32 @@ function cargarPagina () {
         let valor = micookie.substring(igual+1);
         return valor;
         }
+    
+
+    function boton_borrar_fila () { 
+        let buttons = document.getElementsByClassName('botonBorrar'); 
+    
+            for (let i = 0; i < buttons.length; i++) {
+                buttons[i].addEventListener('click', function() {
+                    let id = buttons[i].id; //busco a cual fue al que se le dio click
+                    borrarComentario_en_servidor(id);
+                })
+                
+            }
+        }
+
+    function borrarComentario_en_servidor(id) {
+
+        fetch('api/comentarios/'+ id,{
+            
+            'method': 'DELETE',
+            'mode': "cors"
+
+        })//con metodo delete borro el comentario con su respectivo id.
+        
+        .then(response =>  response.json())
+        .then(get => getComments())    //OBTIENE LOS COMENTARIOS devuelta para que aparazcan sin el anteriormente borrado
+        .catch(error => console.log(error));
+    }
 
 }

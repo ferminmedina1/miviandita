@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="../css/descripcionVianda.css">
     <link href="https://fonts.googleapis.com/css2?family=Archivo+Narrow:ital,wght@1,500&display=swap" rel="stylesheet">
     <script src="../js/comments.js"></script>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <base href="{$base_url}">
 </head>
 <body>
@@ -20,9 +21,7 @@
  <!-- MENU DE NAVEGACION -->
  
     {if (!isset($smarty.session.user))} <!--CON ESTO SE VERIFICA QUE NO HAYA UN USUARIO LOGUEADO-->
-
             {include file="nav.tpl"}
-        
             {else}
             {include file="navUser.tpl"}
     {/if}
@@ -48,16 +47,23 @@
                 {include file="calificacionDeVianda.tpl"}
         
         {/if}
-
+        <div class= "error"></div>
         <div class="contenedorComentarios">
 
             <h3 class="tituloComentarios">Comentarios</h3>
 
             <div class="comentarios">
-                
+            {if (isset($smarty.session.user) && $smarty.session.ROL == "administrador")} <!-- Si esta logueado y es administrador se ve el boton borran-->
+                <ul class="listaComentariosVIP">
+
+                </ul>
+
+                {else}
                 <ul class="listaComentarios">
 
                 </ul>
+            {/if}
+            
             </div>
 
         </div>
