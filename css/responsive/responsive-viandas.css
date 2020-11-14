@@ -9,6 +9,9 @@
         background-repeat: no-repeat;
         background-attachment: fixed;
         font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
 
     }
 
@@ -20,7 +23,7 @@
         font-size: 3vw;
         border-bottom: 9px solid indianred;
         text-align: center;
-        margin: 64px 493px;
+        width: 30%;
         border-radius: 8px;
         font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     }
@@ -32,6 +35,7 @@
         align-items: center;
         text-align: center;
         width: 40%;
+        margin: 30px;
         background-color: yellowgreen;
         border: 5px solid rgb(112, 150, 35);
         border-bottom: 5px solid rgb(70, 94, 24);
