@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 10-11-2020 a las 22:50:05
--- Versión del servidor: 10.4.14-MariaDB
--- Versión de PHP: 7.4.10
+-- Tiempo de generación: 14-11-2020 a las 17:53:20
+-- Versión del servidor: 10.4.11-MariaDB
+-- Versión de PHP: 7.4.6
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -31,7 +31,7 @@ CREATE TABLE `comentarios` (
   `id_comentario` int(11) NOT NULL,
   `id_user` int(11) NOT NULL,
   `id_vianda` int(11) NOT NULL,
-  `comentario` text NOT NULL,
+  `comentario` varchar(280) NOT NULL,
   `calificacion` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -44,7 +44,12 @@ INSERT INTO `comentarios` (`id_comentario`, `id_user`, `id_vianda`, `comentario`
 (147, 2, 6, 'Buena atención.', 4),
 (163, 5, 55, 'Buenas empanadas', 4),
 (164, 5, 59, 'Muy buena comida!', 4),
-(173, 5, 57, 'Excelente servicio!!!', 5);
+(173, 5, 57, 'Excelente servicio!!!', 5),
+(179, 30, 8, 'Esta buena!', 4),
+(180, 30, 57, 'Perfecta.', 5),
+(181, 30, 60, 'Me la trajeron con tomate pero estaba buena.', 3),
+(186, 30, 4, 'Muy rica!', 5),
+(189, 32, 59, 'Todo muy rico!', 5);
 
 -- --------------------------------------------------------
 
@@ -85,7 +90,9 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`id_user`, `user`, `password`, `rol`) VALUES
 (2, 'Admin', '$2y$10$pkMdRWaHmCukD9InkkWSGePAq6OMoXjFtpxt4E6AfYbnmiITyNQY.', 'administrador'),
-(5, 'Arleo.Agustin', '$2y$10$7PWf5i0glcDGda47Sa0XC.d/g4jVHOwxnTxUQmT2iI.P1/g6ZgdFe', 'cliente');
+(5, 'Arleo.Agustin', '$2y$10$7PWf5i0glcDGda47Sa0XC.d/g4jVHOwxnTxUQmT2iI.P1/g6ZgdFe', 'cliente'),
+(30, 'ferminmedina1', '$2y$10$p.tj3ycZbalpYgNHAfSjpeziOsDz/0MT7cTRa6xHVoQAajT.tNk8i', 'administrador'),
+(32, 'pepe', '$2y$10$k1E2wX2uAnmy13wOxCJ9sedLhteaF6hnaz9uH4z0TNVpMgqlvgSCK', 'cliente');
 
 -- --------------------------------------------------------
 
@@ -157,7 +164,7 @@ ALTER TABLE `viandas`
 -- AUTO_INCREMENT de la tabla `comentarios`
 --
 ALTER TABLE `comentarios`
-  MODIFY `id_comentario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=179;
+  MODIFY `id_comentario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=191;
 
 --
 -- AUTO_INCREMENT de la tabla `dirigido_table`
@@ -169,7 +176,7 @@ ALTER TABLE `dirigido_table`
 -- AUTO_INCREMENT de la tabla `users`
 --
 ALTER TABLE `users`
-  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
+  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
 
 --
 -- AUTO_INCREMENT de la tabla `viandas`
