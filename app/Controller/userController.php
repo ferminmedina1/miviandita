@@ -70,6 +70,12 @@ class userController{
             if ($existe == False) {        
                 $this->model->addUserDB($user,$hash,$rol);
                 $this->view->showLog("Se registro el usuario correctamente");
+                
+                session_start();
+                $_SESSION['user'] = $user;
+                $_SESSION['pass'] = $pass_input;
+                $_SESSION['cliente'] = $rol;
+                header("Location: ".BASE_URL."home");
             }
             else{
                 $this->view->showRegister("Usuario ya registrado");   
