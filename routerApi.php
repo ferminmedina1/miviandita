@@ -5,6 +5,9 @@ require_once ('api/apiController/apicommentsController.php');
 
 $r = new Router();
 
+//Ruta por defecto.
+$r->setDefaultRoute("apiCommentsController", "allComentarios");
+
 //TRAER COMENTARIO POR ID
 $r->addRoute("comentarios/:ID", "GET", "apiCommentsController", "commentById");
 
