@@ -69,13 +69,17 @@ class userController{
         //SI EL USER NO EXISTE LO AGREGA A LA DB
             if ($existe == False) {        
                 $this->model->addUserDB($user,$hash,$rol);
-                $this->view->showLog("Se registro el usuario correctamente");
                 
-                session_start();
-                $_SESSION['user'] = $user;
-                $_SESSION['pass'] = $pass_input;
-                $_SESSION['cliente'] = $rol;
+
+                $userFromDB = $this->model->GetUser($user);
+                session_start();    //SE INICIA UNA SESION
+                $_SESSION["user"] = $userFromDB->user;    //SE TRAE EL user DEL USUARIO DESDE LA DB
+                $_SESSION["ROL"] = $userFromDB->rol;    //SE TRAE EL ROL DEL USUARIO DESDE LA DB
+                $_SESSION["id_user"] = $userFromDB->id_user;
+                setcookie("id_user", $userFromDB->id_user); //SE CREA UNA COOKIE "id_user"
+                
                 header("Location: ".BASE_URL."home");
+                echo($_COOKIE["id_user"]);
             }
             else{
                 $this->view->showRegister("Usuario ya registrado");   
