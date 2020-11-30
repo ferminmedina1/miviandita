@@ -48,8 +48,8 @@ class categoriasModel{
     
  //SE ACTUALIZA UNA DETERMINADA CATEGORIA
     function updateCategoria($nombre,$id){
-        $query = $this->db->prepare("UPDATE dirigido_table SET tipo_vianda='$nombre' WHERE id_dirigidoA = ?");
-        $query->execute(array($id));
+        $query = $this->db->prepare("UPDATE dirigido_table SET tipo_vianda=? WHERE id_dirigidoA = ?");
+        $query->execute(array($nombre,$id));
     }
 }   
 ?>

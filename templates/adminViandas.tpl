@@ -34,25 +34,25 @@
 
     <div class="agregarAtabla">
         <h3>Administrar viandas</h3>
-        <form action="agregarVianda" method="post">
+        <form action="agregarVianda" method="POST" enctype="multipart/form-data">
 
             <div class="inputsPrincipales">
-                <label class="textoInput"> Vianda: <input type="text" name="nombre" id="producto"> </label>
-                <label class="textoInput"> Precio:  <input type="number" name="precio" id="precio"> </label>
-                <label class="textoInput"> Descripción:  <textarea type="text" name="descripcion" id="descripcion"></textarea> </label>
-                
+                <label class="textoInput"> Vianda: <input type="text" REQUIRED name="nombre" id="producto"> </label>
+                <label class="textoInput"> Precio:  <input type="number" REQUIRED name="precio" id="precio"> </label>
+                <label class="textoInput"> Descripción:  <textarea type="text" name="descripcion" REQUIRED id="descripcion"></textarea> </label>
+                <label class="textoInput"> Imagen: <input type="file" name="file"/></label>
+
             </div>
+        
+            <div class="tipoDeCategoria">
 
-            
-                <div class="tipoDeCategoria">
-
-                    <select name="dirigidoA" id="select">
-                        {foreach from=$tipo item=categoria}
-                            <option value="{$categoria->id_dirigidoA}">{$categoria->tipo_vianda}</option>
-                        {/foreach}
-                    </select>
-                    <button id="agregar_db" type="submit">Agregar Vianda</button>
-                </div>
+                <select name="dirigidoA" id="select">
+                    {foreach from=$tipo item=categoria}
+                        <option value="{$categoria->id_dirigidoA}">{$categoria->tipo_vianda}</option>
+                    {/foreach}
+                </select>
+                <button id="agregar_db" type="submit">Agregar Vianda</button>
+            </div>
 
         </form>
 

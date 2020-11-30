@@ -17,16 +17,16 @@ class viandasModel{
 
  //SE OBTIENEN TODAS LAS VIANDAS
     function getViandas() {
-        $query = $this->db->prepare('SELECT * FROM viandas INNER JOIN dirigido_table ON viandas.id_dirigidoA=dirigido_table.id_dirigidoA');
+        $query = $this->db->prepare('SELECT * FROM viandas INNER JOIN dirigido_table WHERE viandas.id_dirigidoA=dirigido_table.id_dirigidoA');
         $query->execute();
         $viandas = $query->fetchAll(PDO::FETCH_OBJ);
         return $viandas;
     }
 
  //INSERTA UNA NUEVA VIANDA
-    function insertVianda($nombre,$descripcion,$precio,$dirigidoA){
-        $query = $this->db->prepare('INSERT INTO viandas(nombre,descripcion,precio,id_dirigidoA) VALUES (?,?,?,?)');
-        $query->execute([$nombre,$descripcion,$precio,$dirigidoA]);
+    function insertVianda($nombre,$descripcion,$precio,$dirigidoA,$img){
+        $query = $this->db->prepare('INSERT INTO viandas(nombre,descripcion,precio,id_dirigidoA,imagen) VALUES (?,?,?,?,?)');
+        $query->execute([$nombre,$descripcion,$precio,$dirigidoA,$img]);
     }
     
  //ELIMINA UNA DETERMINADA VIANDA
@@ -34,11 +34,17 @@ class viandasModel{
         $sentencia = $this->db->prepare("DELETE FROM viandas WHERE id_vianda=?");
         $sentencia->execute(array($id));
     }
+
+     //ELIMINA UNA DETERMINADA VIANDA
+     function deleteImageVianda($id){
+        $sentencia = $this->db->prepare("UPDATE viandas SET imagen=? WHERE id_vianda=?");
+        $sentencia->execute(array('',$id));
+    }
     
  //ACTUALIZA UNA VIANDA
-    function updateVianda($nombre,$descripcion,$precio,$dirigidoA,$id){
-        $query = $this->db->prepare("UPDATE viandas SET nombre='$nombre', precio='$precio', id_dirigidoA='$dirigidoA', descripcion='$descripcion' WHERE id_vianda = ?");
-        $query->execute(array($id));
+    function updateVianda($nombre,$descripcion,$precio,$dirigidoA,$id,$img){
+        $query = $this->db->prepare("UPDATE viandas SET nombre=?, precio=?, id_dirigidoA=?, descripcion=?, imagen=? WHERE id_vianda = ?");
+        $query->execute(array($nombre,$precio,$dirigidoA,$descripcion,$img,$id));
     }
 
 }

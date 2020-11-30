@@ -23,9 +23,9 @@ class viandasView{
     }
 
  //DESCRIPCION DE VIANDA
-    function showVianda($vianda){
-
+    function showVianda($vianda,$img){
         $this->smarty -> assign('vianda', $vianda);
+        $this->smarty -> assign('imagen', $img);
         $this->smarty->display('../templates/descripcionVianda.tpl');
 
     }

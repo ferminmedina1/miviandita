@@ -38,12 +38,13 @@
     $r->addRoute("agregarVianda", "POST", "viandasController", "ingresarVianda");
     $r->addRoute("agregarCategoria", "POST", "categoriasController", "nuevaCategoria");
 
- //ELIMINAR VIANDA/CATEGORIA
+ //ELIMINAR VIANDA/CATEGORIA\
     $r->addRoute("eliminarVianda/:ID", "GET", "viandasController", "eliminarVianda");
     $r->addRoute("eliminarCategoria/:ID", "GET", "categoriasController", "eliminarCategoria");
 
  //EDITAR/ACTUALIZAR VIANDAS
     $r->addRoute("editarVianda/:ID", "GET", "viandasController", "showFormEditar");
+    $r->addRoute("eliminarImagenVianda/:ID", "GET", "viandasController", "eliminarImagenVianda");
     $r->addRoute("actualizarVianda/:ID", "POST", "viandasController", "editarVianda");
 
  //EDITAR/ACTUALIZAR CATEGORIAS

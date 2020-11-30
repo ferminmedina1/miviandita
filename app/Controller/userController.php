@@ -100,7 +100,7 @@ class userController{
     //SI EL USER NO EXISTE LO AGREGA A LA DB
         if ($existe == False) {        
             $this->model->addUserDB($user,$hash,$rol);
-            $this->view->showLog("Se registro el usuario correctamente");
+            $this->view->showAdminUsersLocation();
         }
         else{
             $this->view->showRegister("Usuario ya registrado");   

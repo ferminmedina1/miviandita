@@ -39,20 +39,31 @@ class viandasController{
 
         $id_vianda = $params[":ID"];
         $vianda = $this->model->getViandaByID($id_vianda);
+        $img = base64_encode($vianda->imagen);
         if($vianda)
-            $this->view->showVianda($vianda);
+            $this->view->showVianda($vianda,$img);
         else
             $this->view->showViandasLocation();
 
-    }
+    } 
     
  //MUESTRA EL FORMULARIO INGRESAR VIANDAS Y LAS AGREGA A LA DB
     function ingresarVianda(){
         $admin = $this->verificarSiESAdmin();
+        //https://www.youtube.com/watch?v=JaRq73y5MJk
 
-        if ($admin == True){    
+        if ($admin == True){   
             if((!empty($_POST['nombre'])) && (!empty($_POST['descripcion'])) && (!empty($_POST['precio'])) && (!empty($_POST['dirigidoA']))) {
-                $this->model->insertVianda($_POST['nombre'], $_POST['descripcion'], $_POST['precio'], $_POST['dirigidoA']);
+
+                if($_FILES['file']['error'] == 0){ //sefija si hubo algun error (si esta vacio es 4).
+                $fileName= $_FILES['file']['name']; //saco los datos de la imagen.
+                $fileTmpName= file_get_contents($_FILES['file']['tmp_name']);
+                    if((!empty($fileName))){
+                        $this->model->insertVianda($_POST['nombre'], $_POST['descripcion'], $_POST['precio'], $_POST['dirigidoA'],$fileTmpName);
+                    }
+                }else{
+                    $this->model->insertVianda($_POST['nombre'], $_POST['descripcion'], $_POST['precio'], $_POST['dirigidoA'],"");
+                }
             }
             $this->view->showAdminViandasLocation(); 
         }
@@ -138,6 +149,17 @@ class viandasController{
         
     }
 
+// Elimina la imagen de la vianda
+
+    function eliminarImagenVianda($params = null){
+        $admin = $this->verificarSiESAdmin();
+        if($admin==True){
+            $vianda_ID = $params[':ID'];
+            $this->model->deleteImageVianda($vianda_ID);
+            $this->verVianda($vianda_ID); 
+        }
+    }
+
  //MUESTRA EL FORMULARIO EDITAR VIANDA
     function showFormEditar($params = null){
         $admin = $this->verificarSiESAdmin();
@@ -159,10 +181,21 @@ class viandasController{
     function editarVianda($params = null){
         $admin = $this->verificarSiESAdmin();
 
+
         if ($admin == True){ 
             $vianda_ID = $params[':ID'];
+            
             if((!empty($_POST['nombre'])) && (!empty($_POST['descripcion'])) && (!empty($_POST['precio'])) && (!empty($_POST['dirigidoA']))) {
-                    $this->model->updateVianda($_POST['nombre'], $_POST['descripcion'], $_POST['precio'], $_POST['dirigidoA'], $vianda_ID);
+                
+                if($_FILES['file']['error'] == 0){ //sefija si hubo algun error (si esta vacio es 4).
+                    $fileName= $_FILES['file']['name']; //saco los datos de la imagen.
+                    $fileTmpName= file_get_contents($_FILES['file']['tmp_name']);
+                        if((!empty($fileName))){
+                            $this->model->updateVianda($_POST['nombre'], $_POST['descripcion'], $_POST['precio'], $_POST['dirigidoA'], $vianda_ID, $fileTmpName);
+                        }
+                    }else{
+                        $this->model->updateVianda($_POST['nombre'], $_POST['descripcion'], $_POST['precio'], $_POST['dirigidoA'], $vianda_ID, '');
+                    }
             }
             $this->view->showAdminViandasLocation();   
         }

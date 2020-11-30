@@ -44,14 +44,14 @@ class userModel{
         $query = $this->db->prepare("DELETE users,comentarios FROM users JOIN comentarios ON users.id_user = comentarios.id_user WHERE users.id_user = ?");
         $query->execute([$id_user]);
 
-        $sentencia = $this->db->prepare('DELETE FROM users WHERE id_user= ?');
+        $sentencia = $this->db->prepare('DELETE FROM users WHERE id_user=?');
         $sentencia->execute([$id_user]);
 
     }
 
     function updateRol($id_user, $nuevoRol){
-        $query = $this->db->prepare("UPDATE users SET rol='$nuevoRol' WHERE id_user = ?");
-        $query->execute([$id_user]);
+        $query = $this->db->prepare("UPDATE users SET rol=? WHERE id_user = ?");
+        $query->execute([$nuevoRol, $id_user]);
     }
 
 }

@@ -14,10 +14,10 @@
     <base href="{$base_url}">
 </head>
 <body>
+
     
  <!-- ENCABEZADO -->
     {include file="encabezado.tpl"}
-
  <!-- MENU DE NAVEGACION -->
  
     {if (!isset($smarty.session.user))} <!--CON ESTO SE VERIFICA QUE NO HAYA UN USUARIO LOGUEADO-->
@@ -27,19 +27,22 @@
     {/if}
     
     <div class="contenedorVianda">
-        
+                <h2  class="plato">{$vianda->nombre}</h2>
+    <div class="imagenViandaContenedor">
+        {if ($imagen != '')} 
+            <img src="data:image/jpg; base64,{$imagen}" class="fotoComida">
 
-    <h2  class="plato">{$vianda->nombre}</h2>
-
+            {if (isset($smarty.session.user) && $smarty.session.ROL == "administrador")} <!-- Si esta logueado y es administrador se ve el boton borran-->
+                <a href= 'eliminarImagenVianda/{$vianda->id_vianda}'>
+                <i class='botonBorrar material-icons' id='borrarImagenVianda{$vianda->id_vianda}' style='font-size:36px'>delete</i></a>
+            {/if}
+        {/if}
+    </div>
     <div class="descripcionViandas">
         <p class="descripcion">{$vianda->descripcion}</p>
         <p class="categoria">Categoria:&nbsp;{$vianda->tipo_vianda}</p>
         <h3 class="precio">${$vianda->precio}</h3>
     </div>
-
-
-    
-
 
     <div class="contenedorCalificacion">
         {if (isset($smarty.session.user))}
@@ -55,7 +58,7 @@
             <div class="comentarios">
             {if (isset($smarty.session.user) && $smarty.session.ROL == "administrador")} <!-- Si esta logueado y es administrador se ve el boton borran-->
                 <ul class="listaComentariosVIP">
-
+                    
                 </ul>
 
                 {else}
@@ -71,7 +74,7 @@
     </div>
     
     <div class="contenedorVolver">
-            <a href="verTodas" class="volver" hr>Volver</a>
+            <a href="viandas" class="volver" hr>Volver</a>
     </div>
 <!-- BOTON CONSULTAS & BOTON LOGIN-->
 
