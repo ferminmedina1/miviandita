@@ -156,7 +156,7 @@ class viandasController{
         if($admin==True){
             $vianda_ID = $params[':ID'];
             $this->model->deleteImageVianda($vianda_ID);
-            $this->verVianda($vianda_ID); 
+            $this->verVianda($params); 
         }
     }
 
