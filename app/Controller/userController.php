@@ -30,19 +30,17 @@ class userController{
 
         if(isset($user)){
             $userFromDB = $this->model->GetUser($user);
-            if(isset($userFromDB) && $userFromDB){ //PREGUNTAR SOBRE ESTE &&
+            if(isset($userFromDB) && $userFromDB){ 
 
                 if (password_verify($pass, $userFromDB->password)){ 
 
                     session_start();    //SE INICIA UNA SESION
                     $_SESSION["user"] = $userFromDB->user;    //SE TRAE EL user DEL USUARIO DESDE LA DB
                     $_SESSION["ROL"] = $userFromDB->rol;    //SE TRAE EL ROL DEL USUARIO DESDE LA DB
-                    //$_SESSION['LAST_ACTIVITY'] = time();    //ULTIMA ACTIVIDAD DURANTE LA SESION
                     $_SESSION["id_user"] = $userFromDB->id_user;
                     setcookie("id_user", $userFromDB->id_user); //SE CREA UNA COOKIE "id_user"
                     
                     header("Location: ".BASE_URL."home");
-                    echo($_COOKIE["id_user"]);
                 }
                 else{  //SI LA CONTRASEÑA ES INCORRECTA
                     $this->view->ShowLog("Contraseña incorrecta");
@@ -68,9 +66,8 @@ class userController{
             $existe = $this->verificarUsuario($user);  
         //SI EL USER NO EXISTE LO AGREGA A LA DB
             if ($existe == False) {        
-                $this->model->addUserDB($user,$hash,$rol);
-                
 
+                $this->model->addUserDB($user,$hash,$rol);
                 $userFromDB = $this->model->GetUser($user);
                 session_start();    //SE INICIA UNA SESION
                 $_SESSION["user"] = $userFromDB->user;    //SE TRAE EL user DEL USUARIO DESDE LA DB
@@ -79,42 +76,41 @@ class userController{
                 setcookie("id_user", $userFromDB->id_user); //SE CREA UNA COOKIE "id_user"
                 
                 header("Location: ".BASE_URL."home");
-                echo($_COOKIE["id_user"]);
+
             }
             else{
                 $this->view->showRegister("Usuario ya registrado");   
             }      
         }
         else{
-            $this->view->showRegister("Ingresa los datos correspondientes");  
+            $this->view->showRegister("Ingrese los datos correspondientes");  
         }
     }
 
  //AGREGA UN ADMIN NUEVO
- function addAdmin(){
+    function addAdmin(){
 
-    $user = $_POST["user"];
-    $pass_input = $_POST["pass"];
-    $rol = "administrador";
-    $hash = password_hash($pass_input, PASSWORD_DEFAULT);
-    //SE VERIFICA QUE LOS CAMPOS NO ESTEN VACIOS
-    if((isset($_POST["user"]) && !empty($_POST["user"])) && (isset($_POST["pass"]) && !empty($_POST["pass"]))){
+        $user = $_POST["user"];
+        $pass_input = $_POST["pass"];
+        $rol = "administrador";
+        $hash = password_hash($pass_input, PASSWORD_DEFAULT);
+        //SE VERIFICA QUE LOS CAMPOS NO ESTEN VACIOS
+        if((isset($_POST["user"]) && !empty($_POST["user"])) && (isset($_POST["pass"]) && !empty($_POST["pass"]))){
 
-        $existe = $this->verificarUsuario($user);
-    //SI EL USER NO EXISTE LO AGREGA A LA DB
-        if ($existe == False) {        
-            $this->model->addUserDB($user,$hash,$rol);
-            $this->view->showAdminUsersLocation();
+            $existe = $this->verificarUsuario($user);
+        //SI EL USER NO EXISTE LO AGREGA A LA DB
+            if ($existe == False) {        
+                $this->model->addUserDB($user,$hash,$rol);
+                $this->view->showAdminUsersLocation();
+            }
+            else{
+                $this->view->showRegister("Usuario ya registrado");   
+            }      
         }
         else{
-            $this->view->showRegister("Usuario ya registrado");   
-        }      
+            $this->view->showRegister("Ingrese los datos correspondientes");  
+        }
     }
-    else{
-        $this->view->showRegister("Ingresa los datos correspondientes");  
-    }
-}
-    
 
  //SI EL USUARIO EXISTE DEVUELVE TRUE, SINO FALSO
     function verificarUsuario($usuario){     
@@ -137,6 +133,7 @@ class userController{
         header("Location: ".BASE_URL."home");
     }
 
+ //MUESTRA TODOS LOS USUARIOS
     function adminUsuarios(){
         
         $admin = $this->verificarSiESAdmin();
@@ -150,6 +147,7 @@ class userController{
         }
     }
 
+ //ELIMINA UN USUARIO  
     function eliminarUsuario($params = null){
 
         $admin = $this->verificarSiESAdmin();
@@ -164,6 +162,7 @@ class userController{
         }
     }
 
+ //SE MUESTRA EL FORMULARIO EDITAR USER 
     function showFormEditarUser($params = null){
         
         $admin = $this->verificarSiESAdmin();
@@ -180,21 +179,23 @@ class userController{
         }
     }
 
+ //EDITA EL ROL DEL USUARIO
     function editarRol($params = null){
         $admin = $this->verificarSiESAdmin();
 
         if ($admin == True){
             $id_user = $params[':ID'];
             $this->model->updateRol($id_user, $_POST["rol"]);
-            if($_SESSION["id_user"] == $id_user)
+            if($_SESSION["id_user"] == $id_user){
                 $_SESSION["ROL"] = $_POST["rol"];
-            $this->view->showAdminUsersLocation();
-            
+                $this->view->showAdminUsersLocation();   
+            }
+            else{
+                header("Location: ".LOGIN);
+                die();
+            }
         }
-        else{
-            header("Location: ".LOGIN);
-            die();
-        }
+           
     }
 
     private function checkLoggedIn(){
@@ -214,4 +215,5 @@ class userController{
         }
         return $admin;
     }
+    
 }

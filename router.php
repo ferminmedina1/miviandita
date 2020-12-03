@@ -38,7 +38,7 @@
     $r->addRoute("agregarVianda", "POST", "viandasController", "ingresarVianda");
     $r->addRoute("agregarCategoria", "POST", "categoriasController", "nuevaCategoria");
 
- //ELIMINAR VIANDA/CATEGORIA\
+ //ELIMINAR VIANDA/CATEGORIA
     $r->addRoute("eliminarVianda/:ID", "GET", "viandasController", "eliminarVianda");
     $r->addRoute("eliminarCategoria/:ID", "GET", "categoriasController", "eliminarCategoria");
 
