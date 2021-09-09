@@ -21,7 +21,7 @@
 
  <!-- MENU -->
 
-            {if (!isset($smarty.session.user))} <!--CON ESTO SE VERIFICA QUE NO HAYA UN USUARIO LOGUEADO-->
+            {if (!isset($smarty.session.ROL))} <!--CON ESTO SE VERIFICA QUE NO HAYA UN USUARIO LOGUEADO-->
 
              {include file="nav.tpl"}
         

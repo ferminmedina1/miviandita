@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.34-dev-7, created on 2020-10-08 23:59:09
+/* Smarty version 3.1.34-dev-7, created on 2021-09-09 22:06:42
   from 'D:\Program Files\XAMPP\htdocs\TPE-WEB-II\templates\contacto.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.34-dev-7',
-  'unifunc' => 'content_5f7f8bada90515_34508157',
+  'unifunc' => 'content_613a6952ca4499_39419187',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'c8ef8c74a69dd56b17b8cc39c7b23974538599bd' => 
     array (
       0 => 'D:\\Program Files\\XAMPP\\htdocs\\TPE-WEB-II\\templates\\contacto.tpl',
-      1 => 1602194307,
+      1 => 1631217994,
       2 => 'file',
     ),
   ),
@@ -25,7 +25,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:footer.tpl' => 1,
   ),
 ),false)) {
-function content_5f7f8bada90515_34508157 (Smarty_Internal_Template $_smarty_tpl) {
+function content_613a6952ca4499_39419187 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html lang="en">
 
@@ -53,7 +53,7 @@ function content_5f7f8bada90515_34508157 (Smarty_Internal_Template $_smarty_tpl)
 
  <!-- MENU DE NAVEGACION -->
 
-            <?php if ((!(isset($_SESSION['EMAIL'])))) {?> <!--CON ESTO SE VERIFICA QUE NO HAYA UN USUARIO LOGUEADO-->
+            <?php if ((!(isset($_SESSION['ROL'])))) {?> <!--CON ESTO SE VERIFICA QUE NO HAYA UN USUARIO LOGUEADO-->
 
              <?php $_smarty_tpl->_subTemplateRender("file:nav.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
 ?>

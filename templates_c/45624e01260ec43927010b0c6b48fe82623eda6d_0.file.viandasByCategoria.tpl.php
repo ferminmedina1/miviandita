@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.34-dev-7, created on 2020-10-09 01:47:37
+/* Smarty version 3.1.34-dev-7, created on 2021-09-09 22:06:00
   from 'D:\Program Files\XAMPP\htdocs\TPE-WEB-II\templates\viandasByCategoria.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.34-dev-7',
-  'unifunc' => 'content_5f7fa5199ad202_23153203',
+  'unifunc' => 'content_613a6928020fb8_96789213',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '45624e01260ec43927010b0c6b48fe82623eda6d' => 
     array (
       0 => 'D:\\Program Files\\XAMPP\\htdocs\\TPE-WEB-II\\templates\\viandasByCategoria.tpl',
-      1 => 1602194248,
+      1 => 1631217892,
       2 => 'file',
     ),
   ),
@@ -25,7 +25,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:footer.tpl' => 1,
   ),
 ),false)) {
-function content_5f7fa5199ad202_23153203 (Smarty_Internal_Template $_smarty_tpl) {
+function content_613a6928020fb8_96789213 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html lang="en">
 <head>
@@ -55,7 +55,7 @@ function content_5f7fa5199ad202_23153203 (Smarty_Internal_Template $_smarty_tpl)
 
  <!-- MENU DE NAVEGACION -->
 
-            <?php if ((!(isset($_SESSION['EMAIL'])))) {?> <!--CON ESTO SE VERIFICA QUE NO HAYA UN USUARIO LOGUEADO-->
+            <?php if ((!(isset($_SESSION['ROL'])))) {?> <!--CON ESTO SE VERIFICA QUE NO HAYA UN USUARIO LOGUEADO-->
 
              <?php $_smarty_tpl->_subTemplateRender("file:nav.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
 ?>
@@ -77,25 +77,19 @@ $_smarty_tpl->tpl_vars['vianda']->do_else = true;
 if ($_from !== null) foreach ($_from as $_smarty_tpl->tpl_vars['vianda']->value) {
 $_smarty_tpl->tpl_vars['vianda']->do_else = false;
 ?>
+            
             <div class="contenedorVianda">
+                <a href="vianda/<?php echo $_smarty_tpl->tpl_vars['vianda']->value->id_vianda;?>
+" class="plato"> <?php echo $_smarty_tpl->tpl_vars['vianda']->value->nombre;?>
+ </a>
+            </div>
 
-                    <button class="plato"><?php echo $_smarty_tpl->tpl_vars['vianda']->value->nombre;?>
-</button>
-
-                    <div class="oculto">
-                        <div class="descripcionViandas">
-                            <p><?php echo $_smarty_tpl->tpl_vars['vianda']->value->descripcion;?>
-</p>
-                            <h3 class="precio">$<?php echo $_smarty_tpl->tpl_vars['vianda']->value->precio;?>
-</h3>
-                        </div>
-                    </div>
-                </div>
         <?php
 }
 $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
-             
+
     </div>
+
     <div class="contenedorVolver">
             <a href="viandas" class="volver" hr>Volver</a>
     </div>
