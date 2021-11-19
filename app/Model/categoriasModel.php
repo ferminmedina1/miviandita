@@ -9,7 +9,7 @@ class categoriasModel{
 
  //SE OBTIENEN TODAS LAS VIANDAS DE UNA DETERMINADA CATEGORIA
     function getViandasByDirigidoA($dirigidoA) {
-        $query = $this->db->prepare('SELECT * FROM viandas INNER JOIN dirigido_table ON viandas.id_dirigidoA=dirigido_table.id_dirigidoA WHERE tipo_vianda = ?');
+        $query = $this->db->prepare('SELECT * FROM viandas INNER JOIN dirigido_table ON viandas.id_dirigidoA=dirigido_table.id_dirigidoA WHERE id_dirigidoA = ?');
         $query->execute([$dirigidoA]); 
         $viandaDirigidas = $query->fetchAll(PDO::FETCH_OBJ);
         return $viandaDirigidas;

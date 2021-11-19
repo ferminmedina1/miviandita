@@ -65,9 +65,9 @@ class userController{
         //SE VERIFICA QUE LOS CAMPOS NO ESTEN VACIOS
         if((isset($_POST["user"]) && !empty($_POST["user"])) && (isset($_POST["pass"]) && !empty($_POST["pass"]))){
 
-            $existe = $this->verificarUsuario($user);  
+            $existe = $this->model->GetUser($user);
         //SI EL USER NO EXISTE LO AGREGA A LA DB
-            if ($existe == False) {        
+            if (!$existe) {        
                 $this->model->addUserDB($user,$hash,$rol);
                 
 

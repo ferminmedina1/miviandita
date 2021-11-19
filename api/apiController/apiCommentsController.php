@@ -70,5 +70,16 @@ class apiCommentsController extends apiController{
     
     }
 
+    function editComment($params = null){
+        $id_comentario = $params[":ID"];
+        $body = $this->getData();
+        if(isset($body))
+        $resultado = $this->model->updateComment($id_comentario,$body->comentario);
+
+        if ($resultado > 0) //SI ES MAYOR A CERO ES RECORRIO LA TABLA Y ELIMINO EL ELEMENTO
+            $this->view->response("Edit existoso", 200);
+        else
+            $this->view->response("No existe comentario con id = $id_comentario", 404);
+    }
     
 }

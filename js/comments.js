@@ -29,7 +29,7 @@ function cargarPagina () {
 
         if((comment.comentario != "") && (comment.calificacion != 0)){  //SI ESTAN VACIOS LOS CAMPOS NO SE ENVIA
             let lista = document.querySelector(".error");
-            lista.innerHTML = ""
+            lista.innerHTML = "";
             fetch('api/calificarVianda', {
                 method: 'POST',
                 headers: { "Content-Type": "application/json" },
@@ -94,10 +94,11 @@ function cargarPagina () {
                 "<div class='imgYUser'>" + 
                 "<img src='./images/user.png' class='imgUser'>" +
                 comment.user + "</div>" + "<div class='userCalificacion'>"+  estrellas  +"</div>"+"</div>" + 
-                "<div class='textoComentario'>"+ comment.comentario  + "<i class='botonBorrar material-icons' id='"+ comment.id_comentario+"'style='font-size:36px'>delete</i></div>" +  
+                "<div class='textoComentario'>"+ comment.comentario  + "<i class='botonBorrar material-icons' id='"+ comment.id_comentario+"'style='font-size:36px'>delete</i><i class='botonEditar fa fa-edit' id='"+ comment.id_comentario+" style='font-size:36px'></i></div>" +  
              "</li>";
         
-             boton_borrar_fila () //se le da funcionalidad
+             boton_borrar_fila(); //se le da funcionalidad
+             boton_editar_fila();
         }else{ //si no se encuentra se carga la lista de comentarios normales.
             lista.innerHTML += "<li class='comentario'>" + 
             "<div class='usuarioCalificacion'>"+
@@ -146,7 +147,20 @@ function cargarPagina () {
                 })
                 
             }
-        }
+    }
+    
+    function boton_editar_fila () { 
+        let buttons = document.getElementsByClassName('botonEditar'); 
+    
+            for (let i = 0; i < buttons.length; i++) {
+                buttons[i].addEventListener('click', function() {
+                    let id = buttons[i].id; //busco a cual fue al que se le dio click
+                    editarComentario_en_servidor(id);
+                    console.log("funciono");
+                })
+                
+            }
+    }
 
     function borrarComentario_en_servidor(id) {
 
@@ -157,6 +171,26 @@ function cargarPagina () {
 
         })//con metodo delete borro el comentario con su respectivo id.
         
+        .then(response =>  response.json())
+        .then(get => getComments())    //OBTIENE LOS COMENTARIOS devuelta para que aparazcan sin el anteriormente borrado
+        .catch(error => console.log(error));
+    }
+
+    function editarComentario_en_servidor(id) {
+        let id_user = leerCookie();
+
+        let comment = {
+            "comentario": "Muy rica!",
+            "id_vianda": id,
+            "calificacion": 2,
+            "id_user": id_user
+        }
+        
+        fetch('api/comentarios/' + id , {
+            method: 'PUT',
+            headers: {"Content-Type": "application/json"},
+            body: JSON.stringify(comment)
+        })
         .then(response =>  response.json())
         .then(get => getComments())    //OBTIENE LOS COMENTARIOS devuelta para que aparazcan sin el anteriormente borrado
         .catch(error => console.log(error));

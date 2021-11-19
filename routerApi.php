@@ -11,6 +11,7 @@ $r->setDefaultRoute("apiCommentsController", "allComentarios");
 //TRAER COMENTARIO POR ID
 $r->addRoute("comentarios/:ID", "GET", "apiCommentsController", "commentById");
 
+
 //TRAER COMENTARIO POR ID de VIANDA
 $r->addRoute("comentarios/vianda/:ID", "GET", "apiCommentsController", "commentByViandaId");
 
@@ -23,5 +24,7 @@ $r->addRoute("comentarios/:ID", "DELETE", "apiCommentsController", "deleteCommen
 //INSERTAR COMENTARIO
 $r->addRoute("calificarVianda", "POST", "apiCommentsController", "addComment");
 
+//EDITAR COMENTARIO
+$r->addRoute("comentarios/:ID", "PUT", "apiCommentsController", "editComment");
 
 $r->route($_GET['resource'], $_SERVER['REQUEST_METHOD']); 
