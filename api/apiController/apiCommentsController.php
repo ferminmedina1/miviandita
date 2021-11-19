@@ -14,13 +14,13 @@ class apiCommentsController extends apiController{
 
     }
 
-    
 
-    
  //TRAE LOS COMENTARIO SEGUN EL ID DE LA VIANDA
     function commentByViandaId($params = null){
+
         $id = $params[":ID"];
         $comentario = $this->model->getCommentsByVianda($id);
+
         if (!empty($comentario))
             $this->view->response($comentario, 200);
         else
@@ -29,8 +29,10 @@ class apiCommentsController extends apiController{
 
  //TRAE LOS COMENTARIO SEGUN EL ID DEL COMENTARIO
     function commentById($params = null){
+
         $id = $params[":ID"];
         $comentario = $this->model->getCommentById($id);
+
         if (!empty($comentario))
             $this->view->response($comentario, 200);
         else
@@ -41,6 +43,7 @@ class apiCommentsController extends apiController{
     function allComentarios(){
         
         $comentarios = $this->model->getAllComments();
+
         if (!empty($comentarios))
             $this->view->response($comentarios, 200);
         else
@@ -52,7 +55,8 @@ class apiCommentsController extends apiController{
 
         $id_comentario = $params[":ID"];
         $resultado = $this->model->deleteComment($id_comentario);
-        if ($resultado > 0) //SI ES MAYOR A CERO ES RECORRIO LA TABLA Y ELIMINO EL ELEMENTO
+
+        if ($resultado > 0) //SI ES MAYOR A CERO ES PORQUE RECORRIO LA TABLA Y ELIMINO EL COMENTARIO
             $this->view->response("Borrado existoso", 200);
         else
             $this->view->response("No existe comentario con id = $id_comentario", 404);
@@ -60,8 +64,10 @@ class apiCommentsController extends apiController{
 
  //AGREGA UN NUEVO COMENTARIO A LA DB
     function addComment(){
+
         $body = $this->getData();
         $comentario = $this->model->insertComment($body->comentario, $body->id_vianda, $body->calificacion, $body->id_user);
+
      //SI RETORNA 1 ES PORQUE SE PUDO INGRESAR EL COMENTARIO, DE LO CONTRARIO NO 
         if ($comentario == 1)
             $this->view->response("Comentario ingresado correctamente", 200);

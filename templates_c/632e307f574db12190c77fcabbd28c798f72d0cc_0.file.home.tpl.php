@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.34-dev-7, created on 2020-10-08 23:57:57
+/* Smarty version 3.1.34-dev-7, created on 2021-09-09 22:05:32
   from 'D:\Program Files\XAMPP\htdocs\TPE-WEB-II\templates\home.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.34-dev-7',
-  'unifunc' => 'content_5f7f8b6563afe9_79758724',
+  'unifunc' => 'content_613a690c654711_14375759',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '632e307f574db12190c77fcabbd28c798f72d0cc' => 
     array (
       0 => 'D:\\Program Files\\XAMPP\\htdocs\\TPE-WEB-II\\templates\\home.tpl',
-      1 => 1602194238,
+      1 => 1631217907,
       2 => 'file',
     ),
   ),
@@ -25,7 +25,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:footer.tpl' => 1,
   ),
 ),false)) {
-function content_5f7f8b6563afe9_79758724 (Smarty_Internal_Template $_smarty_tpl) {
+function content_613a690c654711_14375759 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html lang="en">
 
@@ -53,7 +53,7 @@ function content_5f7f8b6563afe9_79758724 (Smarty_Internal_Template $_smarty_tpl)
 
  <!-- MENU DE NAVEGACION -->
 
-        <?php if ((!(isset($_SESSION['EMAIL'])))) {?> <!--CON ESTO SE VERIFICA QUE NO HAYA UN USUARIO LOGUEADO-->
+        <?php if ((!(isset($_SESSION['ROL'])))) {?> <!--CON ESTO SE VERIFICA QUE NO HAYA UN USUARIO LOGUEADO-->
 
              <?php $_smarty_tpl->_subTemplateRender("file:nav.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
 ?>

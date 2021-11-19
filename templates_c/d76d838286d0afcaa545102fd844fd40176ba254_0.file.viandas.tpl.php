@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.34-dev-7, created on 2020-10-08 23:57:53
+/* Smarty version 3.1.34-dev-7, created on 2021-09-09 22:07:57
   from 'D:\Program Files\XAMPP\htdocs\TPE-WEB-II\templates\viandas.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.34-dev-7',
-  'unifunc' => 'content_5f7f8b610f1ff5_13099536',
+  'unifunc' => 'content_613a699da0fdc9_05332560',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'd76d838286d0afcaa545102fd844fd40176ba254' => 
     array (
       0 => 'D:\\Program Files\\XAMPP\\htdocs\\TPE-WEB-II\\templates\\viandas.tpl',
-      1 => 1602194255,
+      1 => 1631218074,
       2 => 'file',
     ),
   ),
@@ -21,10 +21,11 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
     'file:encabezado.tpl' => 1,
     'file:nav.tpl' => 1,
     'file:navUser.tpl' => 1,
+    'file:botonLogin.tpl' => 1,
     'file:footer.tpl' => 1,
   ),
 ),false)) {
-function content_5f7f8b610f1ff5_13099536 (Smarty_Internal_Template $_smarty_tpl) {
+function content_613a699da0fdc9_05332560 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!DOCTYPE html>
 <html lang="en">
 
@@ -56,7 +57,7 @@ function content_5f7f8b610f1ff5_13099536 (Smarty_Internal_Template $_smarty_tpl)
 
  <!-- MENU DE NAVEGACION -->
 
-            <?php if ((!(isset($_SESSION['EMAIL'])))) {?> <!--CON ESTO SE VERIFICA QUE NO HAYA UN USUARIO LOGUEADO-->
+        <?php if ((!(isset($_SESSION['ROL'])))) {?> <!--CON ESTO SE VERIFICA QUE NO HAYA UN USUARIO LOGUEADO-->
 
              <?php $_smarty_tpl->_subTemplateRender("file:nav.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
 ?>
@@ -78,33 +79,20 @@ $_smarty_tpl->tpl_vars['categoria']->do_else = false;
 ' class="categoria"><?php echo $_smarty_tpl->tpl_vars['categoria']->value->tipo_vianda;?>
 </a>-->
             <a href= 'categoria/<?php echo $_smarty_tpl->tpl_vars['categoria']->value->tipo_vianda;?>
-' class="categoria"><?php echo $_smarty_tpl->tpl_vars['categoria']->value->tipo_vianda;?>
-</a>
+' class="categoria"> <?php echo $_smarty_tpl->tpl_vars['categoria']->value->tipo_vianda;?>
+ </a>
         <?php
 }
 $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
-             <a  href="verTodos" class="verTodas">Ver Todas</a>
+             <a  href="verTodas" class="verTodas">Ver Todas</a>
     </div>
 
 
 
  <!-- BOTON LOGIN, CONSULTA Y ADMINISTRAR -->
 
-    <section class="section-consultas">
-
-        <?php if ((!(isset($_SESSION['EMAIL'])))) {?> <!--CON ESTO SE VERIFICA QUE NO HAYA UN USUARIO LOGUEADO-->
-
-            <a class="botonLogueo" href="login"> Loguearse <img src="./images/user.png" alt="user.img" class="imagenConsultas"></a>
-        
-            <?php } else { ?>
-                <a class="botonLogueo" href="logout"> Desloguearse <img src="./images/user.png" alt="user.img" class="imagenConsultas"></a>
-        <?php }?>
-        <a class="botonConsultas" href="consultas"> Consultas</a>
-
-        <?php if (((isset($_SESSION['ROL'])) && ($_SESSION['ROL'] == "administrador"))) {?> <!--CON ESTO SE VERIFICA SI EL USUARIO ES ADMIN O NO-->
-            <a class="botonAdministrar" href="adminViandas"> Administrar Viandas</a>
-        <?php }?>
-    </section>
+    <?php $_smarty_tpl->_subTemplateRender("file:botonLogin.tpl", $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, $_smarty_tpl->cache_lifetime, array(), 0, false);
+?>
 
  <!-- FOOTER -->
 

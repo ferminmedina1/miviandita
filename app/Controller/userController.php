@@ -30,19 +30,17 @@ class userController{
 
         if(isset($user)){
             $userFromDB = $this->model->GetUser($user);
-            if(isset($userFromDB) && $userFromDB){ //PREGUNTAR SOBRE ESTE &&
+            if(isset($userFromDB) && $userFromDB){ 
 
                 if (password_verify($pass, $userFromDB->password)){ 
 
                     session_start();    //SE INICIA UNA SESION
                     $_SESSION["user"] = $userFromDB->user;    //SE TRAE EL user DEL USUARIO DESDE LA DB
                     $_SESSION["ROL"] = $userFromDB->rol;    //SE TRAE EL ROL DEL USUARIO DESDE LA DB
-                    //$_SESSION['LAST_ACTIVITY'] = time();    //ULTIMA ACTIVIDAD DURANTE LA SESION
                     $_SESSION["id_user"] = $userFromDB->id_user;
                     setcookie("id_user", $userFromDB->id_user); //SE CREA UNA COOKIE "id_user"
                     
                     header("Location: ".BASE_URL."home");
-                    echo($_COOKIE["id_user"]);
                 }
                 else{  //SI LA CONTRASEÑA ES INCORRECTA
                     $this->view->ShowLog("Contraseña incorrecta");
@@ -70,7 +68,7 @@ class userController{
             if (!$existe) {        
                 $this->model->addUserDB($user,$hash,$rol);
                 
-
+                $this->model->addUserDB($user,$hash,$rol);
                 $userFromDB = $this->model->GetUser($user);
                 session_start();    //SE INICIA UNA SESION
                 $_SESSION["user"] = $userFromDB->user;    //SE TRAE EL user DEL USUARIO DESDE LA DB
@@ -79,14 +77,14 @@ class userController{
                 setcookie("id_user", $userFromDB->id_user); //SE CREA UNA COOKIE "id_user"
                 
                 header("Location: ".BASE_URL."home");
-                echo($_COOKIE["id_user"]);
+
             }
             else{
                 $this->view->showRegister("Usuario ya registrado");   
             }      
         }
         else{
-            $this->view->showRegister("Ingresa los datos correspondientes");  
+            $this->view->showRegister("Ingrese los datos correspondientes");  
         }
     }
 
@@ -111,7 +109,7 @@ class userController{
         }      
     }
     else{
-        $this->view->showRegister("Ingresa los datos correspondientes");  
+        $this->view->showRegister("Ingrese los datos correspondientes");  
     }
 }
     
@@ -188,6 +186,7 @@ class userController{
             $this->model->updateRol($id_user, $_POST["rol"]);
             if($_SESSION["id_user"] == $id_user)
                 $_SESSION["ROL"] = $_POST["rol"];
+           
             $this->view->showAdminUsersLocation();
             
         }

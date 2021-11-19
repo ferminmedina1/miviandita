@@ -56,7 +56,7 @@ class viandasController{
             if((!empty($_POST['nombre'])) && (!empty($_POST['descripcion'])) && (!empty($_POST['precio'])) && (!empty($_POST['dirigidoA']))) {
 
                 if($_FILES['file']['error'] == 0){ //sefija si hubo algun error (si esta vacio es 4).
-                $fileName= $_FILES['file']['name']; //saco los datos de la imagen.
+                $fileName= $_FILES['file']['name']; //datos de la imagen.
                 $fileTmpName= file_get_contents($_FILES['file']['tmp_name']);
                     if((!empty($fileName))){
                         $this->model->insertVianda($_POST['nombre'], $_POST['descripcion'], $_POST['precio'], $_POST['dirigidoA'],$fileTmpName);
@@ -107,9 +107,6 @@ class viandasController{
 
         if ($admin == True){
             $this->view->ShowAdministracion();
-            /*$categorias = $this->modelCategorias->getCategoria();
-            $viandas = $this->model->getViandas();
-            $this->view->ShowAdminViandas($categorias,$viandas);*/
         }
         else{
             header("Location: ".LOGIN);
@@ -156,7 +153,7 @@ class viandasController{
         if($admin==True){
             $vianda_ID = $params[':ID'];
             $this->model->deleteImageVianda($vianda_ID);
-            $this->verVianda($params); 
+            header("Location: " .BASE_URL. "vianda/$vianda_ID");
         }
     }
 
