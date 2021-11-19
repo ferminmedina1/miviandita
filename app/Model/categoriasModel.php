@@ -4,7 +4,7 @@ class categoriasModel{
     private $db;
 
     function __construct(){
-        $this->db = new PDO('mysql:host=localhost;'.'dbname=db_miviandita;charset=utf8', 'root', '');
+        $this->db = new PDO('mysql:host=db_miviandita;'.'dbname=db_miviandita;charset=utf8', 'root', 'tudai');
     }
 
  //SE OBTIENEN TODAS LAS VIANDAS DE UNA DETERMINADA CATEGORIA
